@@ -11,8 +11,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        logo: ['Vina Sans', 'sans-serif'],
-        display: ['Righteous', 'sans-serif'],
+        logo: ['Lilita One', 'sans-serif'],
+        display: ['Protest Strike', 'sans-serif'],
         body: ['Nunito Sans', 'sans-serif']
       },
       colors: {
