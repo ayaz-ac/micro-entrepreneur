@@ -15,9 +15,7 @@ module MicroEntrepreneur
 
     config.active_record.schema_format = :sql
 
-    config.i18n.default_locale = :en
-    config.i18n.available_locales = %i[en fr]
-    config.i18n.fallbacks = %i[en fr]
+    config.i18n.default_locale = :fr
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.

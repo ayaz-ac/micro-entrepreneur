@@ -1,7 +1,0 @@
-en:
-  devise:
-    shared:
-      links:
-        forgot_your_password: Reset password ?
-        sign_in: Already have an account ? Sign In
-        sign_up: No account ? Sign Up 
