@@ -16,8 +16,8 @@ module.exports = {
         body: ['Nunito Sans', 'sans-serif']
       },
       colors: {
-        primary: '#7c3aed',
-        secondary: '#7e22ce'
+        primary: '#006D77',
+        secondary: '#3bbdc6',
       }
     },
   },
