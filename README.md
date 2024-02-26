@@ -9,11 +9,11 @@
 - Hotwire
 
 ## Configuration obligatoire
-- [ ] Générer une clé `master.key` et le fichier `credentials.yml.enc` `rails credentials:edit`
-- [ ] Faire une recherche du mot "SaasTemplate" dans le projet et modifier toutes les occurrences
-- [ ] Changer le texte du CTA (en faisant une recherche du mot *cta* dans le projet)
-- [ ] Mettre à jour les couleurs du thème en modifiant le fichier `tailwind.config.js`
-- [ ] Modifier les polices en mettant à jour les liens GoogleFonts et en modifiant le fichier `tailwind.config.js`
+- [x] Générer une clé `master.key` et le fichier `credentials.yml.enc` `rails credentials:edit`
+- [x] Faire une recherche du mot "MicroEntrepreneur" dans le projet et modifier toutes les occurrences
+- [x] Changer le texte du CTA (en faisant une recherche du mot *cta* dans le projet)
+- [x] Mettre à jour les couleurs du thème en modifiant le fichier `tailwind.config.js`
+- [x] Modifier les polices en mettant à jour les liens GoogleFonts et en modifiant le fichier `tailwind.config.js`
 - [ ] Saisir l'adresse e-mail de contact `[adresse e-mail de contact]` pour la politique de confidentialité et les CGU dans: `app/views/pages/privacy` et `app/views/pages/terms`
 - [ ] Créer les fichiers `favicon.ico` pour toutes les plateformes => https://realfavicongenerator.net/favicon/ruby_on_rails
 - [ ] Modifier les SEO Tags dans `config/meta.yml` et créer des images pour les réseaux sociaux en 1200x660 (`opengraph-cover.jpg` et `twitter-cover.jpg`)
