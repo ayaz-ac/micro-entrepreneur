@@ -46,7 +46,7 @@ en:
         title:
           three_steps: 3 steps to
           boost_revenue: boost your revenue
-          with_company: with SaasTemplate
+          with_company: with MicroEntrepreneur
         steps:
           flash:
             title: 01. Set up your custom link in 1 min
@@ -73,9 +73,9 @@ en:
         terms_of_use: Terms Of Use
         copyrights: All rights reserved.
     privacy:
-      title: Privacy Policy of SaasTemplate
+      title: Privacy Policy of MicroEntrepreneur
       introduction: Introduction
-      subtitle: SaasTemplate respects your privacy and is committed to protecting your personal data in accordance with the General Data Protection Regulation (GDPR). This policy explains how we process your personal information.
+      subtitle: MicroEntrepreneur respects your privacy and is committed to protecting your personal data in accordance with the General Data Protection Regulation (GDPR). This policy explains how we process your personal information.
       collected_data:
         title: Data Collection and Use 
         data_html: <strong>Data collected:</strong> Email address, password.
@@ -96,7 +96,7 @@ en:
         data_transfer: Data Transfers
         data_transfer_description: Your data will not be transferred outside the European Union without appropriate safeguards in compliance with the GDPR.
         data_storage: Data Retention
-        data_storage_description: Your personal information is retained as long as necessary to provide the services of SaasTemplate, unless a longer retention period is required or permitted by law.
+        data_storage_description: Your personal information is retained as long as necessary to provide the services of MicroEntrepreneur, unless a longer retention period is required or permitted by law.
         data_security: Data Security
         data_security_description: We take security measures to protect your data against unauthorized access, unlawful use, accidental loss, destruction, or damage.
         privacy_updates: Policy Changes
@@ -104,11 +104,11 @@ en:
         contact: Contact
         contact_description: For any questions related to this policy or your personal data, contact us at [contact email address].
     terms:
-      title: Terms of Use of SaasTemplate
+      title: Terms of Use of MicroEntrepreneur
       introduction: 1. Introduction
-      introduction_description: By using SaasTemplate, you agree to these terms. Please read them carefully.
+      introduction_description: By using MicroEntrepreneur, you agree to these terms. Please read them carefully.
       use_of_the_service: 2. Use of the Service
-      use_of_the_service_description: The SaasTemplate service is provided "as is". You are responsible for your use of the service and any data you provide.
+      use_of_the_service_description: The MicroEntrepreneur service is provided "as is". You are responsible for your use of the service and any data you provide.
       user_accounts: 3. User Accounts
       user_accounts_description: To access certain services, you must create an account by providing a valid email address and a secure password.
       privacy: 4. Privacy
@@ -116,9 +116,9 @@ en:
       privacy_description_manage: to understand how we manage your data.
       privacy_link: Privacy Policy
       intellectual_property: 5. Intellectual Property Rights
-      intellectual_property_description: All rights in relation to the service (including content, software, etc.) are owned by SaasTemplate or its licensors.
+      intellectual_property_description: All rights in relation to the service (including content, software, etc.) are owned by MicroEntrepreneur or its licensors.
       liability: 6. Limitation of Liability
-      liability_description: SaasTemplate will not be liable for any indirect or incidental damages arising from the use of the service.
+      liability_description: MicroEntrepreneur will not be liable for any indirect or incidental damages arising from the use of the service.
       modifications: 7. Modifications to Terms
       modifications_description: We may modify these terms at any time. We will notify you of any significant changes.
       contact: 8. Contact
