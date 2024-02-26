@@ -1,6 +1,6 @@
 fr:
   global:
-    cta: Voir nos offres
+    cta: Essayer gratuitement 
   activerecord:
     errors:
       messages:
