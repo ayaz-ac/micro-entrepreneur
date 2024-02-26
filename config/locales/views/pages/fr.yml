@@ -1,0 +1,125 @@
+fr:
+  pages:
+    home:
+      hero:
+        title:
+          boost: Boostez vos
+          gains: gains d'affiliation
+        subtitle: Créez en quelques minutes un shop immersif regroupant tous vos liens d'affiliation sous forme de produits
+      references:
+        title: Utilisez vos sites d'affiliation préférés
+      benefits:
+        title: Moins de complexité, plus de revenus, plus proche de votre communauté
+        more:
+          title: Gestion simplifiée des liens d’affiliation
+          description: Créez votre boutique en quelques clics. Gérez tous vos liens d'affiliation en un seul endroit pour une meilleure simplicité.
+        chart:
+          title: Revenus boostés
+          description: Centralisez tous vos liens d'affiliation sous forme de produits attractifs, facilitant la découverte et augmentant les conversions.
+        message:
+          title: Engagement amplifié
+          description: Offrez une expérience shopping unique. Renforcez la fidélité de votre communauté et manifestez l'intérêt des marques grâce à vos bons résultats.
+      pricings:
+        title:
+          increase: Augmentez
+          affiliate_revenue: vos revenus d'affiliation, en moins d'un mois,
+          no_effort: sans effort supplémentaire
+        starter:
+          title: Idéal pour débuter à petit coût
+          price: 9.99
+          features:
+            - Création d'une boutique simplifiée
+            - Accès à un tableau de bord de gestion
+            - Jusqu'à 10 liens d'affiliation
+        business:
+          title: Pour les créateurs de contenu en quête de revenus élevés
+          price: 24.99
+          features:
+            - Création d'une boutique simplifiée
+            - Accès à un tableau de bord de gestion
+            - Liens d'affiliation illimités
+            - Options de personnalisation du shop avancées (coming soon)
+            - Statistiques détaillées (coming soon)
+      pricing:
+        cta: Commencer
+      how_it_works:
+        title:
+          three_steps: 3 étapes pour
+          boost_revenue: booster vos revenus
+          with_company: avec SaasTemplate
+        steps:
+          flash:
+            title: 01. Définissez votre lien personnalisé en 1 min
+            description: Commencez par choisir votre lien unique à mettre en bio de vos réseaux sociaux. Ce lien représente votre marque personnelle et rendra votre boutique facilement accessible à vos followers.
+          shop:
+            title: 02. Transformez vos liens d'affilations en produits sur votre shop
+            description: Organisez et personnalisez votre sélection de produits pour refléter votre style et ce que vous aimez partager.
+          money:
+            title: 03. Boostez vos revenus
+            description: Partagez votre boutique Leenkk avec votre communauté. Utilisez vos canaux habituels pour faire la promotion de votre sélection et boostez vos revenus
+      faqs:
+        title: Il vous reste des questions ?
+        question_one:
+          question: Que se passe-t-il après que j'ai payé ?
+          answer: Une fois que vous avez payé, vous serez redirigé vers la page d'inscription. Une fois inscrit vous pourrez accéder à l'ensemble du tableau de bord afin de gérer votre boutique d'affiliation
+        question_two:
+          question: Puis-je ajouter des liens d'affiliations hors Amazon ?
+          answer: Bien-sûr, Leenkk est compatible avec l'ensemble des sites proposant des liens d'affiliations
+        question_three:
+          question: Comment puis-je annuler mon abonnement ?
+          answer: 'Si vous souhaitez annuler votre abonnement, vous pouvez simplement nous envoyer un e-mail à: ayaz.indie(at)proton.me'
+      footer:
+        privacy_policies: Politique de confidentialité
+        terms_of_use: Condition d'utilisation
+        copyrights: Tous droits réservés.
+    privacy:
+      title: Politique de Confidentialité de SaasTemplate
+      introduction: Introduction
+      subtitle: SaasTemplate respecte votre vie privée et s'engage à protéger vos données personnelles conformément au Règlement Général sur la Protection des Données (RGPD). Cette politique explique comment nous traitons vos informations personnelles.
+      collected_data:
+        title: Collecte et Utilisation des données 
+        data_html: <strong>Données collectées :</strong> Adresse e-mail, mot de passe.
+        legal_basis_html: <strong>Base légale du traitement :</strong> Le traitement est nécessaire pour l'exécution d'un contrat auquel l'utilisateur est partie
+        legal_basis_link: (les Conditions d'Utilisation)
+        use_html: <strong>Utilisation :</strong> Pour fournir et gérer votre compte, améliorer nos services, et communiquer avec vous.
+      your_rights:
+        title: Vos Droits
+        subtitle: "Conformément au RGPD, vous avez le droit de :"
+        all_rights:
+          - Accéder à vos données personnelles et de les corriger. 
+          - Demander l'effacement de vos données personnelles.
+          - Limiter ou s'opposer au traitement de vos données.
+          - Demander la portabilité de vos données. 
+          - Retirer votre consentement à tout moment, pour les traitements basés sur le consentement.
+        contact: Pour exercer ces droits, veuillez nous contacter via [adresse e-mail de contact].
+      other_informations:
+        data_transfer: Transferts de Données
+        data_transfer_description: Vos données ne seront pas transférées en dehors de l'Union Européenne sans garanties appropriées conformes au RGPD.
+        data_storage: Conservation des Données
+        data_storage_description: Vos informations personnelles sont conservées aussi longtemps que nécessaire pour fournir les services de SaasTemplate, sauf si une période de conservation plus longue est requise ou permise par la loi.
+        data_security: Sécurité des Données
+        data_security_description: Nous prenons des mesures de sécurité pour protéger vos données contre l'accès non autorisé, l'utilisation illicite, la perte accidentelle, la destruction ou les dommages.
+        privacy_updates: Modifications de la Politique
+        privacy_updates_description: Nous nous réservons le droit de modifier cette politique de confidentialité. Les modifications seront communiquées par e-mail ou sur notre site web.
+        contact: Contact
+        contact_description: Pour toute question relative à cette politique ou à vos données personnelles, contactez-nous à [adresse e-mail de contact].
+    terms:
+      title: Conditions Générales d'Utilisation de SaasTemplate
+      introduction: 1. Introduction
+      introduction_description: En utilisant SaasTemplate, vous acceptez ces conditions. Veuillez les lire attentivement.
+      use_of_the_service: 2. Utilisation du Service
+      use_of_the_service_description: Le service SaasTemplate est fourni "tel quel". Vous êtes responsable de l'utilisation du service et de toute donnée que vous fournissez.
+      user_accounts: 3. Comptes Utilisateurs
+      user_accounts_description: Pour accéder à certains services, vous devez créer un compte en fournissant une adresse e-mail valide et un mot de passe sécurisé.
+      privacy: 4. Confidentialité
+      privacy_description: Votre vie privée est importante pour nous. Veuillez consulter notre 
+      privacy_description_manage: pour comprendre comment nous gérons vos données.
+      privacy_link: Politique de Confidentialité
+      intellectual_property: 5. Droits de Propriété Intellectuelle
+      intellectual_property_description: Tous les droits relatifs au service (y compris le contenu, le logiciel, etc.) sont la propriété de SaasTemplate ou de ses concédants de licence.
+      liability: 6. Limitation de Responsabilité
+      liability_description: SaasTemplate ne sera pas responsable des dommages indirects ou accidentels résultant de l'utilisation du service.
+      modifications: 7. Modifications des Conditions
+      modifications_description: Nous pouvons modifier ces conditions à tout moment. Nous vous informerons de toute modification importante.
+      contact: 8. Contact
+      contact_description: Pour toute question concernant ces conditions, veuillez nous contacter à [adresse e-mail de contact].

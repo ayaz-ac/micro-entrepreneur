@@ -1,0 +1,15 @@
+<div class="flex justify-center">
+  <% flash.each do |type, msg| %>
+    <div class="<%= (%w(error alert).include? type) ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700' %> rounded-lg py-5 px-6 mb-6" role="alert">
+      <% if msg.kind_of?(Array) %>
+        <ul>
+          <% msg.each do |m|%>
+            <li><%= m %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <%= msg %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

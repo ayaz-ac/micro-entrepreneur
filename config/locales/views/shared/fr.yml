@@ -1,0 +1,8 @@
+fr:
+  shared:
+    header:
+      pricing: Pricing
+      how_it_works: Comment ça marche ?
+      dashboard: Tableau de bord
+      logout: Se déconnecter
+      sign_in: Se connecter

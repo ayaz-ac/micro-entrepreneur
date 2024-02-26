@@ -1,0 +1,126 @@
+en:
+  pages:
+    home:
+      hero:
+        title:
+          boost: Boost your
+          gains: affiliate earnings
+        subtitle: Create an immersive shop in minutes that groups all your affiliate links as products
+      references:
+        title: Use your favorite affiliate sites
+      benefits:
+        title: Less complexity, more revenue, closer to your community
+        more:
+          title: Simplified management of affiliate links
+          description: Create your store in a few clicks. Manage all your affiliate links in one place for better simplicity.
+        chart:
+          title: Boosted Revenues
+          description: Centralize all your affiliate links as attractive products, making discovery easier and increasing conversions.
+        message:
+          title: Amplified Engagement
+          description: Offer a unique shopping experience. Strengthen your community's loyalty and demonstrate interest from brands with your good results.
+      pricings:
+        title:
+          increase: Increase
+          affiliate_revenue: your affiliation revenue, in less than a month, with
+          no_effort: no extra effort
+        starter:
+          title: Ideal for starting at a low cost
+          price: 9.99
+          features:
+            - Creation of a simplified store
+            - Access to a management dashboard
+            - Up to 10 affiliate links
+        business:
+          title: For content creators seeking high revenue
+          price: 24.99
+          features:
+            - Creation of a simplified store
+            - Access to a management dashboard
+            - Unlimited affiliate links
+            - Advanced shop customization options (coming soon)
+            - Detailed statistics (coming soon)
+      pricing:
+        cta: Start now
+      how_it_works:
+        title:
+          three_steps: 3 steps to
+          boost_revenue: boost your revenue
+          with_company: with SaasTemplate
+        steps:
+          flash:
+            title: 01. Set up your custom link in 1 min
+            description: Start by choosing your unique link to put in the bio of your social networks. This link represents your personal brand and will make your store easily accessible to your followers.
+          shop:
+            title: 02. Transform your affiliate links into products on your shop
+            description: Organize and customize your product selection to reflect your style and what you like to share.
+          money:
+            title: 03. Boost your revenues
+            description: Share your Leenkk store with your community. Use your usual channels to promote your selection and boost your revenues.
+      faqs:
+        title: Still have questions?
+        question_one:
+          question: What happens after I've paid?
+          answer: Once you've paid, you'll be redirected to the registration page. Once registered you can access the entire dashboard to manage your affiliate store.
+        question_two:
+          question: Can I add affiliate links from sites other than Amazon?
+          answer: Of course, Leenkk is compatible with all sites offering affiliate links.
+        question_three:
+          question: How can I cancel my subscription?
+          answer: "If you wish to cancel your subscription, you can simply send us an email at: ayaz.indie(at)proton.me"
+      footer:
+        privacy_policies: Privacy policies
+        terms_of_use: Terms Of Use
+        copyrights: All rights reserved.
+    privacy:
+      title: Privacy Policy of SaasTemplate
+      introduction: Introduction
+      subtitle: SaasTemplate respects your privacy and is committed to protecting your personal data in accordance with the General Data Protection Regulation (GDPR). This policy explains how we process your personal information.
+      collected_data:
+        title: Data Collection and Use 
+        data_html: <strong>Data collected:</strong> Email address, password.
+        legal_basis_html: <strong>Legal basis for processing:</strong> The processing is necessary for the performance of a contract to which the user is party
+        legal_basis_link: (the Terms of Use)
+        use_html: <strong>Use:</strong> To provide and manage your account, improve our services, and communicate with you.
+      your_rights:
+        title: Your Rights
+        subtitle: "Under the GDPR, you have the right to:"
+        all_rights:
+          - Access and correct your personal data. 
+          - Request the deletion of your personal data.
+          - Restrict or object to the processing of your data.
+          - Request the portability of your data. 
+          - Withdraw your consent at any time, for consent-based processing.
+        contact: To exercise these rights, please contact us at [contact email address].
+      other_informations:
+        data_transfer: Data Transfers
+        data_transfer_description: Your data will not be transferred outside the European Union without appropriate safeguards in compliance with the GDPR.
+        data_storage: Data Retention
+        data_storage_description: Your personal information is retained as long as necessary to provide the services of SaasTemplate, unless a longer retention period is required or permitted by law.
+        data_security: Data Security
+        data_security_description: We take security measures to protect your data against unauthorized access, unlawful use, accidental loss, destruction, or damage.
+        privacy_updates: Policy Changes
+        privacy_updates_description: We reserve the right to modify this privacy policy. Changes will be communicated via email or on our website.
+        contact: Contact
+        contact_description: For any questions related to this policy or your personal data, contact us at [contact email address].
+    terms:
+      title: Terms of Use of SaasTemplate
+      introduction: 1. Introduction
+      introduction_description: By using SaasTemplate, you agree to these terms. Please read them carefully.
+      use_of_the_service: 2. Use of the Service
+      use_of_the_service_description: The SaasTemplate service is provided "as is". You are responsible for your use of the service and any data you provide.
+      user_accounts: 3. User Accounts
+      user_accounts_description: To access certain services, you must create an account by providing a valid email address and a secure password.
+      privacy: 4. Privacy
+      privacy_description: Your privacy is important to us. Please refer to our
+      privacy_description_manage: to understand how we manage your data.
+      privacy_link: Privacy Policy
+      intellectual_property: 5. Intellectual Property Rights
+      intellectual_property_description: All rights in relation to the service (including content, software, etc.) are owned by SaasTemplate or its licensors.
+      liability: 6. Limitation of Liability
+      liability_description: SaasTemplate will not be liable for any indirect or incidental damages arising from the use of the service.
+      modifications: 7. Modifications to Terms
+      modifications_description: We may modify these terms at any time. We will notify you of any significant changes.
+      contact: 8. Contact
+      contact_description: For any questions regarding these terms, please contact us at [contact email address].
+

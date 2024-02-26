@@ -1,0 +1,11 @@
+<section id="pricings" class="flex flex-col space-y-12 lg:space-y-28 py-14 lg:py-24 px-6 lg:px-44">
+  <h2 class="text-gray-900 text-center text-2xl lg:text-5xl lg:leading-normal font-semibold">
+    <span class="text-primary"><%= t('.title.increase') %></span> <%= t('.title.affiliate_revenue') %> <span class="text-primary"><%= t('.title.no_effort') %></span>
+  </h2>
+  <div class="w-full flex flex-col space-y-12 lg:flex-row lg:space-y-0 lg:space-x-24 lg:justify-center lg:align-items-stretch">
+    <%= render 'pages/home/pricing', type: 'starter', subtitle: t('pages.home.pricings.starter.title') , price: t('pages.home.pricings.starter.price'), 
+                          features: t('pages.home.pricings.starter.features')  %>
+    <%= render 'pages/home/pricing', type: 'business', subtitle: t('pages.home.pricings.business.title'), price: t('pages.home.pricings.business.price'), 
+                          features: t('pages.home.pricings.business.features') %>
+  </div>
+</section>

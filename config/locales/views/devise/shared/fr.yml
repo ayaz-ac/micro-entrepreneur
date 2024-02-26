@@ -1,0 +1,14 @@
+fr:
+  devise:
+    shared:
+      links:
+        back: Retour
+        didn_t_receive_confirmation_instructions: Vous n'avez pas reçu l'email de confirmation ?
+        didn_t_receive_unlock_instructions: Vous n'avez pas reçu l'email de déblocage ?
+        forgot_your_password: Mot de passe oublié ?
+        sign_in: Déjà un compte? Se connecter
+        sign_in_with_provider: Connexion avec %{provider}
+        sign_up: Pas de compte? S'inscrire
+      minimum_password_length:
+        one: "(%{count} caractère au moins)"
+        other: "(%{count} caractères au moins)"
