@@ -14,15 +14,9 @@
 - [x] Changer le texte du CTA (en faisant une recherche du mot *cta* dans le projet)
 - [x] Mettre à jour les couleurs du thème en modifiant le fichier `tailwind.config.js`
 - [x] Modifier les polices en mettant à jour les liens GoogleFonts et en modifiant le fichier `tailwind.config.js`
-- [ ] Saisir l'adresse e-mail de contact `[adresse e-mail de contact]` pour la politique de confidentialité et les CGU dans: `app/views/pages/privacy` et `app/views/pages/terms`
-- [ ] Créer les fichiers `favicon.ico` pour toutes les plateformes => https://realfavicongenerator.net/favicon/ruby_on_rails
+- [x] Saisir l'adresse e-mail de contact `[adresse e-mail de contact]` pour la politique de confidentialité et les CGU dans: `app/views/pages/privacy` et `app/views/pages/terms`
+- [x] Créer les fichiers `favicon.ico` pour toutes les plateformes => https://realfavicongenerator.net/favicon/ruby_on_rails
 - [ ] Modifier les SEO Tags dans `config/meta.yml` et créer des images pour les réseaux sociaux en 1200x660 (`opengraph-cover.jpg` et `twitter-cover.jpg`)
-
-
-P-S: Des versions anglaises pour les CGU et la politique de confidentialité sont disponible dans `app/views/pages/privacy` et `app/views/pages/terms`
-
-## Configuration optionnelle
-- La langue par défaut est l'anglais, ceci est configurable dans `config/application.rb -> config.i18n.default_locale`
 
 ## Stripe configuration
 
