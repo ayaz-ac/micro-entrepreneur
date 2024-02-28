@@ -16,6 +16,9 @@ class TailwindBuilder < ActionView::Helpers::FormBuilder
   end
 
   def submit(method, options = {})
-    super(method, options.reverse_merge({ class: 'text-white text-center font-medium rounded-full bg-primary w-fit px-6 py-3.5' }))
+    super(method, options.reverse_merge({
+                                          class: 'text-white text-center font-medium rounded-full bg-primary w-fit px-6
+                                             py-3.5'
+                                        }))
   end
 end
