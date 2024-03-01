@@ -1,19 +1,38 @@
-<%= I18n.l @date, format: '%B %Y' %>
-<%= link_to '<', root_path(date: @date - 1.month) %>
-<%= link_to t('.today'), root_path %>
-<%= link_to '>', root_path(date: @date + 1.month) %>
-<div class="grid grid-cols-7">
-  <% Date::DAYNAMES.rotate.each do |weekday| %>
-    <div>
-      <%= t('date.day_names')[Date::DAYNAMES.rotate.index(weekday)] %>
+<div class="flex flex-col w-full lg:px-24 xl:px-44 mt-12 lg:mt-20">
+  <div class="w-full flex justify-between items-center mb-8">
+    <div class="text-5xl font-semibold"><%= I18n.l @date, format: '%B %Y' %></div>
+    <div class="flex space-x-4 items-center">
+      <%= link_to root_path(date: @date - 1.month) do %>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-auto">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+        </svg>
+      <% end %>
+      <%= link_to t('.today'), root_path, class: 'text-xl text-secondary underline' %>
+      <%= link_to root_path(date: @date + 1.month) do %>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-auto">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+        </svg>
+      <% end %>
     </div>
-  <% end %>
-  <% month_offset(@date).times do %>
-    <div></div>
-  <% end %>
-  <% @date.all_month.each do |day| %>
-    <div class="border min-h-24 <%= 'border-red-500' if day == Date.today %>">
-      <%= day.strftime('%d') %>
-    </div>
-  <% end %>
+  </div>
+  <div class="grid grid-cols-7">
+    <% Date::DAYNAMES.rotate.each do |weekday| %>
+      <div class="text-xl font-medium mb-3">
+        <%= t('date.day_names')[Date::DAYNAMES.rotate.index(weekday)] %>
+      </div>
+    <% end %>
+    <% month_offset(@date).times do %>
+      <div class="border h-24 bg-gray-100"></div>
+    <% end %>
+    <% @date.all_month.each do |day| %>
+      <div class="border h-24">
+        <div class="text-lg mt-2 ml-2 <%= 'rounded-full bg-secondary text-white py-1 px-2 w-fit' if day == Date.today %>">
+          <%= day.strftime('%d') %>
+        </div>
+      </div>
+    <% end %>
+    <% month_inset(@date).times do %>
+      <div class="border h-24 bg-gray-100"></div>
+    <% end %>
+  </div>
 </div>
