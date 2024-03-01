@@ -1,0 +1,20 @@
+<%= link_to '<', root_path(date: @date - 1.month) %>
+<%= link_to 'Today', root_path %>
+<%= link_to '>', root_path(date: @date + 1.month) %>
+
+<%= @date.strftime('%B %Y') %>
+<div class="grid grid-cols-7">
+  <% Date::ABBR_DAYNAMES.rotate.each do |weekday| %>
+    <div>
+      <%= weekday %>
+    </div>
+  <% end %>
+  <% month_offset(@date).times do %>
+    <div></div>
+  <% end %>
+  <% @date.all_month.each do |day| %>
+    <div class="border min-h-24 <%= 'border-red-500' if day == Date.today %>">
+      <%= day.strftime('%d') %>
+    </div>
+  <% end %>  
+</div>
