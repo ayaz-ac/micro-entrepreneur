@@ -1,4 +1,6 @@
 fr:
   activity_reports:
-    show:
+    months_navigation:
       today: Aujourd'hui
+    off_days:
+      title: Jours off

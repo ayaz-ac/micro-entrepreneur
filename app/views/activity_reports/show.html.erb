@@ -1,18 +1,14 @@
 <div class="flex flex-col w-full lg:px-24 xl:px-44 mt-12 lg:mt-20">
   <div class="w-full flex justify-between items-center mb-8">
-    <div class="text-5xl font-semibold"><%= I18n.l @date, format: '%B %Y' %></div>
-    <div class="flex space-x-4 items-center">
-      <%= link_to root_path(date: @date - 1.month) do %>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-auto">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-        </svg>
-      <% end %>
-      <%= link_to t('.today'), root_path, class: 'text-xl text-secondary underline' %>
-      <%= link_to root_path(date: @date + 1.month) do %>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-auto">
-          <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-        </svg>
-      <% end %>
+    <div class="flex items-center space-x-16">
+      <div class="text-5xl font-semibold"><%= I18n.l @date, format: '%B %Y' %></div>
+      <%= render 'off_days', date: @date %>
+    </div>
+    <div class="flex space-x-16 items-center">
+      <div class="text-lg font-semibold">
+        Revenu mensuel estimé: <span class="text-primary text-xl">3000 €</span>
+      </div>
+      <%= render 'months_navigation' %>
     </div>
   </div>
   <div class="grid grid-cols-7">
