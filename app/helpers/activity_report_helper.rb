@@ -24,6 +24,8 @@ module ActivityReportHelper
   end
 
   def user_off?(off_days, day)
+    day = Date.parse(day) if day.is_a? String
+
     off_days.map(&:day_of_week).any? day.strftime('%A').downcase
   end
 
