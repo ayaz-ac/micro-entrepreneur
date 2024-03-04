@@ -21,8 +21,8 @@
       <div class="border h-24 bg-gray-100"></div>
     <% end %>
     <% @date.all_month.each do |day| %>
-      <div class="border h-24">
-        <div class="text-lg mt-2 ml-2 <%= 'rounded-full bg-secondary text-white py-1 px-2 w-fit' if day == Date.today %>">
+      <div class="border h-24 <%= 'border-gray-300 bg-red-100' if off_day?(@off_days, day) %>">
+        <div class="text-lg mt-2 ml-2 <%= 'rounded-full bg-secondary text-white py-1 px-2 w-fit' if today?(day) %>">
           <%= day.strftime('%d') %>
         </div>
       </div>
