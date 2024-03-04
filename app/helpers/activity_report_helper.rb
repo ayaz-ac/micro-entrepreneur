@@ -23,8 +23,8 @@ module ActivityReportHelper
     false
   end
 
-  def off_day?(off_days, day)
-    off_days.map(&:day_of_week).any?(day.strftime('%A').downcase)
+  def user_off?(off_days, day)
+    off_days.map(&:day_of_week).any? day.strftime('%A').downcase
   end
 
   def today?(day)

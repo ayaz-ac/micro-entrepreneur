@@ -4,3 +4,10 @@ fr:
       today: Aujourd'hui
     off_days:
       title: Jours off
+      monday: Lundi
+      tuesday: Mardi
+      wednesday: Mercredi
+      thursday: Jeudi
+      friday: Vendredi
+      saturday: Samedi
+      sunday: Dimanche
