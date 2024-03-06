@@ -1,14 +1,14 @@
-<div class="flex flex-col w-full lg:px-24 xl:px-44 mt-12 lg:mt-20">
+<div class="flex flex-col w-full lg:px-24 xl:px-44 my-12 lg:my-20">
   <div class="w-full flex justify-between items-center mb-8">
     <div class="flex items-center space-x-16">
-      <div class="text-5xl font-semibold"><%= I18n.l @date, format: '%B %Y' %></div>
-      <%= render 'off_days', date: @date %>
+      <div class="text-5xl font-semibold"><%= I18n.l @activity_report.start_date, format: '%B %Y' %></div>
+      <%= render 'select_off_days', date: @activity_report.start_date %>
     </div>
     <div class="flex space-x-16 items-center">
       <div class="text-lg font-semibold">
         Revenu mensuel estimé: <span class="text-primary text-xl">3000 €</span>
       </div>
-      <%= render 'months_navigation' %>
+      <%= render 'months_navigation', date: @activity_report.start_date %>
     </div>
   </div>
   <div class="grid grid-cols-7">
@@ -17,17 +17,17 @@
         <%= t('date.day_names')[Date::DAYNAMES.rotate.index(weekday)] %>
       </div>
     <% end %>
-    <% month_offset(@date).times do %>
+    <% month_offset(@activity_report.start_date).times do %>
       <div class="border h-24 bg-gray-100"></div>
     <% end %>
-    <% @date.all_month.each do |day| %>
+    <% (@activity_report.start_date.to_date..@activity_report.end_date.to_date).each do |day| %>
       <div class="border h-24 <%= 'border-gray-300 bg-red-100' if user_off?(@user_off_days, day) %>">
         <div class="text-lg mt-2 ml-2 <%= 'rounded-full bg-secondary text-white py-1 px-2 w-fit' if today?(day) %>">
           <%= day.strftime('%d') %>
         </div>
       </div>
     <% end %>
-    <% month_inset(@date).times do %>
+    <% month_inset(@activity_report.start_date).times do %>
       <div class="border h-24 bg-gray-100"></div>
     <% end %>
   </div>

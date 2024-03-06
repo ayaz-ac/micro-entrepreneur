@@ -1,8 +1,23 @@
 # frozen_string_literal: true
 
 class ActivityReportsController < ApplicationController
+  before_action :find_activity_report
+
   def show
-    @date = Date.parse(params.fetch(:date, Time.zone.today.to_s)).at_beginning_of_month
     @user_off_days = current_user.configured_off_days
+  end
+
+  private
+
+  def find_activity_report
+    @activity_report = current_user.activity_reports.find_or_create_by(start_date:, end_date:)
+  end
+
+  def start_date
+    Date.parse(params.fetch(:date, Time.zone.today.to_s)).at_beginning_of_month
+  end
+
+  def end_date
+    Date.parse(params.fetch(:date, Time.zone.today.to_s)).at_end_of_month
   end
 end

@@ -2,7 +2,7 @@ fr:
   activity_reports:
     months_navigation:
       today: Aujourd'hui
-    off_days:
+    select_off_days:
       title: Jours off
       monday: Lundi
       tuesday: Mardi

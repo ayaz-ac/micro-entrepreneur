@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 module ActivityReportHelper
+  def actual_month?(date)
+    today = Time.zone.today
+
+    date.year == today.year && date.month == today.month
+  end
+
   def month_offset(date)
     return 6 if date.wday.zero?
 
@@ -13,16 +19,6 @@ module ActivityReportHelper
     7 - date.end_of_month.wday
   end
 
-  def previous_month?(date)
-    today = Time.zone.today
-
-    return date.year <= today.year && date.month < today.month if date.year == today.year
-
-    return true if date.year < today.year
-
-    false
-  end
-
   def user_off?(off_days, day)
     day = Date.parse(day) if day.is_a? String
 
@@ -30,6 +26,6 @@ module ActivityReportHelper
   end
 
   def today?(day)
-    day == Time.zone.today
+    day == Time.zone.today.to_datetime
   end
 end
