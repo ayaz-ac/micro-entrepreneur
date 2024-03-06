@@ -14,6 +14,40 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
+-- Name: activity_reports; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.activity_reports (
+    id bigint NOT NULL,
+    start_date timestamp(6) without time zone,
+    end_date timestamp(6) without time zone,
+    details jsonb,
+    user_id bigint NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: activity_reports_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.activity_reports_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: activity_reports_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.activity_reports_id_seq OWNED BY public.activity_reports.id;
+
+
+--
 -- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -169,6 +203,13 @@ ALTER SEQUENCE public.work_days_id_seq OWNED BY public.work_days.id;
 
 
 --
+-- Name: activity_reports id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.activity_reports ALTER COLUMN id SET DEFAULT nextval('public.activity_reports_id_seq'::regclass);
+
+
+--
 -- Name: configured_off_days id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -194,6 +235,14 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 --
 
 ALTER TABLE ONLY public.work_days ALTER COLUMN id SET DEFAULT nextval('public.work_days_id_seq'::regclass);
+
+
+--
+-- Name: activity_reports activity_reports_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.activity_reports
+    ADD CONSTRAINT activity_reports_pkey PRIMARY KEY (id);
 
 
 --
@@ -245,6 +294,20 @@ ALTER TABLE ONLY public.work_days
 
 
 --
+-- Name: index_activity_reports_on_start_date_and_end_date_and_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_activity_reports_on_start_date_and_end_date_and_user_id ON public.activity_reports USING btree (start_date, end_date, user_id);
+
+
+--
+-- Name: index_activity_reports_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_activity_reports_on_user_id ON public.activity_reports USING btree (user_id);
+
+
+--
 -- Name: index_configured_off_days_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -288,6 +351,14 @@ ALTER TABLE ONLY public.work_days
 
 
 --
+-- Name: activity_reports fk_rails_2b74c9d846; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.activity_reports
+    ADD CONSTRAINT fk_rails_2b74c9d846 FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
 -- Name: estimated_incomes fk_rails_42cc34a49b; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -310,6 +381,7 @@ ALTER TABLE ONLY public.configured_off_days
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20240306152944'),
 ('20240228205524'),
 ('20240228205444'),
 ('20240228205347'),
