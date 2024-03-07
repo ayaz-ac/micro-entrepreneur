@@ -2,7 +2,7 @@
   <div class="w-full flex justify-between items-center mb-8">
     <div class="flex items-center space-x-16">
       <div class="text-5xl font-semibold"><%= I18n.l @activity_report.start_date, format: '%B %Y' %></div>
-      <%= render 'select_off_days', date: @activity_report.start_date %>
+      <%= render 'select_off_days', date: @activity_report.start_date, activity_report_id: @activity_report.id %>
     </div>
     <div class="flex space-x-16 items-center">
       <div class="text-lg font-semibold">
