@@ -14,10 +14,10 @@ class ActivityReportsController < ApplicationController
   end
 
   def start_date
-    Date.parse(params.fetch(:date, Time.zone.today.to_s)).at_beginning_of_month
+    Time.zone.parse(params.fetch(:date, Time.zone.today.to_s)).at_beginning_of_month
   end
 
   def end_date
-    Date.parse(params.fetch(:date, Time.zone.today.to_s)).at_end_of_month
+    Time.zone.parse(params.fetch(:date, Time.zone.today.to_s)).at_end_of_month
   end
 end
