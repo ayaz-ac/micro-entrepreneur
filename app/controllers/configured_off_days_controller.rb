@@ -5,8 +5,8 @@ class ConfiguredOffDaysController < ApplicationController
   before_action :set_user_configured_off_days
 
   def update
-    existing_off_days_to_delete = @user_configured_off_days - configured_off_day_params[:configured_off_days]
-    selected_off_days_to_add = configured_off_day_params[:configured_off_days] - @user_configured_off_days
+    existing_off_days_to_delete = @user_configured_off_days - configured_off_days
+    selected_off_days_to_add = configured_off_days - @user_configured_off_days
 
     destroy_exisiting_off_days_unchecked(existing_off_days_to_delete)
     create_newly_selected_off_days(selected_off_days_to_add)
@@ -15,7 +15,11 @@ class ConfiguredOffDaysController < ApplicationController
   private
 
   def configured_off_day_params
-    params.require(:user).permit(configured_off_days: [])
+    params.require(:user).permit(:activity_report_id, configured_off_days: [])
+  end
+
+  def configured_off_days
+    @configured_off_days ||= (configured_off_day_params[:configured_off_days] || [])
   end
 
   def set_user_configured_off_days
