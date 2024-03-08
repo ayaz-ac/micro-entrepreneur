@@ -3,9 +3,7 @@
 class ActivityReportsController < ApplicationController
   before_action :find_activity_report
 
-  def show
-    @user_off_days = current_user.configured_off_days
-  end
+  def show; end
 
   private
 

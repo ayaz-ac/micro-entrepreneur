@@ -11,24 +11,7 @@
       <%= render 'months_navigation', date: @activity_report.start_date %>
     </div>
   </div>
-  <div class="grid grid-cols-7">
-    <% Date::DAYNAMES.rotate.each do |weekday| %>
-      <div class="text-xl font-medium mb-3">
-        <%= t('date.day_names')[Date::DAYNAMES.rotate.index(weekday)] %>
-      </div>
-    <% end %>
-    <% month_offset(@activity_report.start_date).times do %>
-      <div class="border h-24 bg-gray-100"></div>
-    <% end %>
-    <% (@activity_report.start_date.to_date..@activity_report.end_date.to_date).each do |day| %>
-      <div class="border h-24 <%= 'border-gray-300 bg-red-100' if user_off?(@user_off_days, day) %>">
-        <div class="text-lg mt-2 ml-2 <%= 'rounded-full bg-secondary text-white py-1 px-2 w-fit' if today?(day) %>">
-          <%= day.strftime('%d') %>
-        </div>
-      </div>
-    <% end %>
-    <% month_inset(@activity_report.start_date).times do %>
-      <div class="border h-24 bg-gray-100"></div>
-    <% end %>
-  </div>
+  <%= turbo_frame_tag :calendar, class: 'flex w-full' do %>
+    <%= render 'calendar', activity_report: @activity_report, user_off_days: current_user.configured_off_days %>
+  <% end %>
 </div>

@@ -3,6 +3,7 @@
 class ConfiguredOffDaysController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user_configured_off_days
+  before_action :find_activity_report
 
   def update
     existing_off_days_to_delete = @user_configured_off_days - configured_off_days
@@ -10,6 +11,8 @@ class ConfiguredOffDaysController < ApplicationController
 
     destroy_exisiting_off_days_unchecked(existing_off_days_to_delete)
     create_newly_selected_off_days(selected_off_days_to_add)
+
+    @user_off_days = ConfiguredOffDay.where(user: current_user)
   end
 
   private
@@ -18,12 +21,16 @@ class ConfiguredOffDaysController < ApplicationController
     params.require(:user).permit(:activity_report_id, configured_off_days: [])
   end
 
-  def configured_off_days
-    @configured_off_days ||= (configured_off_day_params[:configured_off_days] || [])
-  end
-
   def set_user_configured_off_days
     @user_configured_off_days = current_user.configured_off_days.map(&:day_of_week)
+  end
+
+  def find_activity_report
+    @activity_report = ActivityReport.find(configured_off_day_params[:activity_report_id])
+  end
+
+  def configured_off_days
+    @configured_off_days ||= (configured_off_day_params[:configured_off_days] || [])
   end
 
   def destroy_exisiting_off_days_unchecked(days_of_week)
