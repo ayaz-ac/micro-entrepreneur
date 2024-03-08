@@ -7,12 +7,8 @@
   <% month_offset(activity_report.start_date).times do %>
     <div class="border h-24 bg-gray-100"></div>
   <% end %>
-  <% (activity_report.start_date.to_date..activity_report.end_date.to_date).each do |day| %>
-    <div class="border h-24 <%= 'border-gray-300 bg-red-100' if user_off?(user_off_days, day) %>">
-      <div class="text-lg mt-2 ml-2 <%= 'rounded-full bg-secondary text-white py-1 px-2 w-fit' if today?(day) %>">
-        <%= day.strftime('%d') %>
-      </div>
-    </div>
+  <% (activity_report.days).each do |day| %>
+    <%= render 'activity_reports/day', day:, activity_report: activity_report %>
   <% end %>
   <% month_inset(activity_report.start_date).times do %>
     <div class="border h-24 bg-gray-100"></div>

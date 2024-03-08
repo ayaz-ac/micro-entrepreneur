@@ -19,10 +19,16 @@ module ActivityReportHelper
     7 - date.end_of_month.wday
   end
 
-  def user_off?(off_days, day)
-    day = Date.parse(day) if day.is_a? String
-
-    off_days.map(&:day_of_week).any? day.strftime('%A').downcase
+  def status_class(status)
+    day_class = case status
+                when 'full'
+                  'bg-green-100'
+                when 'half'
+                  'bg-yellow-100'
+                else
+                  'bg-red-100'
+                end
+    "border-gray-300 #{day_class}"
   end
 
   def today?(day)

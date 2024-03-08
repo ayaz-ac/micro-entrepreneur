@@ -1,0 +1,19 @@
+<div class="border h-24 <%= status_class(day['status']) %>">
+  <div class="flex items-center justify-between px-4 mt-4">
+    <div class="text-lg <%= 'rounded-full bg-secondary text-white py-1 px-2 w-fit' if today?(day) %>">
+      <%= Date.parse(day['date']).strftime('%d') %>
+    </div>
+    <div class="relative cursor-pointer" data-controller="switch-class">
+      <svg class="w-6 h-6 border-none" data-action="click->switch-class#trigger" data-switch-class-target="element" data-active-class="border-none" data-inactive-class="rounded-full border-2 border-slate-700" 
+        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+      </svg>
+      <div data-switch-class-target="element" data-active-class="absolute" data-inactive-class="hidden" class="hidden z-10 mt-2 w-36 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <%= form_with url: activity_report_days_path(activity_report), scope: :day do |f| %>
+          <%= f.select('status', [['Journée complète', 'full'], ['Demi-journée', 'half'], ['Off', 'off']], selected: day['status']) %>
+          <%= f.hidden_field :date, value: day['date'] %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

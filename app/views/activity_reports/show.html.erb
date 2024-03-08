@@ -12,6 +12,6 @@
     </div>
   </div>
   <%= turbo_frame_tag :calendar, class: 'flex w-full' do %>
-    <%= render 'calendar', activity_report: @activity_report, user_off_days: current_user.configured_off_days %>
+    <%= render 'calendar', activity_report: @activity_report %>
   <% end %>
 </div>

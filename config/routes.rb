@@ -8,6 +8,9 @@ Rails.application.routes.draw do
 
   authenticated :user do
     root to: 'activity_reports#show', as: :authenticated_user
+    resources :activity_reports, only: :show do
+      resource :days, only: :update, module: :activity_reports
+    end
     resource :configured_off_days, only: :update
   end
 

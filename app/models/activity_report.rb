@@ -16,6 +16,10 @@ class ActivityReport < ApplicationRecord
     details['estimated_income'] || 0
   end
 
+  def days
+    details['days'] || []
+  end
+
   private
 
   def dates_in_same_month_and_year
