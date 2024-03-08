@@ -6,7 +6,7 @@
     </div>
     <div class="flex space-x-16 items-center">
       <%= turbo_frame_tag :statistics, class: 'flex space-x-16' do %>
-        <%= render 'statistics', total_worked_days: @activity_report.total_worked_days, estimated_income: 3000 %>
+        <%= render 'statistics', total_worked_days: @activity_report.total_worked_days, estimated_income: (400*@activity_report.total_worked_days) %>
       <% end %>
       <%= render 'months_navigation', date: @activity_report.start_date %>
     </div>
