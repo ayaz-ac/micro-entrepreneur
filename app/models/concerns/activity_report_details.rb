@@ -20,6 +20,11 @@ module ActivityReportDetails
     save!
   end
 
+  def update_extras
+    count_total_worked_days
+    calculate_estimated_income
+  end
+
   private
 
   def initialize_details
@@ -37,11 +42,6 @@ module ActivityReportDetails
 
   def off_day?(day)
     off_days.include?(lowercase_weekday(day))
-  end
-
-  def update_extras
-    count_total_worked_days
-    calculate_estimated_income
   end
 
   def count_total_worked_days

@@ -1,0 +1,2 @@
+<%= turbo_stream.update(:calendar, partial: 'activity_reports/calendar', locals: { activity_report: @activity_report }) %>
+<%= turbo_stream.update(:statistics, partial: 'activity_reports/statistics', locals: { total_worked_days: @activity_report.total_worked_days, estimated_income: (400*@activity_report.total_worked_days) }) %>

@@ -9,8 +9,8 @@
         <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
       </svg>
       <div data-switch-class-target="element" data-active-class="absolute" data-inactive-class="hidden" class="hidden z-10 mt-2 w-36 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-        <%= form_with url: activity_report_days_path(activity_report), scope: :day do |f| %>
-          <%= f.select('status', [['Journée complète', 'full'], ['Demi-journée', 'half'], ['Off', 'off']], selected: day['status']) %>
+        <%= form_with scope: :day, url: activity_report_days_path(activity_report), method: :put, data: { controller: 'submit-form', submit_form_target: 'form' } do |f| %>
+          <%= f.select('status', [['Journée complète', 'full'], ['Demi-journée', 'half'], ['Off', 'off']], { selected: day['status'] }, data: { action: 'submit-form#submit' }) %>
           <%= f.hidden_field :date, value: day['date'] %>
         <% end %>
       </div>
