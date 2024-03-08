@@ -7,6 +7,10 @@ module ActivityReportDetails
     before_create :initialize_details
   end
 
+  def total_worked_days
+    details['total_worked_days']
+  end
+
   def update_off_days_in_details
     details['days'].each do |day|
       day_name = Date.parse(day['date']).strftime('%A').downcase
@@ -18,7 +22,7 @@ module ActivityReportDetails
       end
     end
 
-    count_total_days
+    count_total_worked_days
 
     save!
   end
@@ -26,24 +30,24 @@ module ActivityReportDetails
   private
 
   def initialize_details
-    self.details = { days: [], total_days: 0 }
+    self.details = { 'days' => [], 'total_worked_days' => 0 }
 
     (start_date.to_date..end_date.to_date).each do |day|
       details['days'] << {
-        date: day,
-        status: day_off?(off_days, day) ? 'off' : 'full'
+        'date' => day,
+        'status' => day_off?(off_days, day) ? 'off' : 'full'
       }
     end
 
-    count_total_days
+    count_total_worked_days
   end
 
   def day_off?(off_days, day)
     off_days.any? day.strftime('%A').downcase
   end
 
-  def count_total_days
-    details['total_days'] = details['days'].count { |day| day['status'] != 'off' }
+  def count_total_worked_days
+    details['total_worked_days'] = details['days'].count { |day| day['status'] != 'off' }
   end
 
   def off_days

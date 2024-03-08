@@ -5,9 +5,9 @@
       <%= render 'select_off_days', date: @activity_report.start_date, activity_report_id: @activity_report.id %>
     </div>
     <div class="flex space-x-16 items-center">
-      <div class="text-lg font-semibold">
-        Revenu mensuel estimé: <span class="text-primary text-xl">3000 €</span>
-      </div>
+      <%= turbo_frame_tag :statistics, class: 'flex space-x-16' do %>
+        <%= render 'statistics', total_worked_days: @activity_report.total_worked_days, estimated_income: 3000 %>
+      <% end %>
       <%= render 'months_navigation', date: @activity_report.start_date %>
     </div>
   </div>
