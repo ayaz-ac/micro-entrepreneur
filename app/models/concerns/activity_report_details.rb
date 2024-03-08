@@ -45,7 +45,14 @@ module ActivityReportDetails
   end
 
   def count_total_worked_days
-    details['total_worked_days'] = details['days'].count { |day| day['status'] != 'off' }
+    total_worked_days = 0
+
+    details['days'].each do |day|
+      next if day['status'] == 'off'
+
+      total_worked_days += day['status'] == 'full' ? 1 : 0.5
+    end
+    details['total_worked_days'] = total_worked_days
   end
 
   def calculate_estimated_income
