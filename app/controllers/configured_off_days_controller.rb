@@ -13,6 +13,7 @@ class ConfiguredOffDaysController < ApplicationController
     create_newly_selected_off_days(selected_off_days_to_add)
 
     @user_off_days = ConfiguredOffDay.where(user: current_user)
+    @activity_report.update_off_days_in_details
   end
 
   private
