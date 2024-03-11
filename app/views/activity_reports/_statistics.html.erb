@@ -2,5 +2,6 @@
   Nombre jours travaillés: <span class="text-secondary text-lg font-medium"><%= number_with_precision(total_worked_days, precision: 1, strip_insignificant_zeros: true) %></span>
 </div>
 <div class="text-lg font-semibold">
-  Revenu mensuel estimé: <span class="text-primary text-xl"><%= number_with_precision(estimated_income, precision: 2, strip_insignificant_zeros: true) %> €</span>
+  Revenu mensuel estimé <span class="text-sm italic font-normal">(avant impôts)</span>: <span class="text-primary text-xl"><%= number_with_precision(estimated_income, precision: 2, strip_insignificant_zeros: true) %> €</span> 
+  
 </div>
