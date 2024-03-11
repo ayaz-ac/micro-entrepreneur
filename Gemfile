@@ -6,6 +6,7 @@ ruby '3.2.2'
 
 gem 'bootsnap', require: false
 gem 'devise'
+gem 'httparty'
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'pg', '~> 1.1'
