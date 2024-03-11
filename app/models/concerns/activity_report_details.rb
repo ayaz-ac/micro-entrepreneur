@@ -56,8 +56,11 @@ module ActivityReportDetails
   end
 
   def calculate_estimated_income
-    # TODO: Call URSSAF Api
-    details['estimated_income'] = 400 * total_worked_days
+    revenue_before_urssaf_tax = 400 * total_worked_days
+    details['estimated_income'] = ::UrssafManager::RevenueBeforeIncomeTax.call(revenue_before_urssaf_tax)
+  rescue StandardError => e
+    Rails.logger.error("Une erreur s'est produite lors du calcul de la rémunération pour l'utilisateur : #{e.message}")
+    details['estimated_income'] = revenue_before_urssaf_tax
   end
 
   def off_days
