@@ -5,7 +5,7 @@
       <%= render 'select_off_days', date: @activity_report.start_date, activity_report_id: @activity_report.id %>
     </div>
     <div class="flex space-x-16 items-center">
-      <%= turbo_frame_tag :statistics, class: 'flex space-x-16' do %>
+      <%= turbo_frame_tag :statistics, class: 'flex space-x-16 items-center' do %>
         <%= render 'statistics', total_worked_days: @activity_report.total_worked_days, estimated_income: @activity_report.estimated_income %>
       <% end %>
       <%= render 'months_navigation', date: @activity_report.start_date %>
