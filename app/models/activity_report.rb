@@ -9,7 +9,9 @@ class ActivityReport < ApplicationRecord
   validates :average_daily_rate, presence: true
   validate :dates_in_same_month_and_year
 
-  before_save :copy_average_daily_rate_from_user
+  before_create :copy_average_daily_rate_from_user
+
+  scope :from_this_month, -> { where('start_date >= ?', Time.zone.now.at_beginning_of_month) }
 
   def total_worked_days
     details['total_worked_days'] || 0
@@ -34,8 +36,6 @@ class ActivityReport < ApplicationRecord
   end
 
   def copy_average_daily_rate_from_user
-    return if average_daily_rate == user.average_daily_rate
-
     self.average_daily_rate = user.average_daily_rate
   end
 end
