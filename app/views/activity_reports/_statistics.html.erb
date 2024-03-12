@@ -1,7 +1,10 @@
 <div class="text-lg font-semibold">
   Nombre jours travaillés: <span class="text-secondary text-lg font-medium"><%= number_with_precision(total_worked_days, precision: 1, strip_insignificant_zeros: true) %></span>
 </div>
-<div class="text-lg font-semibold">
-  Revenu mensuel estimé <span class="text-sm italic font-normal">(avant impôts)</span>: <span class="text-primary text-xl"><%= number_with_precision(estimated_income, precision: 2, strip_insignificant_zeros: true) %> €</span> 
-  
-</div>
+<% if current_user.average_daily_rate.zero? %>
+  <%= link_to 'Veuillez mettre à jour votre TJM pour estimer vos revenus', edit_user_path(current_user), data: { turbo_frame: '_top' }, class: 'text-primary font-medium block py-2 pr-4 lg:p-0 hover:underline' %>
+<% else %>
+  <div class="text-lg font-semibold">
+    Revenu mensuel estimé <span class="text-sm italic font-normal">(avant impôts)</span>: <span class="text-primary text-xl"><%= number_with_precision(estimated_income, precision: 2, strip_insignificant_zeros: true) %> €</span>
+  </div>
+<% end %>
