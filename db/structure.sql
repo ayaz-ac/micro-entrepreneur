@@ -22,6 +22,7 @@ CREATE TABLE public.activity_reports (
     start_date timestamp(6) without time zone,
     end_date timestamp(6) without time zone,
     details jsonb,
+    average_daily_rate integer DEFAULT 0 NOT NULL,
     user_id bigint NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL

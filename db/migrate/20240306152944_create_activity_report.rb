@@ -6,6 +6,7 @@ class CreateActivityReport < ActiveRecord::Migration[7.1]
       t.datetime :start_date
       t.datetime :end_date
       t.jsonb :details
+      t.integer :average_daily_rate, null: false, default: 0
       t.references :user, null: false, foreign_key: true
 
       t.timestamps
