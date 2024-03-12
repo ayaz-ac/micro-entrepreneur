@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       resource :days, only: :update, module: :activity_reports
     end
     resource :configured_off_days, only: :update
+    resources :users, only: %i[edit update]
   end
 
   root to: 'pages#home'

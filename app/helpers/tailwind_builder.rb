@@ -11,6 +11,10 @@ class TailwindBuilder < ActionView::Helpers::FormBuilder
     end
   end
 
+  def number_field(method, options = {})
+    super(method, options.reverse_merge({ class: 'block rounded-md border-gray-300' }))
+  end
+
   def check_box(method, options = {})
     super(method, options.reverse_merge({ class: 'rounded border-gray-300 text-secondary' }))
   end

@@ -17,6 +17,9 @@
           <%= link_to t('shared.header.activity_report'), root_path, class: 'block py-2 pr-4 lg:p-0 hover:underline' %>
         </li>
         <li>
+          <%= link_to 'Mon profil', edit_user_path(current_user), class: 'block py-2 pr-4 lg:p-0 hover:underline' %>
+        </li>
+        <li>
           <%= link_to t('shared.header.logout'), destroy_user_session_path, data: { turbo_method: :delete }, class: 'block py-2 pr-4 lg:p-0 hover:underline' %>
         </li>
       <% else %>
