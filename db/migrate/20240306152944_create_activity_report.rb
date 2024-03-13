@@ -5,7 +5,7 @@ class CreateActivityReport < ActiveRecord::Migration[7.1]
     create_table :activity_reports do |t|
       t.datetime :start_date
       t.datetime :end_date
-      t.jsonb :details
+      t.jsonb :details, default: {}
       t.integer :average_daily_rate, null: false, default: 0
       t.references :user, null: false, foreign_key: true
 
