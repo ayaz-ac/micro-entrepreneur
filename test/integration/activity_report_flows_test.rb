@@ -10,7 +10,7 @@ class ActivityReportFlowsTest < ActionDispatch::IntegrationTest
     sign_in @user
   end
 
-  test 'it should create ActivityReports for the current and next months with the correct values' do
+  test 'it should create ActivityReports for the current and next months with the financial values' do
     # Create ActivityReport for the current month
     assert_difference -> { ActivityReport.count } do
       get root_path
@@ -57,5 +57,11 @@ class ActivityReportFlowsTest < ActionDispatch::IntegrationTest
       assert_equal @user.average_daily_rate, activity_report.average_daily_rate
       assert_equal 0, activity_report.estimated_income
     end
+  end
+
+  test 'it should create ActivityReports for the current and previous months with the correct financial values' do
+  end
+
+  test 'it should create ActivityReports with the correct configured off days' do
   end
 end
