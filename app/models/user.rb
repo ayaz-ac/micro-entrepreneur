@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :configured_off_days, dependent: :destroy
 
   after_create :create_default_configured_off_days
-  # after_update :copy_and_update_average_daily_rate_in_activity_reports, if: :saved_change_to_average_daily_rate?
+  after_update :copy_average_daily_rate_into_activity_reports, if: :saved_change_to_average_daily_rate?
 
   def configured_off_days_of_week
     configured_off_days.map(&:day_of_week)
@@ -26,13 +26,7 @@ class User < ApplicationRecord
     end
   end
 
-  # def copy_and_update_average_daily_rate_in_activity_reports
-  #   activity_reports_to_update = activity_reports.from_this_month
-
-  #   activity_reports_to_update.update_all(average_daily_rate:) # rubocop:disable Rails/SkipsModelValidations
-  #   activity_reports_to_update.each do |activity_report|
-  #     activity_report.calculate_estimated_income
-  #     activity_report.save!
-  #   end
-  # end
+  def copy_average_daily_rate_into_activity_reports
+    activity_reports.from_this_month.find_each { |activity_report| activity_report.update(average_daily_rate:) }
+  end
 end

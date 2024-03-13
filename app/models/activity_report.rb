@@ -9,7 +9,7 @@ class ActivityReport < ApplicationRecord
   validates :average_daily_rate, presence: true
   validate :dates_in_same_month_and_year
 
-  before_create :copy_average_daily_rate_from_user
+  before_validation :copy_average_daily_rate_from_user, if: proc { details.empty? }
 
   scope :from_this_month, -> { where('start_date >= ?', Time.zone.now.at_beginning_of_month) }
 
