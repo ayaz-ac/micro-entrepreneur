@@ -11,23 +11,13 @@ class ActivityReportFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test 'it should create ActivityReports for the current and next months with the financial values' do
-    # Create ActivityReport for the current month
-    assert_difference -> { ActivityReport.count } do
-      get root_path
-    end
-
-    @activity_report = @user.activity_reports.first
+    create_activity_report_for_the_current_month
 
     assert_equal 0, @activity_report.average_daily_rate
     assert_equal 0, @activity_report.estimated_income
     assert_select 'a', 'Veuillez mettre à jour votre TJM pour estimer vos revenus'
 
-    # Update user's average_daily_rate
-    new_average_daily_rate = 300
-    assert_changes -> { @user.average_daily_rate }, from: 0, to: new_average_daily_rate do
-      put user_path(@user), params: { user: { average_daily_rate: new_average_daily_rate } }
-      @user.reload
-    end
+    update_user_average_daily_rate
 
     assert_changes -> { @activity_report.average_daily_rate }, from: 0, to: @user.average_daily_rate do
       @activity_report.reload
@@ -38,30 +28,68 @@ class ActivityReportFlowsTest < ActionDispatch::IntegrationTest
     get root_path
     assert_select 'a', text: 'Veuillez mettre à jour votre TJM pour estimer vos revenus', count: 0
 
-    # Create ActivityReport for the next month
-    assert_difference -> { ActivityReport.count } do
-      get root_path(date: @activity_report.start_date + 1.month)
-    end
+    create_activity_report_for_another_month(@activity_report.start_date + 1.month)
 
     @next_month_activity_report = @user.activity_reports.last
     assert_equal @user.average_daily_rate, @next_month_activity_report.average_daily_rate
     assert_not_equal 0, @next_month_activity_report.estimated_income
 
-    # Update user's average_daily_rate to 0
-    assert_changes -> { @user.average_daily_rate }, from: new_average_daily_rate, to: 0 do
-      put user_path(@user), params: { user: { average_daily_rate: 0 } }
-      @user.reload
+    update_user_average_daily_rate(0)
+
+    assert_activity_reports_from_this_month_and_the_next_ones
+  end
+
+  test 'it should create ActivityReports for the current and previous months with the correct financial values' do
+    update_user_average_daily_rate
+
+    create_activity_report_for_the_current_month
+
+    create_activity_report_for_another_month(@activity_report.start_date - 1.month)
+
+    @previous_month_activity_report = @user.activity_reports.last
+    assert_equal @user.average_daily_rate, @previous_month_activity_report.average_daily_rate
+    assert_not_equal 0, @previous_month_activity_report.estimated_income
+
+    update_user_average_daily_rate(0)
+
+    assert_activity_reports_from_this_month_and_the_next_ones
+
+    @user.activity_reports.before_this_month.each do |activity_report|
+      assert_not_equal @user.average_daily_rate, activity_report.average_daily_rate
+      assert_not_equal 0, activity_report.estimated_income
+    end
+  end
+
+  test 'it should create ActivityReports with the correct configured off days' do
+  end
+
+  private
+
+  def create_activity_report_for_the_current_month
+    assert_difference -> { ActivityReport.count } do
+      get root_path
     end
 
+    @activity_report = @user.activity_reports.first
+  end
+
+  def update_user_average_daily_rate(new_average_daily_rate = 300)
+    assert_changes -> { @user.average_daily_rate }, from: @user.average_daily_rate, to: new_average_daily_rate do
+      put user_path(@user), params: { user: { average_daily_rate: new_average_daily_rate } }
+      @user.reload
+    end
+  end
+
+  def create_activity_report_for_another_month(date)
+    assert_difference -> { ActivityReport.count } do
+      get root_path(date:)
+    end
+  end
+
+  def assert_activity_reports_from_this_month_and_the_next_ones
     @user.activity_reports.from_this_month.each do |activity_report|
       assert_equal @user.average_daily_rate, activity_report.average_daily_rate
       assert_equal 0, activity_report.estimated_income
     end
-  end
-
-  test 'it should create ActivityReports for the current and previous months with the correct financial values' do
-  end
-
-  test 'it should create ActivityReports with the correct configured off days' do
   end
 end

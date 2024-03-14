@@ -12,6 +12,7 @@ class ActivityReport < ApplicationRecord
   before_validation :copy_average_daily_rate_from_user, if: proc { details.empty? }
 
   scope :from_this_month, -> { where('start_date >= ?', Time.zone.now.at_beginning_of_month) }
+  scope :before_this_month, -> { where('start_date < ?', Time.zone.now.at_beginning_of_month) }
 
   def total_worked_days
     details['total_worked_days'] || 0
