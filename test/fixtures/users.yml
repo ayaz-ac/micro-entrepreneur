@@ -1,3 +1,8 @@
 default:
   email: user@example.com
   encrypted_password: <%= User.new.send(:password_digest, 'password') %>
+
+user_with_average_daily_rate_filled:
+  email: user_with_average_daily_rate_filled@example.com
+  encrypted_password: <%= User.new.send(:password_digest, 'password') %>
+  average_daily_rate: 400
