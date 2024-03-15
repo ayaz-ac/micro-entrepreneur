@@ -60,6 +60,9 @@ class ActivityReportFlowsTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test 'it should update the average daily rate for the previous months ActivityReports' do
+  end
+
   private
 
   def update_user_average_daily_rate(new_average_daily_rate = 300)
