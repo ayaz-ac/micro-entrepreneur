@@ -11,7 +11,7 @@ class ActivityReportFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test 'it should create ActivityReports for the current and next months with the financial values' do
-    create_activity_report_for_the_current_month
+    create_activity_report_for_the_current_month(@user)
 
     assert_equal 0, @activity_report.average_daily_rate
     assert_equal 0, @activity_report.estimated_income
@@ -42,7 +42,7 @@ class ActivityReportFlowsTest < ActionDispatch::IntegrationTest
   test 'it should create ActivityReports for the current and previous months with the correct financial values' do
     update_user_average_daily_rate
 
-    create_activity_report_for_the_current_month
+    create_activity_report_for_the_current_month(@user)
 
     create_activity_report_for_another_month(@activity_report.start_date - 1.month)
 
@@ -60,29 +60,12 @@ class ActivityReportFlowsTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test 'it should create ActivityReports with the correct configured off days' do
-  end
-
   private
-
-  def create_activity_report_for_the_current_month
-    assert_difference -> { ActivityReport.count } do
-      get root_path
-    end
-
-    @activity_report = @user.activity_reports.first
-  end
 
   def update_user_average_daily_rate(new_average_daily_rate = 300)
     assert_changes -> { @user.average_daily_rate }, from: @user.average_daily_rate, to: new_average_daily_rate do
       put user_path(@user), params: { user: { average_daily_rate: new_average_daily_rate } }
       @user.reload
-    end
-  end
-
-  def create_activity_report_for_another_month(date)
-    assert_difference -> { ActivityReport.count } do
-      get root_path(date:)
     end
   end
 
