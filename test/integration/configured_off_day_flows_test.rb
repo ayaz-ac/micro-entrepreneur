@@ -30,10 +30,7 @@ class ConfiguredOffDayFlowsTest < ActionDispatch::IntegrationTest
 
     @user.activity_reports.before_this_month.each do |activity_report|
       activity_report.days.each do |day|
-        if lowercase_weekday(day['date']) == 'monday'
-          assert_not_equal 'off', day['status'],
-                           'Day is not supposed to be off'
-        end
+        assert_not_equal 'off', day['status'] if lowercase_weekday(day['date']) == 'monday'
       end
     end
   end
