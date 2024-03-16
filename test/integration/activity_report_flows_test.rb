@@ -61,6 +61,26 @@ class ActivityReportFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test 'it should update the average daily rate for the previous months ActivityReports' do
+    create_activity_report_for_the_current_month(@user)
+
+    create_activity_report_for_another_month(@activity_report.start_date - 1.month)
+
+    get root_path(date: @activity_report.start_date - 1.month)
+
+    @previous_month_activity_report = @user.activity_reports.last
+
+    assert_select 'form#configured_off_days', count: 0
+    assert_select 'form#update_average_daily_rate'
+
+    new_average_daily_rate = 300
+
+    assert_changes -> { @previous_month_activity_report.average_daily_rate }, from: 0, to: new_average_daily_rate do
+      put activity_report_path(@previous_month_activity_report),
+          params: { activity_report: { average_daily_rate: new_average_daily_rate } }
+      @previous_month_activity_report.reload
+    end
+
+    assert_not_equal @previous_month_activity_report, @activity_report
   end
 
   private
