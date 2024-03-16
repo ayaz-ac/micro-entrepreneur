@@ -15,7 +15,7 @@ class User < ApplicationRecord
   after_update :copy_average_daily_rate_into_activity_reports, if: :saved_change_to_average_daily_rate?
 
   def configured_off_days_of_week
-    configured_off_days.map(&:day_of_week)
+    configured_off_days.reload.map(&:day_of_week)
   end
 
   private

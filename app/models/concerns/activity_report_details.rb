@@ -18,6 +18,7 @@ module ActivityReportDetails
       end
     end
     save!
+    self
   end
 
   private
