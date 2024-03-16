@@ -10,7 +10,7 @@
     </div>
     <div data-switch-class-target="element" data-active-class="absolute" data-inactive-class="hidden" class="hidden z-10 mt-2 w-36 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
       <%= turbo_frame_tag :select_off_days, class: 'py-1' do %>
-        <%= form_with model: current_user, url: configured_off_days_path, data: { controller: 'submit-form', submit_form_target: 'form' } do |f| %>
+        <%= form_with model: current_user, url: configured_off_days_path, data: { controller: 'submit-form', submit_form_target: 'form' }, id: 'configured_off_days' do |f| %>
           <% ConfiguredOffDay.day_of_weeks.keys.each do |day| %>
             <% configured_off_day = current_user.configured_off_days.find_by(day_of_week: day) %>
             <div class="text-gray-700 block px-4 py-2 text-sm flex justify-between hover:bg-gray-100">
