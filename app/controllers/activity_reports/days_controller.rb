@@ -12,7 +12,6 @@ module ActivityReports
         day['status'] = day_params['status']
       end
 
-      @activity_report.update_extras
       @activity_report.save!
     end
 
