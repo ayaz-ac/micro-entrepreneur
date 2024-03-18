@@ -83,6 +83,15 @@ class ActivityReportFlowsTest < ActionDispatch::IntegrationTest
     assert_not_equal @previous_month_activity_report, @activity_report
   end
 
+  test 'it should update the status of only one day for the current months ActivityReport' do
+    update_user_average_daily_rate
+    create_activity_report_for_the_current_month(@user)
+
+    %w[half full off].each do |status|
+      update_day_status(status)
+    end
+  end
+
   private
 
   def update_user_average_daily_rate(new_average_daily_rate = 300)
@@ -97,5 +106,17 @@ class ActivityReportFlowsTest < ActionDispatch::IntegrationTest
       assert_equal @user.average_daily_rate, activity_report.average_daily_rate
       assert_equal 0, activity_report.estimated_income
     end
+  end
+
+  def update_day_status(status)
+    previous_estimated_income = @activity_report.estimated_income
+
+    assert_changes -> { @activity_report.total_worked_days } do
+      put activity_report_days_path(@activity_report),
+          params: { day: { date: Time.zone.today.to_s, status: }, format: :turbo_stream }
+      @activity_report.reload
+    end
+
+    assert_not_equal previous_estimated_income, @activity_report.estimated_income
   end
 end
