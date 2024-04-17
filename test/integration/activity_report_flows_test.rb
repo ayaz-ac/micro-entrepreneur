@@ -10,7 +10,7 @@ class ActivityReportFlowsTest < ActionDispatch::IntegrationTest
     sign_in @user
   end
 
-  test 'it should create ActivityReports for the current and next months with the financial values' do
+  test "it should create ActivityReports for the current and next months with the user's financial values" do
     create_activity_report_for_the_current_month(@user)
 
     assert_equal 0, @activity_report.average_daily_rate
@@ -83,7 +83,7 @@ class ActivityReportFlowsTest < ActionDispatch::IntegrationTest
     assert_not_equal @previous_month_activity_report, @activity_report
   end
 
-  test 'it should update the status of only one day for the current months ActivityReport' do
+  test "it should update the status of only one day for the current months' ActivityReport" do
     update_user_average_daily_rate
     create_activity_report_for_the_current_month(@user)
 

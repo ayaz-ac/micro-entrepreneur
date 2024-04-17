@@ -10,7 +10,7 @@ class ConfiguredOffDayFlowsTest < ActionDispatch::IntegrationTest
     sign_in @user
   end
 
-  test 'it should update all futur ActivityReports if updating present or future ActivityReport' do
+  test 'it should update the configured off days of current and future ActivityReports' do
     create_activity_report_for_the_current_month(@user)
 
     create_activity_report_for_another_month(@activity_report.start_date + 1.month)
