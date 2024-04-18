@@ -17,6 +17,10 @@
       <%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation, autocomplete: 'new-password', required: true %>
     </div>
+    <div class="mt-7">
+      <%= f.label :average_daily_rate %><br />
+      <%= f.number_field :average_daily_rate, required: true %>
+    </div>
     <div class="mt-8 flex justify-center">
       <%= f.submit "S'inscrire" %>
     </div>
