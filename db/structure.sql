@@ -22,7 +22,7 @@ CREATE TABLE public.activity_reports (
     start_date timestamp(6) without time zone,
     end_date timestamp(6) without time zone,
     details jsonb DEFAULT '{}'::jsonb,
-    average_daily_rate integer DEFAULT 0 NOT NULL,
+    average_daily_rate integer NOT NULL,
     user_id bigint NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
@@ -112,7 +112,7 @@ CREATE TABLE public.users (
     reset_password_token character varying,
     reset_password_sent_at timestamp(6) without time zone,
     remember_created_at timestamp(6) without time zone,
-    average_daily_rate integer DEFAULT 0 NOT NULL,
+    average_daily_rate integer NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
 );

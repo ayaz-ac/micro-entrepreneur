@@ -7,6 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :average_daily_rate, presence: true
+  validates :average_daily_rate, numericality: { only_integer: true, greater_than_or_equal_to: 100 }
 
   has_many :activity_reports, dependent: :destroy
   has_many :configured_off_days, dependent: :destroy
