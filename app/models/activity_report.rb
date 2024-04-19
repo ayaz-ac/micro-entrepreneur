@@ -8,7 +8,7 @@ class ActivityReport < ApplicationRecord
   validates :start_date, uniqueness: { scope: %i[end_date user_id] }
 
   validates :average_daily_rate, presence: true
-  validates :average_daily_rate, numericality: { only_integer: true, greater_than_or_equal_to: 100 }
+  validates :average_daily_rate, numericality: { only_integer: true, greater_than_or_equal_to: User::AVERAGE_DAILY_RATE_LIMIT }
   validate :dates_in_same_month_and_year
 
   before_validation :copy_average_daily_rate_from_user, if: proc { details.empty? }
