@@ -1,3 +1,4 @@
+<% unless user_signed_in? %>
 <div class="flex flex-col w-full lg:px-24 xl:px-44 my-12 lg:my-20">
   <div class="w-full flex justify-between items-center mb-8">
     <div class="flex items-center space-x-16">
@@ -15,3 +16,4 @@
     <%= render 'calendar', activity_report: @activity_report %>
   <% end %>
 </div>
+<% end %>
