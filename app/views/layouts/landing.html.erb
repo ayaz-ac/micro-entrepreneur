@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="<%= locale %>" class="bg-slate-50 scroll-smooth">
+  <head>
+    <title><%= META['title'] %></title>
+    <meta charset="UTF-8">
+    <meta name="description" content="<%= META['description'] %>">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- Facebook Open Graph data -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="<%= META['title'] %>" />
+    <meta property="og:description" content="<%= META['description'] %>" />
+    <meta property="og:image" content="<%= root_url(locale: nil) + META['opengraph_cover'] %>" />
+    <meta property="og:url" content="<%= root_url(locale: nil) %>" />
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="<%= META["twitter_account"] %>">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= favicon_link_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;0,6..12,1000;1,6..12,200;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700;1,6..12,800;1,6..12,900;1,6..12,1000&family=Protest+Strike&family=Lilita+One&display=swap" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+    <main class="w-full flex-col">
+      <%= render 'shared/landing/header' %>
+      <%= turbo_frame_tag :flash do %>
+        <%= render partial: 'shared/flash', locals: { flash: flash } %>
+      <% end %>
+      <%= yield %>
+    </main>
+  </body>
+</html>

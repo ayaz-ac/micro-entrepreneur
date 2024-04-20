@@ -20,8 +20,10 @@ module.exports = {
         secondary: '#3bbdc6',
         'brand-100': '#DDEDFC',
         'brand-200': '#C3E0FA',
+        'brand-500': '#4594EC',
         'brand-950': '#14213D',
-        gray: '#F3F4F6'
+        gray: '#F3F4F6',
+        white: '#FAFAFA'
       }
     },
   },
