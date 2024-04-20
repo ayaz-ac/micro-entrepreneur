@@ -1,19 +1,12 @@
+<%= turbo_frame_tag :statistics, class: 'w-full flex justify-center space-x-6 text-brand-950 px-4 py-8 font-medium bg-white' do %>
+  <%= render 'statistics', total_worked_days: @activity_report.total_worked_days, estimated_income: @activity_report.estimated_income %>
+<% end %>
+<div class="w-full flex justify-between items-center text-brand-950 px-4 py-4 border border-x-0 border-brand-200">
+  <%= render 'months_navigation', date: @activity_report.start_date %>
+  <%= render 'select_off_days', activity_report_id: @activity_report.id %>
+</div>
 <% unless user_signed_in? %>
-<div class="flex flex-col w-full lg:px-24 xl:px-44 my-12 lg:my-20">
-  <div class="w-full flex justify-between items-center mb-8">
-    <div class="flex items-center space-x-16">
-      <div class="text-5xl font-semibold"><%= I18n.l @activity_report.start_date, format: '%B %Y' %></div>
-      <%= render 'select_off_days', date: @activity_report.start_date, activity_report_id: @activity_report.id %>
-    </div>
-    <div class="flex space-x-16 items-center">
-      <%= turbo_frame_tag :statistics, class: 'flex space-x-16 items-center' do %>
-        <%= render 'statistics', total_worked_days: @activity_report.total_worked_days, estimated_income: @activity_report.estimated_income %>
-      <% end %>
-      <%= render 'months_navigation', date: @activity_report.start_date %>
-    </div>
-  </div>
   <%= turbo_frame_tag :calendar, class: 'flex w-full' do %>
     <%= render 'calendar', activity_report: @activity_report %>
   <% end %>
-</div>
 <% end %>
