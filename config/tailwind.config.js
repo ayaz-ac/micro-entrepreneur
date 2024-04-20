@@ -22,6 +22,7 @@ module.exports = {
         'brand-200': '#C3E0FA',
         'brand-400': '#69B2F1',
         'brand-500': '#4594EC',
+        'brand-900': '#244584',
         'brand-950': '#14213D',
         gray: '#F3F4F6',
         white: '#FAFAFA'

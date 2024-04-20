@@ -14,7 +14,7 @@
           <span><%= t(".#{day}") %></span>
           <%= check_box_tag 'user[configured_off_days][]', day.to_s, configured_off_day.present?, 
                                 id: "configured_off_day_#{day}", 
-                                class: 'w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded focus:ring-secondary focus:ring-2',
+                                class: 'w-4 h-4 text-brand-500 bg-white border-brand-950 rounded focus:ring-secondary focus:ring-2',
                                 data: { action: 'input->submit-form#submit' } %>
         </div>
       <% end %>
