@@ -22,7 +22,7 @@ module ActivityReportHelper
   def status_class(status)
     case status
     when 'full'
-      'bg-off-white'
+      'bg-white'
     when 'half'
       'bg-yellow-100'
     else
