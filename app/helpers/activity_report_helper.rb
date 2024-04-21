@@ -20,18 +20,17 @@ module ActivityReportHelper
   end
 
   def status_class(status)
-    day_class = case status
-                when 'full'
-                  'bg-green-100'
-                when 'half'
-                  'bg-yellow-100'
-                else
-                  'bg-red-100'
-                end
-    "border-gray-300 #{day_class}"
+    case status
+    when 'full'
+      'bg-off-white'
+    when 'half'
+      'bg-yellow-100'
+    else
+      'bg-gray'
+    end
   end
 
   def today?(day)
-    day == Time.zone.today.to_datetime
+    day == Time.zone.today.strftime('%Y-%m-%d')
   end
 end
