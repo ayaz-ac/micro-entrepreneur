@@ -1,9 +1,9 @@
-<div class="border h-24 <%= status_class(day['status']) %>">
-  <div class="flex items-center justify-between px-4 mt-4">
-    <div class="text-lg <%= 'rounded-full bg-secondary text-white py-1 px-2 w-fit' if today?(day) %>">
+<div class="h-24 <%= status_class(day['status']) %> pt-2 pl-2">
+  <div class="flex">
+    <div class="text-xs <%= 'text-brand-600 font-medium' if today?(day['date']) %>">
       <%= Date.parse(day['date']).strftime('%d') %>
     </div>
-    <div class="relative cursor-pointer" data-controller="switch-class">
+    <div class="hidden relative cursor-pointer" data-controller="switch-class">
       <svg class="w-6 h-6 border-none" data-action="click->switch-class#trigger" data-switch-class-target="element" data-active-class="border-none" data-inactive-class="rounded-full border-2 border-slate-700" 
         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />

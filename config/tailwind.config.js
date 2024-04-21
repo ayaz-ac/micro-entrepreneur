@@ -18,10 +18,12 @@ module.exports = {
       colors: {
         primary: '#006D77',
         secondary: '#3bbdc6',
+        'brand-50': '#F0F7FE',
         'brand-100': '#DDEDFC',
         'brand-200': '#C3E0FA',
         'brand-400': '#69B2F1',
         'brand-500': '#4594EC',
+        'brand-600': '#3076E0',
         'brand-900': '#244584',
         'brand-950': '#14213D',
         gray: '#F3F4F6',
