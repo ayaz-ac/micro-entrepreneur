@@ -1,6 +1,6 @@
 <div class="h-24 <%= status_class(day['status']) %> ">
   <div class="flex lg:justify-between pt-2 lg:pt-4 pl-2 lg:px-4">
-    <div class="text-xs lg:text-base <%= 'text-brand-600 font-medium' if today?(day['date']) %>">
+    <div class="text-xs lg:text-base <%= today?(day['date']) ? 'text-brand-600 font-medium' : 'text-black' %>">
       <%= Date.parse(day['date']).strftime('%d') %>
     </div>
     <div class="hidden lg:block relative transition-all duration-200" data-controller="switch-class">
