@@ -3,14 +3,28 @@
     <div class="text-xs lg:text-base <%= 'text-brand-600 font-medium' if today?(day['date']) %>">
       <%= Date.parse(day['date']).strftime('%d') %>
     </div>
-    <div class="<%= "status-dropdown-#{day['date']}" %> hidden lg:block relative transition-all duration-200" data-controller="switch-class">
-      <svg class="w-6 h-auto border-none cursor-pointer" data-action="click->switch-class#trigger" data-switch-class-target="element" data-active-class="border-none" data-inactive-class="rounded-full border border-brand-400" 
+    <div class="hidden lg:block relative transition-all duration-200" data-controller="switch-class">
+      <svg class="w-6 h-auto border-none cursor-pointer" 
+           data-action="click->switch-class#trigger" 
+        data-switch-class-target="element" 
+        data-active-class="border-none" 
+        data-inactive-class="rounded-full border border-brand-400" 
         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
       </svg>
-      <div data-controller="close-dropdown" data-close-dropdown-switch-class-outlet="<%= ".status-dropdown-#{day['date']}" %>" data-switch-class-target="element" data-active-class="absolute" data-inactive-class="hidden" class="hidden z-10 mt-2 w-36 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-        <%= form_with scope: :day, url: activity_report_days_path(activity_report), method: :put, data: { controller: 'submit-form', submit_form_target: 'form' } do |f| %>
-          <%= f.select('status', [['Journée complète', 'full'], ['Demi-journée', 'half'], ['Off', 'off']], { selected: day['status'] }, data: { action: 'submit-form#submit' }) %>
+      <div data-switch-class-target="element" 
+           data-active-class="absolute" 
+           data-inactive-class="hidden" 
+           class="hidden z-10 mt-2 w-36 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <%= form_with scope: :day, 
+                      url: activity_report_days_path(activity_report), 
+                      method: :put, 
+                      data: { controller: 'submit-form', submit_form_target: 'form' } do |f| %>
+          <%= f.select('status', 
+                       [['Journée complète', 'full'], ['Demi-journée', 'half'], ['Off', 'off']], 
+                       { selected: day['status'] }, 
+                       data: { action: 'submit-form#submit' }
+                      ) %>
           <%= f.hidden_field :date, value: day['date'] %>
         <% end %>
       </div>
