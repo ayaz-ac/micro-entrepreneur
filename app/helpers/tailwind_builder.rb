@@ -2,17 +2,13 @@
 
 class TailwindBuilder < ActionView::Helpers::FormBuilder
   def label(method, text = nil, options = {})
-    super(method, text, options.reverse_merge({ class: 'text-gray-700' }))
+    super(method, text, options.reverse_merge({ class: 'text-brand-900' }))
   end
 
-  %i[email_field password_field].each do |field_type|
+  %i[email_field password_field number_field].each do |field_type|
     define_method(field_type) do |method, options = {}|
-      super(method, options.reverse_merge({ class: 'mt-1 block w-full rounded-md border-gray-300' }))
+      super(method, options.reverse_merge({ class: 'mt-1.5 block w-full rounded-md border-brand-950' }))
     end
-  end
-
-  def number_field(method, options = {})
-    super(method, options.reverse_merge({ class: 'block rounded-md border-gray-300' }))
   end
 
   def check_box(method, options = {})
@@ -21,8 +17,9 @@ class TailwindBuilder < ActionView::Helpers::FormBuilder
 
   def submit(method, options = {})
     super(method, options.reverse_merge({
-                                          class: 'text-white text-center font-medium rounded-full bg-primary w-fit px-6
-                                             py-3.5'
+                                          class: 'text-center text-white rounded-lg bg-brand-500 px-8 py-2.5
+                                                  lg:transition lg:text-lg lg:hover:-translate-y-1 lg:hover:scale-105
+                                                  lg:hover:drop-shadow-lg duration-300'
                                         }))
   end
 end

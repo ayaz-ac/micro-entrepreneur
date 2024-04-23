@@ -6,14 +6,18 @@ class UsersController < ApplicationController
   def edit; end
 
   def update
-    current_user.update!(user_params)
+    if user_params[:password].present?
+      current_user.update!(user_params)
+    else
+      current_user.update!(user_params.except(:password, :password_confirmation))
+    end
 
-    redirect_to root_path, notice: 'Votre TJM a bien été modifié!'
+    redirect_to root_path, notice: t('.sucessful')
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:average_daily_rate)
+    params.require(:user).permit(:email, :password, :password_confirmation, :average_daily_rate)
   end
 end
