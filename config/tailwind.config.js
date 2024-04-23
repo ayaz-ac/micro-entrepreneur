@@ -21,6 +21,7 @@ module.exports = {
         'brand-50': '#F0F7FE',
         'brand-100': '#DDEDFC',
         'brand-200': '#C3E0FA',
+        'brand-300': '#99CDF7',
         'brand-400': '#69B2F1',
         'brand-500': '#4594EC',
         'brand-600': '#3076E0',

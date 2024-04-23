@@ -15,7 +15,7 @@
       <div data-switch-class-target="element" 
            data-active-class="absolute" 
            data-inactive-class="hidden" 
-           class="hidden z-10 mt-2 w-36 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+           class="hidden z-10 mt-2 right-0">
         <%= form_with scope: :day, 
                       url: activity_report_days_path(activity_report), 
                       method: :put, 
@@ -23,7 +23,8 @@
           <%= f.select('status', 
                        [['Journée complète', 'full'], ['Demi-journée', 'half'], ['Off', 'off']], 
                        { selected: day['status'] }, 
-                       data: { action: 'submit-form#submit' }
+                       data: { action: 'submit-form#submit' },
+                       class: 'rounded-md bg-white text-brand-950 lg:border-2 border-brand-300 lg:focus:border-2 lg:focus:border-brand-300 lg:focus:ring-brand-300'
                       ) %>
           <%= f.hidden_field :date, value: day['date'] %>
         <% end %>
