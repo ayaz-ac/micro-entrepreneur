@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module ActivityReportHelper
-  def actual_month?(date)
+  def previous_month?(date)
     today = Time.zone.today
 
-    date.year == today.year && date.month == today.month
+    date.year <= today.year && date.month < today.month
   end
 
   def month_offset(date)
