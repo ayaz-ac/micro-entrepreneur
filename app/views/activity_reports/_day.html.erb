@@ -1,10 +1,10 @@
 <div class="h-24 <%= status_class(day['status']) %> ">
-  <div class="flex lg:justify-between pt-2 lg:pt-4 pl-2 lg:px-4">
-    <div class="text-xs lg:text-base <%= today?(day['date']) ? 'text-brand-600 font-medium' : 'text-black' %>">
+  <div class="w-full h-full flex flex-col lg:flex-row justify-between lg:pt-4 lg:px-4">
+    <div class="text-xs pt-2 pl-2 lg:p-0 lg:text-base <%= today?(day['date']) ? 'text-brand-600 font-medium' : 'text-black' %>">
       <%= Date.parse(day['date']).strftime('%d') %>
     </div>
-    <div class="hidden lg:block relative transition-all duration-200" data-controller="switch-class">
-      <svg class="w-6 h-auto border-none cursor-pointer" 
+    <div class="relative transition-all duration-200 mx-auto mb-2 lg:m-0" data-controller="switch-class">
+      <svg class="w-6 h-auto border-none cursor-pointer text-brand-500" 
            data-action="click->switch-class#trigger" 
         data-switch-class-target="element" 
         data-active-class="border-none" 
@@ -15,7 +15,7 @@
       <div data-switch-class-target="element" 
            data-active-class="absolute" 
            data-inactive-class="hidden" 
-           class="hidden z-10 mt-2 right-0">
+           class="hidden z-10 mt-2 <%= %w(monday tuesday wednesday).include?(Date.parse(day['date']).strftime('%A').downcase) ? 'left-0' : 'right-0' %> lg:right-0 lg:left-auto">
         <%= form_with scope: :day, 
                       url: activity_report_days_path(activity_report), 
                       method: :put, 
@@ -24,7 +24,7 @@
                        [['Journée complète', 'full'], ['Demi-journée', 'half'], ['Off', 'off']], 
                        { selected: day['status'] }, 
                        data: { action: 'submit-form#submit' },
-                       class: 'rounded-md bg-white text-brand-950 lg:border-2 border-brand-300 lg:focus:border-2 lg:focus:border-brand-300 lg:focus:ring-brand-300'
+                       class: 'rounded-md bg-white text-brand-950 text-sm lg:text-base border-2 border-brand-300 lg:focus:border-2 lg:focus:border-brand-300 lg:focus:ring-brand-300'
                       ) %>
           <%= f.hidden_field :date, value: day['date'] %>
         <% end %>
