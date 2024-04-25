@@ -27,9 +27,7 @@
   <body>
     <main class="w-full flex-col">
       <%= render 'shared/landing/header' %>
-      <%= turbo_frame_tag :flash do %>
-        <%= render partial: 'shared/flash', locals: { flash: flash } %>
-      <% end %>
+      <%= render partial: 'shared/flash', locals: { flash: flash } %>
       <%= yield %>
     </main>
   </body>

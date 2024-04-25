@@ -29,9 +29,7 @@
       <div class="w-full grid grid-cols-1 lg:grid-cols-5">
         <%= render partial: 'shared/header' %>
         <div class="col-span-1 lg:col-span-4">
-          <%= turbo_frame_tag :flash do %>
-            <%= render partial: 'shared/flash', locals: { flash: flash } %>
-          <% end %>
+          <%= render partial: 'shared/flash', locals: { flash: flash } %>
           <%= yield %>
         </div>
       </div>
