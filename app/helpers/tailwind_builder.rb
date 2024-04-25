@@ -7,7 +7,9 @@ class TailwindBuilder < ActionView::Helpers::FormBuilder
 
   %i[email_field password_field number_field].each do |field_type|
     define_method(field_type) do |method, options = {}|
-      super(method, options.reverse_merge({ class: 'mt-1.5 block w-full rounded-md border-brand-950' }))
+      basic_classes = 'mt-1.5 block w-full rounded-md border-brand-950'
+
+      super(method, options.reverse_merge({ class: add_error_classes(basic_classes, method) }))
     end
   end
 
@@ -21,5 +23,13 @@ class TailwindBuilder < ActionView::Helpers::FormBuilder
                                                   lg:transition lg:text-lg lg:hover:-translate-y-1 lg:hover:scale-105
                                                   lg:hover:drop-shadow-lg duration-300'
                                         }))
+  end
+
+  private
+
+  def add_error_classes(basic_classes, method)
+    return basic_classes if @object.nil? || @object.errors.exclude?(method)
+
+    "#{basic_classes} border-2 border-red-500"
   end
 end

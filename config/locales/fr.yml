@@ -1,6 +1,9 @@
 fr:
   global:
     cta: Essayer gratuitement 
+    errors:
+      one: 'Oups ! Il y a une erreur:'
+      other: 'Oups ! Il y a %{count} erreurs:'
   activerecord:
     errors:
       messages:
