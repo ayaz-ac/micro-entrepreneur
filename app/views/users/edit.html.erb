@@ -6,7 +6,7 @@
         <span class="font-medium text-sm"><%= t('global.errors', count: @user.errors.count)%></span>
       </div>
       <% if @user.errors.count == 1 %>
-        <p> <%= @user.errors.full_messages.first %> </p>
+        <p class="text-sm"> <%= @user.errors.full_messages.first %> </p>
       <% else %>
         <ul class="list-disc list-inside">
           <% @user.errors.full_messages.each do |message| %>
