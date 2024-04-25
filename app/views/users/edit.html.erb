@@ -16,7 +16,7 @@
       <% end %>
     </div>
   <% end %>
-  <%= form_with model: @user, url: user_path(@user), builder: TailwindBuilder, data: { turbo: false }, class: 'w-full flex flex-col items-center space-y-4 lg:ml-32' do |f| %>
+  <%= form_with model: @user, url: user_path(@user), builder: TailwindBuilder, data: { turbo: false }, class: 'w-full flex flex-col items-center space-y-4 lg:pl-14' do |f| %>
     <div class="w-full flex flex-col items-center lg:items-start">
       <span class="text-lg lg:text-2xl font-semibold text-black my-4 lg:my-6">Informations personnelles</span>
       <div class="w-full flex flex-col items-center lg:items-start space-y-4">
