@@ -2,6 +2,6 @@
 
 module Users
   class RegistrationsController < Devise::RegistrationsController
-    layout 'landing', only: :new
+    layout 'landing', only: %i[new create]
   end
 end
