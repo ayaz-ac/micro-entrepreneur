@@ -2,6 +2,6 @@
 
 module Users
   class PasswordsController < Devise::PasswordsController
-    layout 'landing', only: %i[new edit]
+    layout 'landing', only: %i[new edit update]
   end
 end
