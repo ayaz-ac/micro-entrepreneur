@@ -1,13 +1,13 @@
 <nav class="col-span-1 lg:min-h-screen bg-gray flex flex-col lg:py-8 xl:py-10 lg:px-4" data-controller="switch-class">
-  <%= link_to root_url, class: 'hidden lg:inline-flex justify-center space-x-4 items-center' do %>
-    <%= image_tag 'logo.svg', class: 'w-10 xl:w-8' %>
-    <span class="text-3xl xl:text-2xl font-logo text-gray-900">Micro Entrepreneur</span>
+  <%= link_to root_url, class: 'hidden lg:inline-flex justify-center items-center space-x-2' do %>
+    <%= image_tag 'logo.svg', class: 'w-8' %>
+    <span class="font-logo font-semibold text-black text-xl">MicroEntrepreneur</span>
   <% end %>
   <%# Mobile Menu %>
   <div class="w-full select-none flex py-6 px-8 justify-between items-center lg:hidden">
-    <%= link_to root_url, class: 'inline-flex space-x-4 items-center' do %>
+    <%= link_to root_url, class: 'inline-flex space-x-2 items-center' do %>
       <%= image_tag 'logo.svg', class: 'w-7' %>
-      <span class="text-xl font-logo text-gray-900">Micro Entrepreneur</span>
+      <span class="font-logo font-semibold text-black text-lg">MicroEntrepreneur</span>
     <% end %>
     <svg class="w-5 h-5" data-action="click->switch-class#trigger" data-switch-class-target="element" data-active-class="block" data-inactive-class="hidden" 
       xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
