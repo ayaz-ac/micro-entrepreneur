@@ -1,7 +1,7 @@
-<nav class="col-span-1 lg:min-h-screen bg-gray flex flex-col lg:py-8 lg:px-4" data-controller="switch-class">
+<nav class="col-span-1 lg:min-h-screen bg-gray flex flex-col lg:py-8 xl:py-10 lg:px-4" data-controller="switch-class">
   <%= link_to root_url, class: 'hidden lg:inline-flex justify-center space-x-4 items-center' do %>
-    <%= image_tag 'logo.svg', class: 'w-10' %>
-    <span class="text-3xl font-logo text-gray-900">Micro Entrepreneur</span>
+    <%= image_tag 'logo.svg', class: 'w-10 xl:w-8' %>
+    <span class="text-3xl xl:text-2xl font-logo text-gray-900">Micro Entrepreneur</span>
   <% end %>
   <%# Mobile Menu %>
   <div class="w-full select-none flex py-6 px-8 justify-between items-center lg:hidden">
@@ -19,10 +19,10 @@
     </svg>
   </div>
   <div data-switch-class-target="element" data-active-class="block" data-inactive-class="hidden" class="hidden w-full bg-gray lg:block lg:h-full lg:mt-10">
-    <div class="font-medium text-brand-950 flex flex-col items-center space-y-2 py-6 rounded-lg lg:text-lg lg:justify-between lg:h-full">
+    <div class="font-medium text-brand-950 flex flex-col items-center space-y-2 py-6 rounded-lg lg:text-lg xl:text-base lg:justify-between lg:h-full">
       <div class="w-full flex flex-col items-center space-y-2">
         <%= link_to root_path, class: "w-11/12 py-3 rounded-lg inline-flex justify-center items-center space-x-2 lg:hover:bg-brand-100 #{active_class(root_path, 'bg-brand-200')} lg:hover:bg-brand-100 lg:transition-colors lg:duration-500" do %>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-auto">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
           </svg>
           <span><%= t('shared.header.activity_report')%></span>
