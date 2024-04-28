@@ -1,17 +1,15 @@
-<section id="hero" class="flex flex-col lg:flex-row-reverse space-y-10 lg:space-y-0 px-6 lg:px-24 xl:px-44 mt-12 lg:mt-20 lg:items-center">
-  <div class="flex justify-center lg:w-1/2 lg:h-3/4">
-    <!-- Shot produit ou résultat -->
-    <%= image_tag 'hero.jpg' %>
-  </div>
-  <div class="flex flex-col text-center items-center lg:items-start xl:mr-36">
-    <div class="flex flex-col lg:text-left space-y-8">
-      <!-- Proposition de valeur -->
-      <h1 class="font-display text-gray-950 text-4xl leading-tight lg:text-7xl lg:leading-tight">
-        <%= t('.title.boost') %><span class="text-secondary"> <%= t('.title.gains') %></span>
+<section id="hero" class="flex flex-col items-center space-y-16 px-6 mt-8">
+  <div class="flex flex-col items-center space-y-8">
+    <div class="w-full flex flex-col items-center space-y-4">
+      <div class="w-fit bg-brand-50 rounded-full text-brand-500 border-2 border-brand-100 text-center text-xs font-medium py-2 px-3">
+        Fait par un freelance pour les freelances
+      </div>
+      <h1 class="text-center font-display text-black text-4xl">
+        Gérez votre activité de <span class="text-brand-500">freelance en régie</span>
       </h1>
-      <!-- Court pitch/one lineer -->
-      <h3 class="font-medium lg:text-xl text-gray-700"><%= t('.subtitle') %></h3>
+      <h3 class="text-center text-sm text-brand-950">Visualisez vos revenus nets mensuels en un coup d'œil et maximisez vos jours de congé pour une rentabilité optimale !</h3>
     </div>
-    <%= link_to t('global.cta'), 'https://example.com', target: '_blank', class: 'text-center text-white rounded-full bg-primary ring-offset-2 ring-2 ring-secondary w-fit px-10 py-4 mt-16 lg:mt-20 text-xl lg:text-2xl lg:hover:ring lg:hover:ring-offset-4' %>
+    <%= image_tag 'hero.png', class: 'shadow-lg rounded-lg' %>
   </div>
+  <%= link_to t('global.cta'), 'https://example.com', target: '_blank', class: 'text-off-white rounded-full bg-brand-500 ring ring-4 ring-brand-200 px-5 py-2.5 text-lg' %>
 </section>
