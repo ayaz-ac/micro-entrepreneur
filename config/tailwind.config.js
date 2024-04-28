@@ -11,8 +11,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        logo: ['Lilita One', 'sans-serif'],
-        display: ['Protest Strike', 'sans-serif'],
+        logo: ['Poppins', 'sans-serif'],
+        display: ['Bricolage Grotesque', 'sans-serif'],
         body: ['Nunito Sans', 'sans-serif']
       },
       colors: {
