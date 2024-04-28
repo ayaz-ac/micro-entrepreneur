@@ -1,5 +1,5 @@
-<div class="flex flex-col items-center lg:mt-8">
-  <h2 class="text-3xl lg:text-4xl font-semibold text-brand-950 my-5">Mon Profil</h2>
+<div class="flex flex-col items-center lg:items-start space-y-4 lg:space-y-6 mt-5 lg:mt-8 lg:pl-14">
+  <h2 class="text-2xl lg:text-3xl font-bold text-brand-950">Mon Profil</h2>
   <% if @user.errors.any? %>
     <div class="bg-red-100 text-red-700 rounded-lg py-3 px-5 m-3">
       <div class="inline-flex items-center space-x-2">
@@ -16,37 +16,40 @@
       <% end %>
     </div>
   <% end %>
-  <%= form_with model: @user, url: user_path(@user), builder: TailwindBuilder, data: { turbo: false }, class: 'w-full flex flex-col items-center space-y-4 lg:pl-14' do |f| %>
-    <div class="w-full flex flex-col items-center lg:items-start">
-      <span class="text-lg lg:text-2xl font-semibold text-black my-4 lg:my-6">Informations personnelles</span>
-      <div class="w-full flex flex-col items-center lg:items-start space-y-4">
-        <div class="flex flex-col">
-          <%= f.label :email %>
-          <%= f.email_field :email %>
+  <%= form_with model: @user, url: user_path(@user), builder: TailwindBuilder, data: { turbo: false }, 
+                class: 'w-full flex flex-col items-center lg:items-start' do |f| %>
+    <div class="w-full lg:w-fit grid grid-cols-1 lg:grid-cols-2 gap-y-4 lg:gap-y-0 lg:gap-x-40">
+      <div class="w-full flex flex-col items-center lg:items-start">
+        <span class="text-lg lg:text-xl font-medium text-black mb-2 lg:mb-6">Informations personnelles</span>
+        <div class="w-full flex flex-col items-center lg:items-start space-y-4">
+          <div class="flex flex-col">
+            <%= f.label :email %>
+            <%= f.email_field :email %>
+          </div>
+          <div class="flex flex-col">
+            <%= f.label :current_password, 'Mot de passe actuel' %>
+            <%= f.password_field :current_password %>
+          </div>
+          <div class="flex flex-col">
+            <%= f.label :password, 'Nouveau mot de passe' %>
+            <span class="text-xs">6 caractères minimum</span>
+            <%= f.password_field :password, autocomplete: 'new-password' %>
+          </div>
+          <div class="flex flex-col">
+            <%= f.label :password_confirmation %>
+            <%= f.password_field :password_confirmation, autocomplete: 'new-password' %>
+          </div>
         </div>
+      </div>
+      <div class="w-full flex flex-col items-center lg:items-start">
+        <span class="text-lg lg:text-xl font-medium text-black mb-2 lg:mb-6">Ma micro-entreprise</span>
         <div class="flex flex-col">
-          <%= f.label :current_password, 'Mot de passe actuel' %>
-          <%= f.password_field :current_password %>
-        </div>
-        <div class="flex flex-col">
-          <%= f.label :password, 'Nouveau mot de passe' %>
-          <span class="text-xs">6 caractères minimum</span>
-          <%= f.password_field :password, autocomplete: 'new-password' %>
-        </div>
-        <div class="flex flex-col">
-          <%= f.label :password_confirmation %>
-          <%= f.password_field :password_confirmation, autocomplete: 'new-password' %>
+          <%= f.label :average_daily_rate %>
+          <%= f.number_field :average_daily_rate %>
         </div>
       </div>
     </div>
-    <div class="w-full flex flex-col items-center lg:items-start">
-      <span class="text-lg lg:text-2xl font-semibold text-black my-4 lg:my-6">Ma micro-entreprise</span>
-      <div class="flex flex-col">
-        <%= f.label :average_daily_rate %>
-        <%= f.number_field :average_daily_rate %>
-      </div>
-    </div>
-    <div class="pt-5 lg:pt-8 w-full flex justify-center lg:justify-start">
+    <div class="w-full flex justify-center mt-8 lg:justify-start">
       <%= f.submit 'Mettre à jour' %>
     </div>
   <% end %>
