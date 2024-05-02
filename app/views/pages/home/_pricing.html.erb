@@ -1,21 +1,20 @@
-<div class="flex flex-col border-2 border-off-white drop-shadow-xl lg:drop-shadow-md rounded-lg lg:rounded-xl px-8 py-10 lg:w-1/3">
-  <div class="w-full flex flex-col grow">
-    <h3 class="text-brand-950 text-center font-semibold text-2xl lg:text-4xl mb-3 lg:mb-4"><%= type.capitalize %></h3>
-    <p class="text-black text-center text-sm lg:text-base"><%= subtitle %></p>
-    <div class="flex justify-center items-baseline py-6 lg:py-8">
-      <span class="font-bold text-brand-950 mr-2 text-5xl"><%= "#{price}€" %></span>
-      <span class="text-black">/mois</span>
+<div class="flex flex-col bg-off-white rounded-lg px-6 lg:px-8 py-7 lg:py-10 space-y-8 lg:w-1/4">
+  <div class="w-full flex flex-col lg:grow lg:mb-3">
+    <h3 class="text-brand-900 font-medium text-lg lg:text-xl"><%= type.capitalize %></h3>
+    <div class="flex items-baseline text-black space-x-1 mt-2 lg:mt-4">
+      <span class="text-brand-950 font-semibold text-4xl"><%= "#{price}€" %></span>
+      <span>/mois</span>
     </div>
-    <ul class="text-left text-black my-8 space-y-4">
+    <ul class="text-left text-black space-y-4 mt-5 lg:mt-8">
       <% features.each do |feature| %>
-        <li class="flex items-center space-x-3">
-          <svg class="text-brand-700 w-5 lg:w-7" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-          <span class="w-56 lg:w-auto lg:text-xl"><%= feature %></span>
+        <li class="flex items-center space-x-1.5">
+          <svg class="w-4 lg:w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+          <span class="w-11/12 text-sm lg:text-base"><%= feature %></span>
         </li>
       <% end %>
     </ul>
   </div>
-  <div class="w-full flex flex-col items-center space-y-3">
+  <div class="w-full flex flex-col items-center">
     <%= link_to t('global.cta'), 'https://example.com', target: '_blank', class: 'text-off-white rounded-full bg-brand-500 ring ring-4 ring-brand-200 px-5 py-2.5 lg:px-6 lg:py-3 text-lg lg:text-xl lg:hover:ring-offset-4 lg:transition-all lg:duration-300' %>
   </div>
 </div>
