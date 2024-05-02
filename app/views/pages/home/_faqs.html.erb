@@ -1,7 +1,6 @@
-<section id="faq" class="flex flex-col space-y-12 lg:space-y-28 py-14 lg:py-24 px-6 lg:px-44">
-  <h2 class="text-gray-900 text-center text-2xl lg:text-5xl lg:leading-normal font-semibold"><%= t('.title') %></h2>
-  <div class="flex flex-col lg:px-20">
-    <hr class="h-px my-6 lg:my-8 bg-gray-200 border-0">
+<section id="faq" class="flex flex-col space-y-12 lg:space-y-28 py-14 lg:py-24 px-6 lg:px-44 lg:items-center">
+  <h2 class="text-brand-950 text-center text-2xl lg:text-5xl font-medium lg:font-semibold"><%= t('.title') %></h2>
+  <div class="flex flex-col space-y-8 lg:w-full lg:items-center">
     <%= render 'pages/home/faq', question: t('pages.home.faqs.question_one.question'), 
                       answer: t('pages.home.faqs.question_one.answer') 
     %>
