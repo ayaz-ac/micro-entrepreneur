@@ -1,0 +1,62 @@
+<% worth = false %>
+<div class="w-full flex flex-col px-6 py-4">
+  <div class="flex flex-col space-y-2 text-black">
+    <h3 class="text-2xl font-semibold"> Bonjour, Ayaz </h3>
+    <h6 class="text-xs">Les statistiques de votre micro-entreprise, à portée de main!</h6>
+  </div>
+  <% if worth %>
+    <div class="w-full flex items-center space-x-3 rounded-md px-5 py-4 bg-green-200 text-black mt-4">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6.633 10.25c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 0 1 2.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 0 0 .322-1.672V2.75a.75.75 0 0 1 .75-.75 2.25 2.25 0 0 1 2.25 2.25c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282m0 0h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 0 1-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 0 0-1.423-.23H5.904m10.598-9.75H14.25M5.904 18.5c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 0 1-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 9.953 4.167 9.5 5 9.5h1.053c.472 0 .745.556.5.96a8.958 8.958 0 0 0-1.302 4.665c0 1.194.232 2.333.654 3.375Z" />
+      </svg>
+      <span class="text-sm">Votre micro-entreprise est rentable. Continuez ainsi !</span>
+    </div>
+  <% end %>
+  <div class="flex flex-col items-center space-y-6 my-8">
+    <% unless worth %>
+      <div class="w-full flex flex-col space-y-1.5 rounded-xl bg-red-200 text-black px-6 py-4 text-black" data-controller="switch-class">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-10 text-red-500">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+        </svg>
+        <span class="text-4xl font-bold text-brand-950">17 700€</span>
+        <div class="w-full flex justify-between pb-4">
+          <div class="flex flex-col space-y-0.5">
+            <span class="text-lg">Gains manqués</span>
+            <span class="text-sm">Revenus potentiels non réalisés</span>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-8 transition-all duration-200 rotate-0" data-action="click->switch-class#trigger" data-switch-class-target="element" data-active-class="rotate-0" data-inactive-class="rotate-180">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+          </svg>
+        </div>
+        <div class="hidden grid-cols-4 gap-y-1 border-t-2 border-gray pt-4 text-black text-sm" data-switch-class-target="element" data-active-class="grid" data-inactive-class="hidden">
+          <div class="col-span-3">CA estimé pour cette année:</div>
+          <div class="font-medium place-self-end">60 000 €</div>
+          <div class="col-span-3">Plafond CA micro-entreprise:</div>
+          <div class="font-medium place-self-end">77 700 €</div>
+          <div class="col-span-3">Manque à gagner:</div>
+          <div class="font-medium place-self-end">17 700 €</div>
+        </div>
+        <div class="hidden w-full pt-4" data-switch-class-target="element" data-active-class="block" data-inactive-class="hidden">
+          <p class="text-xs font-light">Pour améliorer votre rentabilité, envisagez d'augmenter votre TJM ou le nombre de jours travaillés.</p>
+        </div>
+      </div>
+    <% end %>
+    <%= render 'card', value: '1560 €', title: 'Revenu mensuel estimé', subtitle: 'Avril 2024' do %>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-10">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 7.756a4.5 4.5 0 1 0 0 8.488M7.5 10.5h5.25m-5.25 3h5.25M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+      </svg>
+    <% end %>
+    <%= render 'card', value: '34 000 €', title: "Chiffre d'affaires généré", subtitle: '2024' do %>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-10">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z" />
+      </svg>
+    <% end %>
+    <% if worth %>
+      <%= render 'card', value: '24 jours', title: 'Congé restants', subtitle: 'Pour optimiser la rentabilité' do %>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-10">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+        </svg>
+      <% end %>
+    <% end %>
+  </div>
+</div>

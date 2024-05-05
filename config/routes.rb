@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   get 'terms', to: 'pages#terms'
 
   authenticated :user do
-    root to: 'activity_reports#show', as: :authenticated_user
+    root to: 'dashboards#show', as: :authenticated_user
+    resource :dashboards, only: :show
     resources :activity_reports, only: :show do
       resource :days, only: :update, module: :activity_reports
     end
