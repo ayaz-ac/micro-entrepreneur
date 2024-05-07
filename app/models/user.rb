@@ -27,6 +27,10 @@ class User < ApplicationRecord
     configured_off_days.reload.map(&:day_of_week)
   end
 
+  def revenue
+    revenues.last.amount
+  end
+
   private
 
   def create_default_configured_off_days

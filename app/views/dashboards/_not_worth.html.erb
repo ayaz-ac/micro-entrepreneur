@@ -1,0 +1,26 @@
+<div class="w-full flex flex-col space-y-1.5 rounded-xl bg-red-200 text-black px-6 py-4 text-black">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-10 text-red-500">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+  </svg>
+  <span class="text-4xl font-bold text-brand-950"><%= format_number_to_currency(17700) %></span>
+  <div class="w-full flex justify-between pb-4">
+    <div class="flex flex-col space-y-0.5">
+      <span class="text-lg">Gains manqués</span>
+      <span class="text-sm">Revenus potentiels non réalisés</span>
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-8 transition-all duration-200 rotate-0" data-action="click->switch-class#trigger" data-switch-class-target="element" data-active-class="rotate-0" data-inactive-class="rotate-180">
+      <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+    </svg>
+  </div>
+  <div class="hidden grid-cols-4 gap-y-1 border-t-2 border-gray pt-4 text-black text-sm" data-switch-class-target="element" data-active-class="grid" data-inactive-class="hidden">
+    <div class="col-span-3">CA estimé pour cette année:</div>
+    <div class="font-medium place-self-end"><%= format_number_to_currency(60000) %></div>
+    <div class="col-span-3">Plafond CA micro-entreprise:</div>
+    <div class="font-medium place-self-end"><%= format_number_to_currency(Revenue::MAX_PER_YEAR) %></div>
+    <div class="col-span-3">Manque à gagner:</div>
+    <div class="font-medium place-self-end"><%= format_number_to_currency(17700) %></div>
+  </div>
+  <div class="hidden w-full pt-4" data-switch-class-target="element" data-active-class="block" data-inactive-class="hidden">
+    <p class="text-xs font-light">Pour améliorer votre rentabilité, envisagez d'augmenter votre TJM ou le nombre de jours travaillés.</p>
+  </div>
+</div>
