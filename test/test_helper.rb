@@ -14,7 +14,7 @@ module ActiveSupport
 
     def create_activity_report_for_the_current_month(user)
       assert_difference -> { ActivityReport.count } do
-        get root_path
+        get activity_reports_path
       end
 
       @activity_report = user.activity_reports.first
@@ -22,7 +22,7 @@ module ActiveSupport
 
     def create_activity_report_for_another_month(date)
       assert_difference -> { ActivityReport.count } do
-        get root_path(date:)
+        get activity_reports_path(date:)
       end
     end
   end
