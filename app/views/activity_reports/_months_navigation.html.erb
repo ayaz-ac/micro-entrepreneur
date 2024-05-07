@@ -1,13 +1,13 @@
 <div class="flex space-x-4 items-center">
   <span class="text-lg lg:text-3xl font-semibold"><%= I18n.l date, format: '%B %Y' %></span>
   <div class="inline-flex space-x-2 items-center">
-    <%= link_to root_path(date: date - 1.month) do %>
+    <%= link_to activity_reports_path(date: date - 1.month) do %>
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 lg:w-6 h-auto">
         <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
       </svg>
     <% end %>
-    <%= link_to t('.today'), root_path, class: 'text-brand-400 lg:text-lg' %>
-    <%= link_to root_path(date: date + 1.month) do %>
+    <%= link_to t('.today'), activity_reports_path, class: 'text-brand-400 lg:text-lg' %>
+    <%= link_to activity_reports_path(date: date + 1.month) do %>
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 lg:w-6 h-auto">
         <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
       </svg>
