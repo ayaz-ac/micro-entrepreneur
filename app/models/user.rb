@@ -13,6 +13,9 @@ class User < ApplicationRecord
 
   has_many :activity_reports, dependent: :destroy
   has_many :configured_off_days, dependent: :destroy
+  has_many :revenues, dependent: :destroy
+
+  accepts_nested_attributes_for :revenues
 
   after_create :create_default_configured_off_days
   after_update :copy_average_daily_rate_into_activity_reports, if: :saved_change_to_average_daily_rate?

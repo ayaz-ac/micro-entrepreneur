@@ -93,6 +93,39 @@ ALTER SEQUENCE public.configured_off_days_id_seq OWNED BY public.configured_off_
 
 
 --
+-- Name: revenues; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.revenues (
+    id bigint NOT NULL,
+    year integer DEFAULT 2024 NOT NULL,
+    amount numeric DEFAULT 0.0,
+    user_id bigint NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: revenues_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.revenues_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: revenues_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.revenues_id_seq OWNED BY public.revenues.id;
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -152,6 +185,13 @@ ALTER TABLE ONLY public.configured_off_days ALTER COLUMN id SET DEFAULT nextval(
 
 
 --
+-- Name: revenues id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.revenues ALTER COLUMN id SET DEFAULT nextval('public.revenues_id_seq'::regclass);
+
+
+--
 -- Name: users id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -180,6 +220,14 @@ ALTER TABLE ONLY public.ar_internal_metadata
 
 ALTER TABLE ONLY public.configured_off_days
     ADD CONSTRAINT configured_off_days_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: revenues revenues_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.revenues
+    ADD CONSTRAINT revenues_pkey PRIMARY KEY (id);
 
 
 --
@@ -220,6 +268,20 @@ CREATE INDEX index_configured_off_days_on_user_id ON public.configured_off_days 
 
 
 --
+-- Name: index_revenues_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_revenues_on_user_id ON public.revenues USING btree (user_id);
+
+
+--
+-- Name: index_revenues_on_year_and_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_revenues_on_year_and_user_id ON public.revenues USING btree (year, user_id);
+
+
+--
 -- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -250,12 +312,21 @@ ALTER TABLE ONLY public.configured_off_days
 
 
 --
+-- Name: revenues fk_rails_cca0f1dd77; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.revenues
+    ADD CONSTRAINT fk_rails_cca0f1dd77 FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20240507175028'),
 ('20240306152944'),
 ('20240228205444'),
 ('20231209120942');

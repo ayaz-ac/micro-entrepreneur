@@ -2,6 +2,7 @@ fr:
   activerecord:
     models:
       user: Utilisateur
+      revenue: Chiffre d'affaire
     attributes:
       user:
         confirmation_sent_at: Date d'envoi de la confirmation
@@ -28,3 +29,5 @@ fr:
         unlock_token: Clé de déverrouillage
         updated_at: Date de mise à jour
         average_daily_rate: TJM
+      revenue:
+        amount: Chiffre d'affaire

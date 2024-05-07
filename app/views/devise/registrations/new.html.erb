@@ -4,7 +4,7 @@
     <%= render "devise/shared/error_messages", resource: resource %>
     <div class="mt-7">
       <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: 'email', required: true %>
+      <%= f.email_field :email, autofocus: true, autocomplete: 'email', placeholder: 'john.doe@example.com', required: true %>
     </div>
     <div class="mt-7">
       <%= f.label :password %>
@@ -19,7 +19,13 @@
     </div>
     <div class="mt-7">
       <%= f.label :average_daily_rate %><br />
-      <%= f.number_field :average_daily_rate, required: true %>
+      <%= f.number_field :average_daily_rate, placeholder: '450' , required: true %>
+    </div>
+    <div class="mt-7">
+      <%= f.fields_for :revenues, resource.revenues.build(amount: nil) do |revenue_fields| %>
+        <%= revenue_fields.label :amount, "Chiffre d'affaire de cette année (#{I18n.l Time.zone.now, format: '%B'} exclu)" %><br />
+        <%= revenue_fields.number_field :amount, placeholder: '35000', required: true %>
+      <% end %>
     </div>
     <div class="mt-8 flex justify-center">
       <%= f.submit "S'inscrire" %>
