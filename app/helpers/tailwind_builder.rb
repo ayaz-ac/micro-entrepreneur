@@ -5,7 +5,7 @@ class TailwindBuilder < ActionView::Helpers::FormBuilder
     super(method, text, options.reverse_merge({ class: 'text-brand-900' }))
   end
 
-  %i[email_field password_field number_field].each do |field_type|
+  %i[text_field email_field password_field number_field].each do |field_type|
     define_method(field_type) do |method, options = {}|
       basic_classes = 'mt-1.5 block w-full rounded-md border-brand-950'
 

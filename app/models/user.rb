@@ -8,6 +8,9 @@ class User < ApplicationRecord
 
   AVERAGE_DAILY_RATE_LIMIT = 100
 
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+
   validates :average_daily_rate, presence: true
   validates :average_daily_rate, numericality: { only_integer: true, greater_than_or_equal_to: AVERAGE_DAILY_RATE_LIMIT }
 
