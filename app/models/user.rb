@@ -12,7 +12,10 @@ class User < ApplicationRecord
   validates :last_name, presence: true
 
   validates :average_daily_rate, presence: true
-  validates :average_daily_rate, numericality: { only_integer: true, greater_than_or_equal_to: AVERAGE_DAILY_RATE_LIMIT }
+  validates :average_daily_rate, numericality: {
+    only_integer: true,
+    greater_than_or_equal_to: AVERAGE_DAILY_RATE_LIMIT
+  }
 
   has_many :activity_reports, dependent: :destroy
   has_many :configured_off_days, dependent: :destroy
@@ -21,14 +24,11 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :revenues
 
   after_create :create_default_configured_off_days
+  after_create :create_activity_repports_for_the_current_year
   after_update :copy_average_daily_rate_into_activity_reports, if: :saved_change_to_average_daily_rate?
 
   def configured_off_days_of_week
     configured_off_days.reload.map(&:day_of_week)
-  end
-
-  def revenue
-    revenues.last.amount
   end
 
   private
@@ -36,6 +36,17 @@ class User < ApplicationRecord
   def create_default_configured_off_days
     %w[saturday sunday].each do |day_of_week|
       configured_off_days.create!(day_of_week:)
+    end
+  end
+
+  def create_activity_repports_for_the_current_year
+    current_year = Time.zone.now.year
+
+    (Time.zone.now.month..12).each do |month|
+      start_date = Time.zone.local(current_year, month, 1).to_date
+      end_date = start_date.end_of_month.end_of_day
+
+      activity_reports.create!(start_date:, end_date:)
     end
   end
 

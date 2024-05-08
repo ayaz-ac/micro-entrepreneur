@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 class ActivityReportsController < ApplicationController
-  before_action :find_or_create_activity_report, only: :show
+  before_action :find_activity_report
 
   def show; end
 
   private
 
-  def find_or_create_activity_report
-    @activity_report = current_user.activity_reports.find_or_create_by(start_date:, end_date:)
+  def find_activity_report
+    @activity_report = current_user.activity_reports.find_by!(start_date:, end_date:)
   end
 
   def start_date
