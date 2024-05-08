@@ -19,7 +19,7 @@ class DashboardsController < ApplicationController
   end
 
   def set_estimated_revenue
-    @estimated_income = @revenue.amount + current_user.activity_reports.from_this_month.sum(&:income_before_tax)
+    @estimated_income = @revenue.amount + current_user.activity_reports.from_this_month.sum(&:monthly_revenue)
   end
 
   def set_current_month_income
