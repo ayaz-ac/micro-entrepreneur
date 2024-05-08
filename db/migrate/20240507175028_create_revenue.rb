@@ -10,6 +10,7 @@ class CreateRevenue < ActiveRecord::Migration[7.1]
 
       t.timestamps
     end
+
     add_index :revenues, %i[year user_id], unique: true
   end
 end
