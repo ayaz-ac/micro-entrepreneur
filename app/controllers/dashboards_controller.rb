@@ -1,25 +1,26 @@
 # frozen_string_literal: true
 
 class DashboardsController < ApplicationController
-  before_action :set_revenue
-  before_action :set_estimated_revenue
+  before_action :set_current_yearly_revenue
+  before_action :set_estimated_yearly_revenue
   before_action :set_current_month_income
 
   def show
-    @worth = @estimated_income + current_user.average_daily_rate > Revenue::MAX_PER_YEAR
-    return if @worth
+    @profitable = @estimated_yearly_revenue + current_user.average_daily_rate > Revenue::MAX_PER_YEAR
+    return if @profitable
 
-    @missed_revenue = Revenue::MAX_PER_YEAR - @estimated_income
+    @missed_revenue = Revenue::MAX_PER_YEAR - @estimated_yearly_revenue
   end
 
   private
 
-  def set_revenue
-    @revenue = current_user.revenues.find_by(year: Time.zone.now.year)
+  def set_current_yearly_revenue
+    @current_yearly_revenue = current_user.revenues.find_by(year: Time.zone.now.year).amount
   end
 
-  def set_estimated_revenue
-    @estimated_income = @revenue.amount + current_user.activity_reports.from_this_month.sum(&:monthly_revenue)
+  def set_estimated_yearly_revenue
+    @estimated_yearly_revenue = @current_yearly_revenue + current_user.activity_reports.from_this_month
+                                                                      .sum(&:monthly_revenue)
   end
 
   def set_current_month_income

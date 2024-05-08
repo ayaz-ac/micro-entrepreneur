@@ -14,7 +14,7 @@
   </div>
   <div class="hidden grid-cols-4 gap-y-1 border-t-2 border-gray pt-4 text-black text-sm" data-switch-class-target="element" data-active-class="grid" data-inactive-class="hidden">
     <div class="col-span-3">CA estimé pour cette année:</div>
-    <div class="font-medium place-self-end"><%= format_number_to_currency(@estimated_income) %></div>
+    <div class="font-medium place-self-end"><%= format_number_to_currency(@estimated_yearly_revenue) %></div>
     <div class="col-span-3">Plafond CA micro-entreprise:</div>
     <div class="font-medium place-self-end"><%= format_number_to_currency(Revenue::MAX_PER_YEAR) %></div>
     <div class="col-span-3">Manque à gagner:</div>
