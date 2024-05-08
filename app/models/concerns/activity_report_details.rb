@@ -6,6 +6,7 @@ module ActivityReportDetails
   included do
     after_validation :initialize_details
     before_save :count_total_worked_days
+    before_save :calculate_income_before_tax
     before_save :calculate_estimated_income
   end
 
@@ -26,7 +27,7 @@ module ActivityReportDetails
   def initialize_details
     return unless details.empty?
 
-    self.details = { 'days' => [], 'total_worked_days' => 0, 'estimated_income' => 0 }
+    self.details = { 'days' => [], 'total_worked_days' => 0, 'income_before_tax' => 0, 'estimated_income' => 0 }
 
     (start_date.to_date..end_date.to_date).each do |day|
       details['days'] << {
@@ -47,17 +48,15 @@ module ActivityReportDetails
     details['total_worked_days'] = total_worked_days
   end
 
-  def calculate_estimated_income
-    if average_daily_rate.zero?
-      details['estimated_income'] = 0
-      return
-    end
+  def calculate_income_before_tax
+    details['income_before_tax'] = average_daily_rate * details['total_worked_days']
+  end
 
-    revenue_before_urssaf_tax = average_daily_rate * details['total_worked_days']
-    details['estimated_income'] = ::UrssafManager::RevenueBeforeIncomeTax.call(revenue_before_urssaf_tax)
+  def calculate_estimated_income
+    details['estimated_income'] = ::UrssafManager::RevenueBeforeIncomeTax.call(details['income_before_tax'])
   rescue StandardError => e
     Rails.logger.error("Une erreur s'est produite lors du calcul de la rémunération pour l'utilisateur : #{e.message}")
-    details['estimated_income'] = revenue_before_urssaf_tax
+    details['estimated_income'] = details['income_before_tax']
   end
 
   def off_day?(day)

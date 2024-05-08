@@ -24,6 +24,10 @@ class ActivityReport < ApplicationRecord
     details['estimated_income'] || 0
   end
 
+  def income_before_tax
+    details['income_before_tax'] || 0
+  end
+
   def days
     details['days'] || []
   end
