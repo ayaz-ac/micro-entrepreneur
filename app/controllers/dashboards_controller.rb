@@ -7,9 +7,11 @@ class DashboardsController < ApplicationController
 
   def show
     @profitable = @estimated_yearly_revenue + current_user.average_daily_rate > Revenue::MAX_PER_YEAR
-    return if @profitable
-
-    @missed_revenue = Revenue::MAX_PER_YEAR - @estimated_yearly_revenue
+    if @profitable
+      @off_days = ((@estimated_yearly_revenue - Revenue::MAX_PER_YEAR) / current_user.average_daily_rate).ceil
+    else
+      @missed_revenue = Revenue::MAX_PER_YEAR - @estimated_yearly_revenue
+    end
   end
 
   private
