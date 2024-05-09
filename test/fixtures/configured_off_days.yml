@@ -1,7 +1,7 @@
-default_saturday:
+saturday:
   day_of_week: saturday
   user: default
 
-default_sunday:
+sunday:
   day_of_week: sunday
   user: default
