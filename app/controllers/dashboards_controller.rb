@@ -17,7 +17,7 @@ class DashboardsController < ApplicationController
   private
 
   def set_current_yearly_revenue
-    @current_yearly_revenue = current_user.revenues.find_by(year: Time.zone.now.year).amount
+    @current_yearly_revenue = current_user.revenues.find_by(year: Time.zone.today.year).amount
   end
 
   def set_estimated_yearly_revenue
@@ -27,8 +27,8 @@ class DashboardsController < ApplicationController
 
   def set_current_month_income
     @current_month_income = current_user.activity_reports.find_by(
-      start_date: Time.zone.now.at_beginning_of_month,
-      end_date: Time.zone.now.at_end_of_month
+      start_date: Time.zone.today.beginning_of_month,
+      end_date: Time.zone.today.end_of_month
     ).estimated_income
   end
 end

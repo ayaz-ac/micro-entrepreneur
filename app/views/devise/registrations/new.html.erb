@@ -33,7 +33,7 @@
     </div>
     <div class="mt-7">
       <%= f.fields_for :revenues, resource.revenues.build(amount: nil) do |revenue_fields| %>
-        <%= revenue_fields.label :amount, "Chiffre d'affaire de cette année (#{translate_month(Time.zone.now)} exclu)" %><br />
+        <%= revenue_fields.label :amount, "Chiffre d'affaire de cette année (#{translate_month(Time.zone.today)} exclu)" %><br />
         <%= revenue_fields.number_field :amount, placeholder: '35000', required: true %>
       <% end %>
     </div>
