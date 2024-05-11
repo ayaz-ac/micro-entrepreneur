@@ -6,17 +6,21 @@ class ConfiguredOffDayFlowsTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
-    @user = users(:user_with_average_daily_rate_filled)
+    @user = users(:default)
+    
+    # Trigger after_validation :initialize_details in ActivityReportDetails
+    @user.update!(average_daily_rate: 500) 
+    
     sign_in @user
   end
 
   test 'it should update the configured off days of current and future ActivityReports' do
-    create_activity_report_for_the_current_month(@user)
-
-    create_activity_report_for_another_month(@activity_report.start_date + 1.month)
-    create_activity_report_for_another_month(@activity_report.start_date - 1.month)
-
     assert_changes -> { @user.configured_off_days.size } do
+      @activity_report = @user.activity_reports.find_by(
+        start_date: Time.zone.today.beginning_of_month,
+        end_date: Time.zone.today.end_of_month
+      )
+      
       put configured_off_days_path,
           params: { user: { activity_report_id: @activity_report.id, configured_off_days: %w[monday saturday sunday] } }
       @user.reload
