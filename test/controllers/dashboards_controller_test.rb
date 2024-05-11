@@ -42,6 +42,34 @@ class DashboardsControllerTest < ActionDispatch::IntegrationTest
     assert_select 'span', format_number_to_currency(current_month_income)
   end
 
+  test 'it should render the profitable statistic' do
+    @user.update!(average_daily_rate: 800)
+    @user.revenues.last.update!(amount: 77_000)
+
+    get root_url
+
+    assert_response :success
+
+    assert_select 'span', text: 'Congé restants'
+    assert_select 'span', text: 'Pour optimiser la rentabilité'
+    assert_select 'span', text: 'Gains manqués', count: 0
+    assert_select 'span', text: 'Revenue potentiels non réalisés', count: 0
+  end
+
+  test 'it should not render the profitable statistic' do
+    @user.update(average_daily_rate: 100)
+
+    @user.revenues.last.update!(amount: 0)
+
+    get root_url
+
+    assert_response :success
+
+    assert_select 'span', text: 'Gains manqués'
+    assert_select 'span', text: 'Revenus potentiels non réalisés'
+    assert_select 'span', text: 'Congé restants', count: 0
+  end
+
   test "it should return a 500 error if there's no current yearly revenue" do
     @user.revenues.find_by(year: Time.zone.today.year).destroy!
 
@@ -50,7 +78,7 @@ class DashboardsControllerTest < ActionDispatch::IntegrationTest
     assert_response 500
   end
 
-  test "it should return a 500 erro if there's noo current month income" do
+  test "it should return a 500 error if there's noo current month income" do
     @user.activity_reports.find_by(
       start_date: Time.zone.today.beginning_of_month,
       end_date: Time.zone.today.end_of_month
