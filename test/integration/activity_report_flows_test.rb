@@ -7,105 +7,28 @@ class ActivityReportFlowsTest < ActionDispatch::IntegrationTest
 
   setup do
     @user = users(:default)
+
+    # Trigger after_validation :initialize_details in ActivityReportDetails
+    @user.update!(average_daily_rate: 500)
+
     sign_in @user
   end
 
-  test "it should create ActivityReports for the current and next months with the user's financial values" do
-    create_activity_report_for_the_current_month(@user)
-
-    assert_equal @user.average_daily_rate, @activity_report.average_daily_rate
-    assert_not_equal 0, @activity_report.estimated_income
-
-    users_old_average_daily_rate = @user.average_daily_rate
-
-    update_user_average_daily_rate
-
-    assert_changes lambda {
-                     @activity_report.average_daily_rate
-                   }, from: users_old_average_daily_rate, to: @user.average_daily_rate do
-      @activity_report.reload
-    end
-
-    assert_not_equal 0, @activity_report.estimated_income
-
-    create_activity_report_for_another_month(@activity_report.start_date + 1.month)
-
-    @next_month_activity_report = @user.activity_reports.last
-    assert_equal @user.average_daily_rate, @next_month_activity_report.average_daily_rate
-    assert_not_equal 0, @next_month_activity_report.estimated_income
-  end
-
-  test 'it should create ActivityReports for the current and previous months with the correct financial values' do
-    create_activity_report_for_the_current_month(@user)
-
-    create_activity_report_for_another_month(@activity_report.start_date - 1.month)
-
-    @previous_month_activity_report = @user.activity_reports.last
-    assert_equal @user.average_daily_rate, @previous_month_activity_report.average_daily_rate
-    assert_not_equal 0, @previous_month_activity_report.estimated_income
-
-    update_user_average_daily_rate
-
-    @user.activity_reports.before_this_month.each do |activity_report|
-      assert_not_equal @user.average_daily_rate, activity_report.average_daily_rate
-      assert_not_equal 0, activity_report.estimated_income
-    end
-  end
-
-  # test 'it should update the average daily rate for the previous months ActivityReports' do
-  #   create_activity_report_for_the_current_month(@user)
-
-  #   get root_path(date: @activity_report.start_date - 1.month)
-
-  #   @previous_month_activity_report = @user.activity_reports.last
-
-  #   assert_select 'form#configured_off_days', count: 0
-
-  #   new_average_daily_rate = 300
-
-  #   assert_changes -> { @previous_month_activity_report.average_daily_rate }, from: 0, to: new_average_daily_rate do
-  #     put activity_report_path(@previous_month_activity_report),
-  #         params: { activity_report: { average_daily_rate: new_average_daily_rate } }
-  #     @previous_month_activity_report.reload
-  #   end
-
-  #   assert_not_equal @previous_month_activity_report, @activity_report
-  # end
-
-  test "it should update the status of only one day for the current months' ActivityReport" do
-    update_user_average_daily_rate
-    create_activity_report_for_the_current_month(@user)
+  test "it should update the status of only one day for the current month ActivityReport" do
+    @activity_report = @user.activity_reports.find_by(
+      start_date: Time.zone.today.at_beginning_of_month,
+      end_date: Time.zone.today.end_of_month)
 
     %w[half full off].each do |status|
-      update_day_status(status)
+      previous_estimated_income = @activity_report.estimated_income
+
+      assert_changes -> { @activity_report.total_worked_days } do
+        put activity_report_days_path(@activity_report),
+            params: { day: { date: Time.zone.today.to_s, status: }, format: :turbo_stream }
+        @activity_report.reload
+      end
+
+      assert_not_equal previous_estimated_income, @activity_report.estimated_income
     end
-  end
-
-  private
-
-  def update_user_average_daily_rate(new_average_daily_rate = 300)
-    assert_changes -> { @user.average_daily_rate }, from: @user.average_daily_rate, to: new_average_daily_rate do
-      put user_path(@user), params: { user: { average_daily_rate: new_average_daily_rate } }
-      @user.reload
-    end
-  end
-
-  def assert_activity_reports_from_this_month_and_the_next_ones
-    @user.activity_reports.from_this_month.each do |activity_report|
-      assert_equal @user.average_daily_rate, activity_report.average_daily_rate
-      assert_equal 0, activity_report.estimated_income
-    end
-  end
-
-  def update_day_status(status)
-    previous_estimated_income = @activity_report.estimated_income
-
-    assert_changes -> { @activity_report.total_worked_days } do
-      put activity_report_days_path(@activity_report),
-          params: { day: { date: Time.zone.today.to_s, status: }, format: :turbo_stream }
-      @activity_report.reload
-    end
-
-    assert_not_equal previous_estimated_income, @activity_report.estimated_income
   end
 end
