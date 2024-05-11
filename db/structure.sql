@@ -19,8 +19,8 @@ SET default_table_access_method = heap;
 
 CREATE TABLE public.activity_reports (
     id bigint NOT NULL,
-    start_date timestamp(6) without time zone,
-    end_date timestamp(6) without time zone,
+    start_date date,
+    end_date date,
     details jsonb DEFAULT '{}'::jsonb,
     average_daily_rate integer NOT NULL,
     user_id bigint NOT NULL,

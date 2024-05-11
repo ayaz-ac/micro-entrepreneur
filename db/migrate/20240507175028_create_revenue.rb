@@ -3,7 +3,7 @@
 class CreateRevenue < ActiveRecord::Migration[7.1]
   def change
     create_table :revenues do |t|
-      t.integer :year, null: false, default: Time.zone.now.year
+      t.integer :year, null: false, default: Time.zone.today.year
       t.decimal :amount, default: 0
 
       t.references :user, null: false, foreign_key: true

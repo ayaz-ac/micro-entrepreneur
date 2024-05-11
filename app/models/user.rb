@@ -40,13 +40,13 @@ class User < ApplicationRecord
   end
 
   def create_activity_repports_for_the_current_year
-    current_year = Time.zone.now.year
+    current_year = Time.zone.today.year
 
-    (Time.zone.now.month..12).each do |month|
-      start_date = Time.zone.local(current_year, month, 1).to_date
-      end_date = start_date.end_of_month.end_of_day
-
-      activity_reports.create!(start_date:, end_date:)
+    (Time.zone.today.month..12).each do |month|
+      activity_reports.create!(
+        start_date: Time.zone.local(current_year, month), 
+        end_date: Time.zone.local(current_year, month).end_of_month
+      )
     end
   end
 
