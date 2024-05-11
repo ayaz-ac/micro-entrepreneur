@@ -5,6 +5,10 @@ require 'test_helper'
 class DeviseFlowsTest < ActionDispatch::IntegrationTest
   test 'it should login user with correct credentials' do
     user = users(:default)
+
+    # Trigger after_validation :initialize_details in ActivityReportDetails
+    user.update!(average_daily_rate: 500) 
+
     post user_session_path, params: { user: { email: user.email, password: 'password' } }
 
     assert_redirected_to root_path
@@ -28,14 +32,15 @@ class DeviseFlowsTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to new_user_session_path
-    assert_equal 'Vous allez recevoir sous quelques minutes un email vous indiquant comment réinitialiser votre mot de passe.', flash[:notice]
+    assert_equal 'Vous allez recevoir sous quelques minutes un email vous indiquant comment réinitialiser votre ' \
+                 'mot de passe.', flash[:notice]
   end
 
   test 'it should reset password successfully' do
     user = users(:default)
     raw, hashed = Devise.token_generator.generate(User, :reset_password_token)
     user.update!(reset_password_token: hashed, reset_password_sent_at: Time.zone.now)
-    
+
     new_password = 'new_password'
 
     put user_password_path, params: {
@@ -46,7 +51,7 @@ class DeviseFlowsTest < ActionDispatch::IntegrationTest
       }
     }
 
-    assert_redirected_to root_path 
+    assert_redirected_to root_path
     assert_equal 'Votre mot de passe a bien été modifié. Vous êtes maintenant connecté(e).', flash[:notice]
   end
 end
