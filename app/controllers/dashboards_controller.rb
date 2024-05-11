@@ -17,7 +17,9 @@ class DashboardsController < ApplicationController
   private
 
   def set_current_yearly_revenue
-    @current_yearly_revenue = current_user.revenues.find_by(year: Time.zone.today.year).amount
+    @current_yearly_revenue = current_user.revenues.find_by!(year: Time.zone.today.year).amount
+  rescue ActiveRecord::RecordNotFound
+    render file: 'public/500.html', status: :internal_server_error, layout: false
   end
 
   def set_estimated_yearly_revenue
@@ -26,9 +28,11 @@ class DashboardsController < ApplicationController
   end
 
   def set_current_month_income
-    @current_month_income = current_user.activity_reports.find_by(
+    @current_month_income = current_user.activity_reports.find_by!(
       start_date: Time.zone.today.beginning_of_month,
       end_date: Time.zone.today.end_of_month
     ).estimated_income
+  rescue ActiveRecord::RecordNotFound
+    render file: 'public/500.html', status: :internal_server_error, layout: false
   end
 end
