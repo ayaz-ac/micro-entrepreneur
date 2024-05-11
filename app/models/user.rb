@@ -44,7 +44,7 @@ class User < ApplicationRecord
 
     (Time.zone.today.month..12).each do |month|
       activity_reports.create!(
-        start_date: Time.zone.local(current_year, month), 
+        start_date: Time.zone.local(current_year, month),
         end_date: Time.zone.local(current_year, month).end_of_month
       )
     end
