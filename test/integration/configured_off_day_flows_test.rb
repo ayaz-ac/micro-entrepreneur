@@ -7,10 +7,10 @@ class ConfiguredOffDayFlowsTest < ActionDispatch::IntegrationTest
 
   setup do
     @user = users(:default)
-    
+
     # Trigger after_validation :initialize_details in ActivityReportDetails
-    @user.update!(average_daily_rate: 500) 
-    
+    @user.update!(average_daily_rate: 500)
+
     sign_in @user
   end
 
@@ -20,7 +20,7 @@ class ConfiguredOffDayFlowsTest < ActionDispatch::IntegrationTest
         start_date: Time.zone.today.beginning_of_month,
         end_date: Time.zone.today.end_of_month
       )
-      
+
       put configured_off_days_path,
           params: { user: { activity_report_id: @activity_report.id, configured_off_days: %w[monday saturday sunday] } }
       @user.reload

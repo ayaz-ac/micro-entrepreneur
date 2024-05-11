@@ -14,10 +14,11 @@ class ActivityReportFlowsTest < ActionDispatch::IntegrationTest
     sign_in @user
   end
 
-  test "it should update the status of only one day for the current month ActivityReport" do
+  test 'it should update the status of only one day for the current month ActivityReport' do
     @activity_report = @user.activity_reports.find_by(
       start_date: Time.zone.today.at_beginning_of_month,
-      end_date: Time.zone.today.end_of_month)
+      end_date: Time.zone.today.end_of_month
+    )
 
     %w[half full off].each do |status|
       previous_estimated_income = @activity_report.estimated_income

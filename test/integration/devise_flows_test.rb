@@ -7,7 +7,7 @@ class DeviseFlowsTest < ActionDispatch::IntegrationTest
     user = users(:default)
 
     # Trigger after_validation :initialize_details in ActivityReportDetails
-    user.update!(average_daily_rate: 500) 
+    user.update!(average_daily_rate: 500)
 
     post user_session_path, params: { user: { email: user.email, password: 'password' } }
 
