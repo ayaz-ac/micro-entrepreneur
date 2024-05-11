@@ -21,4 +21,49 @@ class UserTest < ActiveSupport::TestCase
     assert_not user.valid?
     assert_equal ['Prénom doit être rempli(e)', 'Nom doit être rempli(e)'], user.errors.full_messages
   end
+
+  test 'it should create the default configured off days when creating a user' do
+    assert_difference -> { ConfiguredOffDay.count }, 2 do
+      create_user
+
+      user = User.last
+
+      assert_equal 'saturday', user.configured_off_days.first.day_of_week
+      assert_equal 'sunday', user.configured_off_days.last.day_of_week
+    end
+  end
+
+  test 'it should create activity_reports for the remaining months of this current year' do
+    assert_difference -> { ActivityReport.count }, (12 - Time.zone.today.month + 1) do
+      create_user
+    end
+  end
+
+  test "it should copy the user's average_daily_rate into the current and on going activity reports" do
+    user = users(:default)
+    new_average_daily_rate = 800
+
+    user.update!(average_daily_rate: new_average_daily_rate)
+
+    user.activity_reports.from_this_month.each do |activity_report|
+      assert_equal new_average_daily_rate, activity_report.average_daily_rate
+    end
+
+    user.activity_reports.before_this_month.each do |activity_report|
+      assert_not_equal new_average_daily_rate, activity_report.average_daily_rate
+    end
+  end
+
+  private
+
+  def create_user
+    @user = User.create!(
+      first_name: 'John',
+      last_name: 'Doe',
+      email: 'user.test@example.com',
+      password: 'password',
+      average_daily_rate: 400,
+      revenues_attributes: { 0 => { amount: '35000' } }
+    )
+  end
 end
