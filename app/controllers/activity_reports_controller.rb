@@ -8,14 +8,10 @@ class ActivityReportsController < ApplicationController
   private
 
   def find_activity_report
-    @activity_report = current_user.activity_reports.find_by!(start_date:, end_date:)
+    @activity_report = current_user.activity_reports.find_by!(start_date:)
   end
 
   def start_date
     Time.zone.parse(params.fetch(:date, Time.zone.today.to_s)).at_beginning_of_month
-  end
-
-  def end_date
-    Time.zone.parse(params.fetch(:date, Time.zone.today.to_s)).at_end_of_month
   end
 end
