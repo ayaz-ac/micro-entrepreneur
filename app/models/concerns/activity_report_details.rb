@@ -53,7 +53,7 @@ module ActivityReportDetails
   end
 
   def calculate_estimated_income
-    details['estimated_income'] = ::UrssafManager::RevenueBeforeIncomeTax.call(details['monthly_revenue'])
+    details['estimated_income'] = details['monthly_revenue'] - (details['monthly_revenue'] * (21.3 / 100))
   rescue StandardError => e
     Rails.logger.error("Une erreur s'est produite lors du calcul de la rémunération pour l'utilisateur : #{e.message}")
     details['estimated_income'] = details['monthly_revenue']
