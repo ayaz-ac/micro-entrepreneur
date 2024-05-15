@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class DashboardsController < ApplicationController
+class DashboardsController < AuthenticatedController
   before_action :set_current_yearly_revenue
   before_action :set_estimated_yearly_revenue
   before_action :set_current_month_income

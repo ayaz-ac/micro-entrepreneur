@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ConfiguredOffDaysController < ApplicationController
+class ConfiguredOffDaysController < AuthenticatedController
   before_action :authenticate_user!
   before_action :set_user_configured_off_days
 

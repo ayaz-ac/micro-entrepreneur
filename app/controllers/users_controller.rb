@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class UsersController < ApplicationController
+class UsersController < AuthenticatedController
   before_action :authenticate_user!
   before_action :find_user
 

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ActivityReportsController < ApplicationController
+class ActivityReportsController < AuthenticatedController
   before_action :find_activity_report
 
   def show; end
