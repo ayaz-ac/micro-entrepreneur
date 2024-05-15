@@ -19,6 +19,9 @@ Rails.application.routes.draw do
     end
     resource :configured_off_days, only: :update
     resources :users, only: %i[edit update]
+    namespace :stripe do
+      resource :successful_checkout, only: :show
+    end
   end
 
   root to: 'pages#home'
