@@ -18,6 +18,7 @@ class AuthenticatedController < ApplicationController
       {
         line_items: [{ price: stripe_price_id, quantity: 1 }],
         mode: 'payment',
+        allow_promotion_codes: true,
         customer_email: current_user.email,
         success_url: stripe_successful_checkout_url,
         cancel_url: root_url
