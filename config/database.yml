@@ -79,6 +79,4 @@ test:
 #
 production:
   <<: *default
-  database: micro_entrepreneur_production
-  username: micro_entrepreneur
-  password: <%= ENV["micro_entrepreneur_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
