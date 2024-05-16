@@ -67,7 +67,7 @@ fr:
           answer: Bien-sûr, Leenkk est compatible avec l'ensemble des sites proposant des liens d'affiliations
         question_three:
           question: Comment puis-je annuler mon abonnement ?
-          answer: 'Si vous souhaitez annuler votre abonnement, vous pouvez simplement nous envoyer un e-mail à: ayaz.indie(at)proton.me'
+          answer: 'Si vous souhaitez annuler votre abonnement, vous pouvez simplement nous envoyer un e-mail à: ayaz.indie (arobase) proton.me'
       footer:
         privacy_policies: Politique de confidentialité
         terms_of_use: Condition d'utilisation
@@ -91,7 +91,7 @@ fr:
           - Limiter ou s'opposer au traitement de vos données.
           - Demander la portabilité de vos données. 
           - Retirer votre consentement à tout moment, pour les traitements basés sur le consentement.
-        contact: Pour exercer ces droits, veuillez nous contacter via ayaz.indie@proton.me.
+        contact: Pour exercer ces droits, veuillez nous contacter via ayaz.indie (arobase) proton.me.
       other_informations:
         data_transfer: Transferts de Données
         data_transfer_description: Vos données ne seront pas transférées en dehors de l'Union Européenne sans garanties appropriées conformes au RGPD.
@@ -102,7 +102,7 @@ fr:
         privacy_updates: Modifications de la Politique
         privacy_updates_description: Nous nous réservons le droit de modifier cette politique de confidentialité. Les modifications seront communiquées par e-mail ou sur notre site web.
         contact: Contact
-        contact_description: Pour toute question relative à cette politique ou à vos données personnelles, contactez-nous à ayaz.indie@proton.me.
+        contact_description: Pour toute question relative à cette politique ou à vos données personnelles, contactez-nous à ayaz.indie (arobase) proton.me.
     terms:
       title: Conditions Générales d'Utilisation de MicroEntrepreneur
       introduction: 1. Introduction
@@ -122,4 +122,4 @@ fr:
       modifications: 7. Modifications des Conditions
       modifications_description: Nous pouvons modifier ces conditions à tout moment. Nous vous informerons de toute modification importante.
       contact: 8. Contact
-      contact_description: Pour toute question concernant ces conditions, veuillez nous contacter à ayaz.indie@proton.me.
+      contact_description: Pour toute question concernant ces conditions, veuillez nous contacter à ayaz.indie (arobase) proton.me.
