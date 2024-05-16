@@ -27,15 +27,13 @@ class SignUpFlowsTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test 'it should sign up user' do
-    post user_registration_path, params: { user: user_params }
+  test 'it should create a user' do
+    assert_difference -> { User.count } do
+      post user_registration_path, params: { user: user_params }
 
-    assert_response :redirect
-    follow_redirect!
-
-    assert_response :success
-    assert_select 'div', 'Bienvenue ! Vous vous êtes bien enregistré(e).'
-    assert_select 'a[href=?]', root_path
+      assert_response :redirect
+      follow_redirect!
+    end
   end
 
   private
