@@ -1,6 +1,6 @@
 fr:
   global:
-    cta: Essayer gratuitement 
+    cta: Rentabiliser mon activité
     errors:
       one: 'Oups ! Il y a une erreur:'
       other: 'Oups ! Il y a %{count} erreurs:'
