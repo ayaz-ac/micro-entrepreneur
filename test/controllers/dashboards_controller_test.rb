@@ -51,7 +51,7 @@ class DashboardsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     assert_select 'span', text: 'Congé restants'
-    assert_select 'span', text: 'Pour optimiser la rentabilité'
+    assert_select 'span', text: 'Pour ne pas dépasser le plafond du CA'
     assert_select 'span', text: 'Gains manqués', count: 0
     assert_select 'span', text: 'Revenue potentiels non réalisés', count: 0
   end
