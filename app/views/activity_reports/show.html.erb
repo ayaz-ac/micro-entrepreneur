@@ -1,5 +1,5 @@
 <div class="w-full flex flex-col lg:hidden">
-  <%= turbo_frame_tag :statistics, class: 'w-full flex justify-center space-x-6 text-brand-950 px-4 py-8 font-medium bg-white' do %>
+  <%= turbo_frame_tag :statistics_mobile, class: 'w-full flex justify-center space-x-6 text-brand-950 px-4 py-8 font-medium bg-white' do %>
     <%= render 'statistics', total_worked_days: @activity_report.total_worked_days, estimated_income: @activity_report.estimated_income %>
   <% end %>
   <% if previous_month?(@activity_report.start_date) %>
