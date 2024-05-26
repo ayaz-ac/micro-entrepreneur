@@ -1,0 +1,20 @@
+<div class="rounded-lg bg-white flex flex-col space-y-16 lg:space-y-0 <%= reverse ? 'lg:flex-row-reverse' : 'lg:flex-row' %> py-8 lg:py-14 px-6 lg:px-20">
+  <div class="lg:w-1/2 flex flex-col items-start <%= 'lg:items-end' if reverse %> space-y-5 lg:space-y-8">
+    <div class="inline-flex space-x-3 items-center lg:items-baseline">
+      <span class="text-lg lg:text-3xl font-bold lg:font-extrabold text-brand-700"><%= title %></span>
+    </div>
+    <div class="flex flex-col space-y-3">
+      <% details.each do |detail| %>
+        <div class="inline-flex <%= 'lg:flex-row-reverse' if reverse %> items-center space-x-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-3.5 lg:w-5 text-brand-700">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+          </svg>
+          <span class="w-11/12 text-sm lg:text-base"><%= detail %></span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="lg:w-1/2 flex">
+    <iframe class="w-full h-72" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=cYwL9rIr1J7HmwI0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+</div>
