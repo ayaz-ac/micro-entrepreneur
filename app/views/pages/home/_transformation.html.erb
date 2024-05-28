@@ -2,9 +2,9 @@
   <div class="w-full flex flex-col space-y-10 lg:space-y-16 items-center">
     <h2 class="text-brand-950 text-center text-3xl lg:text-5xl font-medium lg:font-semibold"><span class="text-brand-500">Rentabilisez votre activité</span> de freelance en régie</h2>
     <div class="w-full flex flex-col space-y-10 lg:space-y-16 max-w-7xl mx-auto">
-      <%= render 'pages/home/transformation/step', step: 1, title: 'Définissez votre situation professionnelle', details: ["Chiffre d'affaires réalisé jusqu'à présent", "TJM (Taux Journalier Moyen) actuel"] %>
-      <%= render 'pages/home/transformation/step', step: 2, title: 'Visualisez vos données financières', details: ['Revenus mensuels estimés pour le mois en cours et les suivants', "Chiffre d'affaires généré jusqu'à présent"] %>
-      <%= render 'pages/home/transformation/step', step: 3, title: 'Planifiez vos jours de congé', details: ["Jours de congé qui n'impactent pas votre chiffre d'affaires", "Plusieurs status de congé disponibles : journée complète ou demi-journée"] %>
+      <%= render 'pages/home/transformation/step', step: 1, title: 'Définissez votre situation professionnelle', image: 'signup', details: ["TJM (Taux Journalier Moyen) actuel", "Chiffre d'affaires réalisé jusqu'à présent"] %>
+      <%= render 'pages/home/transformation/step', step: 2, title: 'Visualisez vos données financières', image: 'dashboard', details: ['Revenus mensuels estimés pour le mois en cours et les suivants', "Chiffre d'affaires généré jusqu'à présent"] %>
+      <%= render 'pages/home/transformation/step', step: 3, title: 'Planifiez vos jours de congé', image: 'configure_off_days', details: ["Jours de congé qui n'impactent pas votre chiffre d'affaires", "Plusieurs status de congé disponibles : journée complète ou demi-journée"] %>
     </div>
   </div>
   <%= render 'pages/home/transformation/benefits' %>
