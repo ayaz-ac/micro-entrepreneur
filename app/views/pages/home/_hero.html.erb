@@ -9,7 +9,7 @@
       </h1>
       <h3 class="text-center text-brand-950 text-sm lg:text-lg">Visualisez vos revenus nets mensuels en un coup d'œil et maximisez vos jours de congé pour une rentabilité optimale !</h3>
     </div>
-    <%= image_tag 'hero.png', class: 'shadow-lg rounded-lg lg:hidden' %>
+    <%= video_tag 'hero.mp4', class: 'shadow-lg rounded-lg lg:hidden', controls: true %>
     <div class="hidden lg:flex flex-col items-center space-y-3">
       <%= link_to t('global.cta'), new_user_registration_path, class: 'text-off-white rounded-full bg-brand-500 ring ring-4 ring-brand-200 px-6 py-3 text-xl hover:ring-offset-4 transition-all duration-300' %>
       <span class="text-xs text-brand-500">Fait par un freelance pour les freelances</span>
@@ -19,5 +19,5 @@
     <%= link_to t('global.cta'), new_user_registration_path, class: 'text-off-white rounded-full bg-brand-500 ring ring-4 ring-brand-200 px-5 py-2.5 text-lg' %>
     <span class="text-xs text-brand-500">Fait par un freelance pour les freelances</span>
   </div>
-  <%= image_tag 'hero.png', class: 'shadow-xl rounded-lg w-4/6 hidden lg:block' %>
+  <%= video_tag 'hero.mp4', class: 'rounded-lg w-4/6 max-w-7xl hidden lg:block', controls: true %>
 </section>
