@@ -32,6 +32,9 @@ module.exports = {
         gray: '#F3F4F6',
         black: '#030712',
         'off-white': '#FAFAFA'
+      },
+      gridTemplateRows: {
+        'fit-content': 'minmax(0, 1fr)'
       }
     },
   },
