@@ -9,6 +9,13 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
+--
+-- Name: public; Type: SCHEMA; Schema: -; Owner: -
+--
+
+-- *not* creating schema, since initdb creates it
+
+
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
@@ -149,8 +156,7 @@ CREATE TABLE public.users (
     remember_created_at timestamp(6) without time zone,
     average_daily_rate integer NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL,
-    premium boolean DEFAULT false NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL
 );
 
 
@@ -329,6 +335,7 @@ ALTER TABLE ONLY public.revenues
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20251226103716'),
 ('20240514180849'),
 ('20240507175028'),
 ('20240306152944'),
