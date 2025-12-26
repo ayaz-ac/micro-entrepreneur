@@ -334,6 +334,9 @@ ALTER TABLE ONLY public.revenues
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20251226181259'),
+('20251226181258'),
+('20251226181257'),
 ('20251226153349'),
 ('20251226103716'),
 ('20240514180849'),
