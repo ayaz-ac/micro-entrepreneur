@@ -25,13 +25,17 @@ class User < ApplicationRecord
 
   after_create :create_default_configured_off_days
   after_create :create_activity_repports_for_the_current_year
-  after_update :copy_average_daily_rate_into_activity_reports, if: :saved_change_to_average_daily_rate?
+  after_update :update_average_daily_rate_from_today, if: :saved_change_to_average_daily_rate?
 
   def configured_off_days_of_week
     configured_off_days.reload.map(&:day_of_week)
   end
 
   private
+
+  def update_average_daily_rate_from_today
+    activity_reports.from_this_month.map(&:update_average_daily_rate)
+  end
 
   def create_default_configured_off_days
     %w[saturday sunday].each do |day_of_week|
@@ -48,9 +52,5 @@ class User < ApplicationRecord
         end_date: Time.zone.local(current_year, month).end_of_month
       )
     end
-  end
-
-  def copy_average_daily_rate_into_activity_reports
-    activity_reports.from_this_month.find_each { |activity_report| activity_report.update(average_daily_rate:) }
   end
 end

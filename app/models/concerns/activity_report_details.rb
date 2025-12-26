@@ -32,7 +32,8 @@ module ActivityReportDetails
     (start_date.to_date..end_date.to_date).each do |day|
       details['days'] << {
         'date' => day,
-        'status' => off_day?(day) ? 'off' : 'full'
+        'status' => off_day?(day) ? 'off' : 'full',
+        'rate' => user.average_daily_rate
       }
     end
   end
@@ -49,14 +50,15 @@ module ActivityReportDetails
   end
 
   def calculate_monthly_revenue
-    details['monthly_revenue'] = average_daily_rate * details['total_worked_days']
+    details['days'].each do |day|
+      next if day['status'] == 'off'
+
+      details['monthly_revenue'] += day['status'] == 'full' ? day['rate'] : 0.5 * day['rate']
+    end
   end
 
   def calculate_estimated_income
-    details['estimated_income'] = details['monthly_revenue'] - (details['monthly_revenue'] * (21.3 / 100))
-  rescue StandardError => e
-    Rails.logger.error("Une erreur s'est produite lors du calcul de la rémunération pour l'utilisateur : #{e.message}")
-    details['estimated_income'] = details['monthly_revenue']
+    details['estimated_income'] = details['monthly_revenue'] * ((100 - ActivityReport::AVERAGE_TAX_ON_INCOME) / 100)
   end
 
   def off_day?(day)

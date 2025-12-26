@@ -3,21 +3,14 @@
 class ActivityReport < ApplicationRecord
   include ActivityReportDetails
 
+  AVERAGE_TAX_ON_INCOME = 21.3
+
   belongs_to :user
 
   validates :start_date, uniqueness: { scope: %i[end_date user_id] }
 
-  validates :average_daily_rate, presence: true
-  validates :average_daily_rate, numericality: {
-    only_integer: true,
-    greater_than_or_equal_to: User::AVERAGE_DAILY_RATE_LIMIT
-  }
-  validate :dates_in_same_month_and_year
-
-  before_validation :copy_average_daily_rate_from_user, if: proc { details.empty? }
-
-  scope :from_this_month, -> { where('start_date >= ?', Time.zone.today.beginning_of_month) }
-  scope :before_this_month, -> { where('start_date < ?', Time.zone.today.beginning_of_month) }
+  scope :from_this_month, -> { where(start_date: Date.current.beginning_of_month..) }
+  scope :before_this_month, -> { where(start_date: ...Date.current.beginning_of_month) }
 
   def total_worked_days
     details['total_worked_days'] || 0
@@ -35,17 +28,12 @@ class ActivityReport < ApplicationRecord
     details['days'] || []
   end
 
-  private
+  def update_average_daily_rate
+    days.each do |day|
+      next if Date.parse(day['date']) < Date.current
 
-  def dates_in_same_month_and_year
-    return unless start_date.present? && end_date.present?
-
-    return if start_date.month == end_date.month && start_date.year == end_date.year
-
-    errors.add(:base, 'Les dates doivent être dans le même mois et la même année')
-  end
-
-  def copy_average_daily_rate_from_user
-    self.average_daily_rate = user.average_daily_rate
+      day['rate'] = user.average_daily_rate
+    end
+    save!
   end
 end
