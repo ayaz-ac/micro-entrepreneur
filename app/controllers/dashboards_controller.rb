@@ -18,8 +18,6 @@ class DashboardsController < AuthenticatedController
 
   def set_current_yearly_revenue
     @current_yearly_revenue = current_user.revenues.find_by!(year: Time.zone.today.year).amount
-  rescue ActiveRecord::RecordNotFound
-    render file: 'public/500.html', status: :internal_server_error, layout: false
   end
 
   def set_estimated_yearly_revenue
