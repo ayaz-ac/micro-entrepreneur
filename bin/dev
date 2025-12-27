@@ -1,4 +1,10 @@
-#!/usr/bin/env ruby
-# frozen_string_literal: true
+#!/usr/bin/env sh
 
-exec './bin/rails', 'server', *ARGV
+if ! command -v overmind > /dev/null 2>&1; then
+  echo "Overmind is not installed. Install it with:"
+  echo "  brew install overmind (macOS)"
+  echo "  Or visit: https://github.com/DarthSim/overmind"
+  exit 1
+fi
+
+exec overmind start -f Procfile.dev "$@"
