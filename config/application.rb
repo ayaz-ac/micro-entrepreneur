@@ -11,7 +11,7 @@ Bundler.require(*Rails.groups)
 module MicroEntrepreneur
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.2
+    config.load_defaults 8.1
 
     config.active_record.schema_format = :sql
 
