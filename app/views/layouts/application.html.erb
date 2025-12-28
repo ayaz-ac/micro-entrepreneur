@@ -26,14 +26,10 @@
     <script defer data-domain="microentrepreneur.app" src="https://plausible.ayaz.app/js/script.js"></script>
   </head>
   <body>
-    <main class="w-full flex-col bg-white min-h-screen">
-      <div class="w-full grid grid-cols-1 lg:grid-cols-5">
-        <%= render partial: 'shared/header' %>
-        <div class="col-span-1 lg:col-span-4">
-          <%= render partial: 'shared/flash', locals: { flash: flash } %>
-          <%= yield %>
-        </div>
-      </div>
+    <main class="w-full flex-col bg-stone-50 min-h-screen">
+      <%= render partial: 'shared/header' %>
+      <%= render partial: 'shared/flash', locals: { flash: flash } %>
+      <%= yield %>
     </main>
   </body>
 </html>

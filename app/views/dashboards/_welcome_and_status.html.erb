@@ -1,0 +1,11 @@
+<div class="w-full flex flex-col md:flex-row md:items-center justify-between space-y-3 md:space-y-0">
+  <div class="flex flex-col text-black">
+    <h3 class="text-2xl lg:text-3xl font-semibold"> Bonjour, <%= current_user.first_name.capitalize %> 👋 </h3>
+  </div>
+  <% if profitable %>
+    <div class="flex items-center space-x-3 rounded-md p-3 md:px-4 md:py-3 bg-green-200">
+      <%= lucide_icon 'thumbs-up', class: 'size-5 lg:size-6' %>
+      <span class="text-sm md:text-base lg:text-lg">Votre micro-entreprise est rentable!</span>
+    </div>
+  <% end %>
+</div>
