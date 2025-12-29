@@ -9,10 +9,14 @@ class DashboardsController < AuthenticatedController
   before_action :set_monthly_chart_data
 
   def show
-    @profitable = @estimated_yearly_revenue + current_user.average_daily_rate > Revenue::MAX_PER_YEAR
-    if @profitable
+    if @estimated_yearly_revenue > Revenue::MAX_PER_YEAR
+      @revenue_status = 'exceeded'
+      @exceeded_revenue = @estimated_yearly_revenue - Revenue::MAX_PER_YEAR
+    elsif (@estimated_yearly_revenue <= Revenue::MAX_PER_YEAR) && (@estimated_yearly_revenue + current_user.average_daily_rate >= Revenue::MAX_PER_YEAR)
+      @revenue_status = 'profitable'
       @off_days = ((@estimated_yearly_revenue - Revenue::MAX_PER_YEAR) / current_user.average_daily_rate).ceil
     else
+      @revenue_status = 'not_profitable'
       @missed_revenue = Revenue::MAX_PER_YEAR - @estimated_yearly_revenue
     end
   end
@@ -20,7 +24,7 @@ class DashboardsController < AuthenticatedController
   private
 
   def set_current_yearly_revenue
-    @current_yearly_revenue = current_user.revenues.find_by!(year: Time.zone.today.year).amount
+    @current_yearly_revenue = current_user.revenues.find_by!(year: Date.current.year).amount
   end
 
   def set_estimated_yearly_revenue

@@ -1,0 +1,20 @@
+fr:
+  dashboards:
+    show:
+      exceeded_revenue:
+        title: 'Plafond dépassé'
+        subtitle: "Pour éviter de dépasser le plafond, envisagez de diminuer vos nombre de jours travaillés ou votre TJM"
+      not_profitable:
+        title: 'Gains manqués'
+        subtitle: "Pour augmenter votre rentabilité, envisagez d'augmenter votre TJM ou le nombre de jours travaillés"
+      monthly_income:
+        title: 'Revenu mensuel estimé'
+      yearly_revenue:
+        title: "Chiffre d'affaires généré"
+      off_days:
+        title: 'Congés restants'
+        subtitle: 'Pour ne pas dépasser le plafond du CA'
+        unit: 'jours'
+      chart:
+        title: "Revenu mensuel estimé sur l'année"
+

@@ -1,23 +1,49 @@
 <div class="w-full flex flex-col space-y-5 px-6 py-4 lg:py-10">
   <%= render 'welcome_and_status', profitable: @profitable %>
   <div data-controller="switch-class" data-switch-class-target="element" data-active-class="lg:items-stretch" data-inactive-class="lg:items-start" class="flex flex-col lg:flex-row items-center lg:items-stretch space-y-6 lg:space-y-0 lg:space-x-4">
-    <% unless @profitable %>
-      <%= render 'not_worth' %>
+    <% if @revenue_status == 'exceeded' %>
+      <%= render 'card',
+        status: 'alert',
+        value: "+ #{format_number_to_currency(@exceeded_revenue)}",
+        title: t('.exceeded_revenue.title'),
+        subtitle: t('.exceeded_revenue.subtitle') do %>
+        <%= lucide_icon 'circle-alert', class: 'size-9 text-red-500', 'stroke-width': '1.5' %>
+      <% end %>
+    <% elsif @revenue_status == 'not_profitable' %>
+      <%= render 'card',
+        status: 'alert',
+        value: format_number_to_currency(@missed_revenue),
+        title: t('.not_profitable.title'),
+        subtitle: t('.not_profitable.subtitle') do %>
+        <%= lucide_icon 'circle-alert', class: 'size-9 text-red-500', 'stroke-width': '1.5' %>
+      <% end %>
     <% end %>
-    <%= render 'card', value: format_number_to_currency(@current_month_income), title: 'Revenu mensuel estimé', subtitle: translate_month_and_year(Time.zone.today) do %>
+    <%= render 'card',
+      status: '',
+      value: format_number_to_currency(@current_month_income),
+      title: t('.monthly_income.title'),
+      subtitle: translate_month_and_year(Time.zone.today) do %>
       <%= lucide_icon 'badge-euro', class: 'size-9', 'stroke-width': '1.5' %>
     <% end %>
-    <%= render 'card', value: format_number_to_currency(@current_yearly_revenue), title: "Chiffre d'affaires généré", subtitle: translate_year(Time.zone.today) do %>
+    <%= render 'card',
+      status: '',
+      value: format_number_to_currency(@current_yearly_revenue),
+      title: t('.yearly_revenue.title'),
+      subtitle: translate_year(Date.current) do %>
       <%= lucide_icon 'banknote-arrow-down', class: 'size-9', 'stroke-width': '1.5' %>
     <% end %>
-    <% if @profitable %>
-      <%= render 'card', value: "#{@off_days} jours", title: 'Congé restants', subtitle: 'Pour ne pas dépasser le plafond du CA' do %>
+    <% if @revenue_status == 'profitable' %>
+      <%= render 'card',
+        status: '',
+        value: "#{@off_days} #{t('.off_days.unit')}",
+        title: t('.off_days.title'),
+        subtitle: t('.off_days.subtitle') do %>
         <%= lucide_icon 'tent-tree', class: 'size-9', 'stroke-width': '1.5' %>
       <% end %>
     <% end %>
   </div>
   <div class="bg-white rounded-lg shadow p-6">
-    <h3 class="text-lg font-semibold mb-4">Revenu mensuel estimé sur l'année <%= translate_year(Time.zone.today) %></h3>
+    <h3 class="text-lg font-semibold mb-4"><%= t('.chart.title') %> <%= translate_year(Time.zone.today) %></h3>
     <canvas
       data-controller="chartjs"
       data-chartjs-type-value="bar"
