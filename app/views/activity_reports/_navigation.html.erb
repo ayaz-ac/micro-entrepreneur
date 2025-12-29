@@ -1,0 +1,16 @@
+<div class="md:w-3xs lg:w-sm flex items-center">
+  <span class="md:text-lg lg:text-2xl font-medium w-3/5"><%= translate_month_and_year(date) %></span>
+  <div class="inline-flex space-x-2 items-center w-2/5">
+    <% if (current_user.created_at.month <= (date - 1.month).month) && ((date - 1.month).year == date.year) %>
+      <%= link_to activity_reports_path(date: date - 1.month) do %>
+        <%= lucide_icon 'chevron-left', class: 'size-5' %>
+      <% end %>
+    <% end %>
+    <%= link_to t('.today'), activity_reports_path, class: 'text-sm underline' %>
+    <% if (date + 1.month).year == date.year %>
+      <%= link_to activity_reports_path(date: date + 1.month) do %>
+        <%= lucide_icon 'chevron-right', class: 'size-5' %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

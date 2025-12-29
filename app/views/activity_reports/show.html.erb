@@ -1,33 +1,11 @@
-<div class="w-full flex flex-col lg:hidden">
-  <%= turbo_frame_tag :statistics_mobile, class: 'w-full flex justify-center space-x-6 text-brand-950 px-4 py-8 font-medium bg-white' do %>
-    <%= render 'statistics', total_worked_days: @activity_report.total_worked_days, estimated_income: @activity_report.estimated_income %>
-  <% end %>
-  <% if previous_month?(@activity_report.start_date) %>
-    <div class="w-full flex justify-center mb-4">
-      <%= link_to root_path, class: 'py-2 px-4 rounded-lg ring-2 ring-brand-500 ring-offset-0' do %>
-        <span class="text-black text-sm">Modifier le TJM de ce mois-ci</span>
-      <% end %>
-    </div>
-  <% end %>
-  <div class="w-full flex justify-between items-center text-brand-950 px-4 py-2 border-y border-brand-200">
-    <%= render 'months_navigation', date: @activity_report.start_date %>
-    <%= render 'select_off_days', activity_report_id: @activity_report.id %>
-  </div>
-</div>
-<div class="w-full hidden lg:flex justify-between items-center px-16 pt-14 pb-10">
-  <%= render 'months_navigation', date: @activity_report.start_date %>
-  <%= turbo_frame_tag :statistics, class: 'bg-white flex space-x-10 items-center' do %>
-    <%= render 'statistics', total_worked_days: @activity_report.total_worked_days, estimated_income: @activity_report.estimated_income %>
-  <% end %>
-</div>
-<div class="w-full hidden lg:flex justify-between px-16">
-  <%= render 'select_off_days', activity_report_id: @activity_report.id %>
-  <% if previous_month?(@activity_report.start_date) %>
-    <%= link_to root_path, class: 'py-2 px-4 rounded-lg ring ring-brand-500 ring-offset-0 hover:ring-offset-2 transition transition-all duration-100' do %>
-      <span class="text-black">Modifier le TJM de ce mois-ci</span>
+<div class="w-full py-6 md:p-6 space-y-3 lg:space-y-0">
+  <div class="w-full flex flex-col-reverse md:flex-row justify-between items-center">
+    <%= render 'navigation', date: @activity_report.start_date %>
+    <%= turbo_frame_tag :statistics, class: 'flex space-x-10 items-center mb-2 md:mb-0' do %>
+      <%= render 'statistics', total_worked_days: @activity_report.total_worked_days, estimated_income: @activity_report.estimated_income %>
     <% end %>
-  <% end %>
-</div>
+  </div>
 <%= turbo_frame_tag :calendar, class: 'flex w-full' do %>
   <%= render 'calendar', activity_report: @activity_report %>
 <% end %>
+</div>

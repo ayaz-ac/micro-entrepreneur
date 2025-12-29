@@ -1,13 +1,4 @@
 fr:
   activity_reports:
-    months_navigation:
+    navigation:
       today: Aujourd'hui
-    select_off_days:
-      title: Jours off
-      monday: Lundi
-      tuesday: Mardi
-      wednesday: Mercredi
-      thursday: Jeudi
-      friday: Vendredi
-      saturday: Samedi
-      sunday: Dimanche
