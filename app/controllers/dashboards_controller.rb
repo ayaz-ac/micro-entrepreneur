@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 
 class DashboardsController < AuthenticatedController
+  include MonthlyRevenueChart
+
   before_action :set_current_yearly_revenue
   before_action :set_estimated_yearly_revenue
   before_action :set_current_month_income
+  before_action :set_monthly_chart_data
 
   def show
     @profitable = @estimated_yearly_revenue + current_user.average_daily_rate > Revenue::MAX_PER_YEAR
@@ -30,7 +33,5 @@ class DashboardsController < AuthenticatedController
       start_date: Time.zone.today.beginning_of_month,
       end_date: Time.zone.today.end_of_month
     ).estimated_income
-  rescue ActiveRecord::RecordNotFound
-    render file: 'public/500.html', status: :internal_server_error, layout: false
   end
 end
