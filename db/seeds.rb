@@ -12,7 +12,8 @@ User.destroy_all
   password: 'password',
   first_name: 'John',
   last_name: 'Doe',
-  average_daily_rate: 500 # Must be >= 100
+  average_daily_rate: 500,
+  created_at: Date.current.beginning_of_year # Show calendar navigation
 )
 
 # Create revenue record for current year
@@ -21,20 +22,17 @@ revenue = @user.revenues.create!(
   amount: 0.00 # Will be calculated from activity reports
 )
 
-# Create activity reports with revenue data from January to current month
+# Create activity reports with revenue data for all 12 months
 current_year = Time.zone.today.year
 current_month = Time.zone.today.month
 
-(1..current_month).each do |month|
+(1..12).each do |month|
   start_date = Date.new(current_year, month, 1)
   end_date = start_date.end_of_month
 
-  # Generate random worked days (between 10 and 22 days per month)
-  worked_days = rand(10..22)
-
-  # Calculate monthly revenue based on worked days and average daily rate
-  monthly_revenue = worked_days * @user.average_daily_rate
-  estimated_income = monthly_revenue * (1 - ActivityReport::AVERAGE_TAX_ON_INCOME / 100)
+  # Generate random worked days for past/current months, 0 for future months
+  is_past_or_current = month <= current_month
+  target_worked_days = is_past_or_current ? rand(10..22) : 0
 
   # Find or create activity report for this month
   activity_report = @user.activity_reports.find_or_initialize_by(
@@ -42,30 +40,40 @@ current_month = Time.zone.today.month
     end_date: end_date
   )
 
-  # Build days array with revenue data
+  # Build days array with proper status field
   days = []
+  worked_days_added = 0
+
   (start_date..end_date).each do |date|
-    next if date.saturday? || date.sunday? # Skip configured off days
-    next if days.count >= worked_days # Only add up to worked_days
+    # Determine status based on day type and worked days count
+    if date.saturday? || date.sunday?
+      status = 'off'
+    elsif worked_days_added < target_worked_days
+      status = 'full'
+      worked_days_added += 1
+    else
+      status = 'off'
+    end
 
     days << {
       'date' => date.to_s,
-      'rate' => @user.average_daily_rate,
-      'worked' => true
+      'status' => status,
+      'rate' => @user.average_daily_rate
     }
   end
 
+  # Set details - the callbacks will calculate total_worked_days, monthly_revenue, and estimated_income
   activity_report.details = {
-    'total_worked_days' => worked_days,
-    'estimated_income' => estimated_income,
-    'monthly_revenue' => monthly_revenue,
-    'days' => days
+    'days' => days,
+    'total_worked_days' => 0,
+    'monthly_revenue' => 0,
+    'estimated_income' => 0
   }
 
   activity_report.save!
 
-  # Add to total revenue
-  revenue.amount += monthly_revenue
+  # Add to total revenue (now calculated by the model)
+  revenue.amount += activity_report.details['monthly_revenue']
 end
 
 revenue.save!
