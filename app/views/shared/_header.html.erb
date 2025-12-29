@@ -17,8 +17,32 @@
       </li>
     </ol>
     <span class="text-lg md:text-xl">|</span>
-    <div>
-      <%= lucide_icon 'user', class: 'size-6 md:size-7' %>
+    <div class="relative" data-controller="switch-class" data-action="click@window->switch-class#hide">
+      <div class="cursor-pointer" data-action="click->switch-class#trigger">
+        <%= lucide_icon 'user', class: 'size-6 md:size-7' %>
+      </div>
+      <div data-switch-class-target="element"
+           data-active-class="absolute"
+           data-inactive-class="hidden"
+           class="hidden z-10 right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1">
+        <%= link_to edit_user_registration_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" do %>
+          <%= lucide_icon 'user-pen', class: 'size-4 inline mr-2' %>
+          Mon compte
+        <% end %>
+        <a href="#" class="block px-4 py-2 text-sm text-gray-400 cursor-not-allowed">
+          <%= lucide_icon 'euro', class: 'size-4 inline mr-2' %>
+          Modifier mon TJM
+        </a>
+        <a href="#" class="block px-4 py-2 text-sm text-gray-400 cursor-not-allowed">
+          <%= lucide_icon 'calendar-off', class: 'size-4 inline mr-2' %>
+          Jours off
+        </a>
+        <div class="border-t border-gray-200 my-1"></div>
+        <%= button_to destroy_user_session_path, method: :delete, class: "w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50" do %>
+          <%= lucide_icon 'log-out', class: 'size-4 inline mr-2' %>
+          Déconnexion
+        <% end %>
+      </div>
     </div>
   </div>
 </nav>
