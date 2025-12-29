@@ -1,0 +1,10 @@
+<%= form_with scope: :day,
+              url: activity_report_days_path(activity_report),
+              method: :put,
+              data: { controller: 'submit-form', submit_form_target: 'form', turbo_frame: '_top' } do |f| %>
+  <%= f.hidden_field :status, value: status %>
+  <%= f.hidden_field :date, value: day['date'] %>
+  <%= button_tag type: 'submit', class: 'cursor-pointer' do %>
+    <%= lucide_icon icon, class: 'size-5' %>
+  <% end %>
+<% end %>
