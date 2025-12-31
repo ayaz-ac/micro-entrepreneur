@@ -75,7 +75,7 @@ class DashboardsControllerTest < ActionDispatch::IntegrationTest
 
     get root_url
 
-    assert_response 500
+    assert_response :internal_server_error
   end
 
   test "it should return a 500 error if there's noo current month income" do
@@ -86,6 +86,6 @@ class DashboardsControllerTest < ActionDispatch::IntegrationTest
 
     get root_url
 
-    assert_response 500
+    assert_response :internal_server_error
   end
 end

@@ -1,4 +1,4 @@
-require: 
+plugins:
   - rubocop-rails
   - rubocop-capybara
 
@@ -10,7 +10,7 @@ AllCops:
     - node_modules/**/*
     - db/schema.rb
     - tmp/**/*
-  TargetRubyVersion: 3.2.2
+  TargetRubyVersion: 3.4.8
 
 Layout/LineLength:
   # Max: 90
@@ -84,3 +84,6 @@ Style/GlobalStdStream:
 Style/RedundantFetchBlock:
   Exclude:
     - config/puma.rb
+
+Rails/StrongParametersExpect:
+  Enabled: false

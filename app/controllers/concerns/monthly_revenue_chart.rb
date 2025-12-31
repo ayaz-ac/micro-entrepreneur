@@ -19,7 +19,7 @@ module MonthlyRevenueChart
     }
   end
 
-  def monthly_revenue_chart_options
+  def monthly_revenue_chart_options # rubocop:disable Metrics/MethodLength
     {
       responsive: true,
       maintainAspectRatio: true,

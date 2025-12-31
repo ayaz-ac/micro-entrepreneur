@@ -8,11 +8,12 @@ class DashboardsController < AuthenticatedController
   before_action :set_current_month_income
   before_action :set_monthly_chart_data
 
-  def show
+  def show # rubocop:disable Metrics/MethodLength
     if @estimated_yearly_revenue > Revenue::MAX_PER_YEAR
       @revenue_status = 'exceeded'
       @exceeded_revenue = @estimated_yearly_revenue - Revenue::MAX_PER_YEAR
-    elsif (@estimated_yearly_revenue <= Revenue::MAX_PER_YEAR) && (@estimated_yearly_revenue + current_user.average_daily_rate >= Revenue::MAX_PER_YEAR)
+    elsif (@estimated_yearly_revenue <= Revenue::MAX_PER_YEAR) &&
+          (@estimated_yearly_revenue + current_user.average_daily_rate >= Revenue::MAX_PER_YEAR)
       @revenue_status = 'profitable'
       @off_days = ((@estimated_yearly_revenue - Revenue::MAX_PER_YEAR) / current_user.average_daily_rate).ceil
     else

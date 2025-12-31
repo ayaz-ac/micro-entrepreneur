@@ -2,17 +2,14 @@
 
 source 'https://rubygems.org'
 
-ruby '4.0.0'
+ruby '3.4.8'
 
 gem 'bootsnap', require: false
-gem 'cgi'
-gem 'csv'
 gem 'devise'
 gem 'httparty'
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'lucide-rails'
-gem 'ostruct'
 gem 'pg', '~> 1.1'
 gem 'puma', '>= 5.0'
 gem 'rails', '~> 8.1.1'

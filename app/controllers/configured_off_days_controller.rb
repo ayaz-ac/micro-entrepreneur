@@ -33,7 +33,7 @@ class ConfiguredOffDaysController < AuthenticatedController
   end
 
   def configured_off_days
-    @configured_off_days ||= (configured_off_day_params[:configured_off_days] || [])
+    @configured_off_days ||= configured_off_day_params[:configured_off_days] || []
   end
 
   def destroy_exisiting_off_days_unchecked(days_of_week)

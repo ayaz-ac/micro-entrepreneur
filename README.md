@@ -2,8 +2,8 @@
 
 ## Environnement
 
-- Ruby: 3.2.2
-- Rails: 7.2.1
+- Ruby: 3.4.8
+- Rails: 8.1.1
 - Postgresql
 - Importmap
 - Hotwire

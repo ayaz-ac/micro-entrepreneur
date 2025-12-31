@@ -46,9 +46,7 @@ current_month = Time.zone.today.month
 
   (start_date..end_date).each do |date|
     # Determine status based on day type and worked days count
-    if date.saturday? || date.sunday?
-      status = 'off'
-    elsif worked_days_added < target_worked_days
+    if worked_days_added < target_worked_days
       status = 'full'
       worked_days_added += 1
     else
