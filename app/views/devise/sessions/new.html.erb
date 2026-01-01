@@ -2,11 +2,11 @@
   <h2 class="text-gray-900 text-center text-2xl lg:text-5xl lg:leading-normal font-semibold"><%= t('.sign_in') %></h2>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), builder: TailwindBuilder, html: { data: { turbo: false }, class: 'w-full lg:w-2/5 mt-3' }) do |f| %>
     <div class="mt-2">
-      <%= f.label :email %><br />
+      <%= f.label :email %>
       <%= f.email_field :email, autofocus: true, autocomplete: 'email', required: true %>
     </div>
     <div class="mt-7">
-      <%= f.label :password %><br />
+      <%= f.label :password %>
       <%= f.password_field :password, autocomplete: 'current-password', required: true %>
     </div>
     <% if devise_mapping.rememberable? %>
@@ -16,7 +16,7 @@
       </div>
     <% end %>
     <div class="mt-8 flex justify-center">
-      <%= f.submit t('.sign_in') %>
+      <%= f.submit t('.sign_in'), class: 'btn-cta' %>
     </div>
     <%= render "devise/shared/links" %>
   <% end %>
