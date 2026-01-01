@@ -1,0 +1,47 @@
+<div class="w-full flex justify-center py-6">
+  <%= form_with url: configured_off_days_path, class: 'w-2/3', method: :patch do |f| %>
+    <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+      <div class="px-6 py-4 border-b border-gray-200">
+        <h2 class="text-lg font-semibold text-gray-900 flex items-center">
+          <%= lucide_icon "calendar-off", class: "w-5 h-5 mr-2 text-gray-500" %>
+          Jours de repos
+        </h2>
+        <p class="text-sm text-gray-500 mt-1">Configurez vos jours de repos hebdomadaires</p>
+      </div>
+      <div class="p-6 space-y-6">
+        <div class="bg-blue-50 border border-blue-200 rounded-md p-4">
+          <div class="flex">
+            <div class="flex-shrink-0">
+              <%= lucide_icon 'info', class: 'h-5 w-5 text-blue-400' %>
+            </div>
+            <div class="ml-3">
+              <p class="text-sm text-blue-700">
+                Sélectionnez les jours de la semaine où vous ne travaillez généralement pas. Ces jours seront marqués comme repos dans votre calendrier.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <label class="block text-sm font-medium text-gray-700 mb-3">
+            Jours de repos
+          </label>
+
+          <% ConfiguredOffDay.day_of_weeks.keys.each do |day| %>
+            <div class="flex items-center">
+              <%= check_box_tag 'off_days[]', day, @configured_off_days.map(&:day_of_week).include?(day),
+                  id: "off_day_#{day}",
+                  class: "h-4 w-4 text-brand-600 focus:ring-brand-500 border-gray-300 rounded" %>
+              <%= label_tag "off_day_#{day}", t("date.day_names")[ConfiguredOffDay.day_of_weeks[day]],
+                  class: "ml-3 text-sm text-gray-700 capitalize" %>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="flex justify-center pt-4 border-t border-gray-200">
+          <%= f.submit "Enregistrer", class: "btn-cta" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

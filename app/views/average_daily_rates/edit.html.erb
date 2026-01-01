@@ -1,0 +1,63 @@
+<div class="w-full flex justify-center py-6">
+  <%= form_with model: @user, url: average_daily_rate_path, builder: TailwindBuilder, method: :patch do |f| %>
+    <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+      <div class="px-6 py-4 border-b border-gray-200">
+        <h2 class="text-lg font-semibold text-gray-900 flex items-center">
+          <%= lucide_icon "euro", class: "w-5 h-5 mr-2 text-gray-500" %>
+          Taux journalier moyen (TJM)
+        </h2>
+        <p class="text-sm text-gray-500 mt-1">Définissez votre taux journalier moyen de facturation</p>
+      </div>
+      <div class="p-6 space-y-6">
+        <% if @user.errors.any? %>
+          <div class="bg-red-50 border border-red-200 rounded-md p-4">
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <%= lucide_icon 'alert-circle', class: 'h-5 w-5 text-red-400' %>
+              </div>
+              <div class="ml-3">
+                <h3 class="text-sm font-medium text-red-800">
+                  <%= pluralize(@user.errors.count, "erreur") %> empêche la sauvegarde:
+                </h3>
+                <div class="mt-2 text-sm text-red-700">
+                  <ul class="list-disc list-inside space-y-1">
+                    <% @user.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
+        <div class="bg-blue-50 border border-blue-200 rounded-md p-4">
+          <div class="flex">
+            <div class="flex-shrink-0">
+              <%= lucide_icon 'info', class: 'h-5 w-5 text-blue-400' %>
+            </div>
+            <div class="ml-3">
+              <p class="text-sm text-blue-700">
+                Votre TJM est utilisé pour calculer vos revenus prévisionnels. Il doit être au minimum de <%= User::AVERAGE_DAILY_RATE_LIMIT %>€.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <%= f.label :average_daily_rate, "TJM (en euros)" %>
+          <%= f.number_field :average_daily_rate,
+                         min: User::AVERAGE_DAILY_RATE_LIMIT,
+                         step: 1,
+                         placeholder: "500",
+                         required: true %>
+          <p class="text-xs text-gray-500">Montant minimum: <%= User::AVERAGE_DAILY_RATE_LIMIT %>€</p>
+        </div>
+
+        <div class="flex justify-center pt-4 border-t border-gray-200">
+          <%= f.submit "Enregistrer", class: "btn-cta" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
