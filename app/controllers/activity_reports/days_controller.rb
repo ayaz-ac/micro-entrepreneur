@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 module ActivityReports
-  class DaysController < ApplicationController
-    before_action :authenticate_user!
+  class DaysController < AuthenticatedController
     before_action :find_activity_report
 
     def update
