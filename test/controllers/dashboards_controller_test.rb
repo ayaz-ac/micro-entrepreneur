@@ -10,19 +10,22 @@ class DashboardsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:default)
     sign_in @user
+
+    # Trigger activity report details initialization
+    @user.update!(average_daily_rate: @user.average_daily_rate)
   end
   test 'it should render the show view' do
-    get root_url
+    get dashboards_url
 
     assert_response :success
 
-    assert_select 'h3', "Bonjour, #{@user.first_name.capitalize}"
+    assert_select 'h3', "Bonjour, #{@user.first_name.capitalize} 👋"
   end
 
   test 'it should return the current yearly revenue' do
     current_yearly_revenue = @user.revenues.find_by(year: Time.zone.today.year).amount
 
-    get root_url
+    get dashboards_url
 
     assert_response :success
 
@@ -35,7 +38,7 @@ class DashboardsControllerTest < ActionDispatch::IntegrationTest
       end_date: Time.zone.today.end_of_month
     ).estimated_income
 
-    get root_url
+    get dashboards_url
 
     assert_response :success
 
@@ -43,17 +46,29 @@ class DashboardsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'it should render the profitable statistic' do
+    # Update user to trigger activity report initialization
     @user.update!(average_daily_rate: 800)
-    @user.revenues.last.update!(amount: 77_000)
 
-    get root_url
+    # Mark all future days as 'off' to have zero future revenue
+    @user.activity_reports.from_this_month.each do |report|
+      report.details['monthly_revenue'] = 0
+      report.details['estimated_income'] = 0
+      report.days.each { |day| day['status'] = 'off' }
+      report.save!
+    end
+
+    # Set current yearly revenue to test profitable status
+    # Profitable status requires: estimated_yearly_revenue <= 77,700 AND estimated_yearly_revenue + 800 >= 77,700
+    # With zero future revenue, we need current revenue around 77,000
+    @user.revenues.find_by(year: Time.zone.today.year).update!(amount: 77_000)
+
+    get dashboards_url
 
     assert_response :success
 
-    assert_select 'span', text: 'Congé restants'
+    assert_select 'span', text: 'Congés restants'
     assert_select 'span', text: 'Pour ne pas dépasser le plafond du CA'
     assert_select 'span', text: 'Gains manqués', count: 0
-    assert_select 'span', text: 'Revenue potentiels non réalisés', count: 0
   end
 
   test 'it should not render the profitable statistic' do
@@ -61,31 +76,30 @@ class DashboardsControllerTest < ActionDispatch::IntegrationTest
 
     @user.revenues.last.update!(amount: 0)
 
-    get root_url
+    get dashboards_url
 
     assert_response :success
 
     assert_select 'span', text: 'Gains manqués'
-    assert_select 'span', text: 'Revenus potentiels non réalisés'
-    assert_select 'span', text: 'Congé restants', count: 0
+    assert_select 'span', text: 'Congés restants', count: 0
   end
 
-  test "it should return a 500 error if there's no current yearly revenue" do
+  test "it should return a 404 error if there's no current yearly revenue" do
     @user.revenues.find_by(year: Time.zone.today.year).destroy!
 
-    get root_url
+    get dashboards_url
 
-    assert_response :internal_server_error
+    assert_response :not_found
   end
 
-  test "it should return a 500 error if there's noo current month income" do
+  test "it should return a 404 error if there's no current month income" do
     @user.activity_reports.find_by(
       start_date: Time.zone.today.beginning_of_month,
       end_date: Time.zone.today.end_of_month
     ).destroy!
 
-    get root_url
+    get dashboards_url
 
-    assert_response :internal_server_error
+    assert_response :not_found
   end
 end

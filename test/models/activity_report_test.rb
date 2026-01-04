@@ -9,7 +9,9 @@ class ActivityReportTest < ActiveSupport::TestCase
       user = User.last
 
       user.activity_reports.each do |activity_report|
-        assert_equal user.average_daily_rate, activity_report.average_daily_rate
+        activity_report.days.each do |day|
+          assert_equal user.average_daily_rate, day['rate']
+        end
       end
     end
   end

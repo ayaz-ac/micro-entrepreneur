@@ -15,7 +15,7 @@ class ActivityReportsControllerTest < ActionDispatch::IntegrationTest
 
     get activity_reports_url
 
-    assert_response :not_found
+    assert_redirected_to new_user_session_path
   end
   test 'it should render the show view for the current month' do
     get activity_reports_url

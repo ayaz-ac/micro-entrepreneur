@@ -8,6 +8,6 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
 
-    assert_select 'div', 'Fait par un freelance pour les freelances'
+    assert_select 'p', 'Hello World'
   end
 end

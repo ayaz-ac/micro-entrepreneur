@@ -1,4 +1,4 @@
 default:
-  year: 2024
+  year: <%= Time.zone.now.year %>
   amount: 35000
   user: default

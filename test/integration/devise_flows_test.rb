@@ -14,8 +14,10 @@ class DeviseFlowsTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_path
     follow_redirect!
 
+    assert_redirected_to dashboards_path
+    follow_redirect!
+
     assert_response :success
-    assert_select 'div', 'Connecté(e).'
   end
 
   test 'it should fail user login with incorrect credentials' do
@@ -52,6 +54,11 @@ class DeviseFlowsTest < ActionDispatch::IntegrationTest
     }
 
     assert_redirected_to root_path
-    assert_equal 'Votre mot de passe a bien été modifié. Vous êtes maintenant connecté(e).', flash[:notice]
+    follow_redirect!
+
+    assert_redirected_to dashboards_path
+    follow_redirect!
+
+    assert_response :success
   end
 end

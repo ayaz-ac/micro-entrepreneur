@@ -46,11 +46,15 @@ class UserTest < ActiveSupport::TestCase
     user.update!(average_daily_rate: new_average_daily_rate)
 
     user.activity_reports.from_this_month.each do |activity_report|
-      assert_equal new_average_daily_rate, activity_report.average_daily_rate
+      activity_report.days.each do |day|
+        assert_equal new_average_daily_rate, day['rate']
+      end
     end
 
     user.activity_reports.before_this_month.each do |activity_report|
-      assert_not_equal new_average_daily_rate, activity_report.average_daily_rate
+      activity_report.days.each do |day|
+        assert_not_equal new_average_daily_rate, day['rate']
+      end
     end
   end
 
