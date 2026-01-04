@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :average_daily_rate,
                                                        { revenues_attributes: [:amount] }])
   end
+
   def after_sign_in_path_for(resource)
     flash.delete(:notice) # removes the sign in notice
     super

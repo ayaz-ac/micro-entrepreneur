@@ -30,7 +30,9 @@
   <body>
     <main class="w-full flex-col items-center bg-stone-50 min-h-screen">
       <%= render partial: 'shared/header' %>
-      <%= render partial: 'shared/flash', locals: { flash: flash } %>
+      <%= turbo_frame_tag :flash, class: 'flex justify-center' do %>
+        <%= render 'shared/flash', flash: %>
+      <% end %>
       <div class="w-full flex justify-center">
         <div class="w-full 2xl:w-4/5">
           <%= yield %>

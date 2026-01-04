@@ -6,11 +6,11 @@ class AverageDailyRatesController < AuthenticatedController
   end
 
   def update
-    @user = current_user
-    if @user.update(average_daily_rate_params)
-      render :edit, status: :ok
+    if current_user.update(average_daily_rate_params)
+      flash.now[:notice] = t('.success')
     else
-      render :edit, status: :unprocessable_entity
+      flash.now[:alert] = resource.errors.full_messages
+      render :edit, status: :unprocessable_content
     end
   end
 

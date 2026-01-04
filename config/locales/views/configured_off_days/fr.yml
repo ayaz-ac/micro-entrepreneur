@@ -1,0 +1,4 @@
+fr:
+  configured_off_days:
+    update:
+      success: Vos jours de repos ont bien été mis à jour!

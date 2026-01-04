@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
 
   resource :average_daily_rate, only: %i[edit update]
-  resource :configured_off_days, only: %i[edit update] 
+  resource :configured_off_days, only: %i[edit update]
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
