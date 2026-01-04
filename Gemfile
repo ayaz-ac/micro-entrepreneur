@@ -35,6 +35,6 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
-  gem 'minitest', '< 6' # Rails 8.1 not compatible with Minitest 6.x yet
+  gem 'minitest', '< 7' # Rails 8.1 not compatible with Minitest 6.x yet
   gem 'selenium-webdriver'
 end
