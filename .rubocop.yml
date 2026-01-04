@@ -10,6 +10,7 @@ AllCops:
     - node_modules/**/*
     - db/schema.rb
     - tmp/**/*
+    - bin/**/*
   TargetRubyVersion: 3.4.8
 
 Layout/LineLength:
@@ -20,16 +21,18 @@ Layout/LineLength:
     - config/routes.rb
     - db/seeds.rb
     - test/application_system_test_case.rb
-    - bin/bundle
     - Gemfile
     - Rakefile
     - config/initializers/devise.rb
+
+Metrics/ClassLength:
+  Exclude:
+    - test/**/*.rb
 
 Metrics/MethodLength:
   Exclude:
     - db/migrate/*.rb
     - db/seeds.rb
-    - bin/bundle
 
 Metrics/AbcSize:
   Exclude:
@@ -52,12 +55,10 @@ Metrics/BlockLength:
 Metrics/PerceivedComplexity:
   Exclude:
     - app/helpers/application_helper.rb
-    - bin/bundle
 
 Metrics/CyclomaticComplexity:
   Exclude:
     - app/helpers/application_helper.rb
-    - bin/bundle
 
 Metrics/ModuleLength:
   Exclude:
@@ -68,14 +69,6 @@ Style/DateTime:
 
 Style/Documentation:
   Enabled: false
-
-Style/SpecialGlobalVars:
-  Exclude:
-    - bin/bundle
-
-Style/InverseMethods:
-  Exclude:
-    - bin/yarn
 
 Style/GlobalStdStream:
   Exclude:
