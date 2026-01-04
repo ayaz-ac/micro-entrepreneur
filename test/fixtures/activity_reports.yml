@@ -4,6 +4,5 @@
   start_date: <%= Time.zone.local(current_year, month) %>
   end_date: <%= Time.zone.local(current_year, month).end_of_month %>
   details: { }
-  average_daily_rate: 450 
   user: default
 <% end %>

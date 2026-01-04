@@ -20,6 +20,8 @@ gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
+  gem 'brakeman', require: false
+  gem 'bundler-audit', require: false
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
@@ -33,5 +35,6 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
+  gem 'minitest', '< 6' # Rails 8.1 not compatible with Minitest 6.x yet
   gem 'selenium-webdriver'
 end
