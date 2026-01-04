@@ -28,7 +28,7 @@ A modern, open-source web application for French IT freelancers with "micro-entr
 
 Before you begin, ensure you have the following installed:
 
-- Ruby 3.4.8 (use [rbenv](https://github.com/rbenv/rbenv) or [asdf](https://asdf-vm.com/))
+- Ruby 3.4.8
 - PostgreSQL 14+
 - Git
 
@@ -170,36 +170,6 @@ See `.env.example` for all required environment variables. Key variables include
   - Devise-based authentication
   - Associated with activity reports and revenue records
 
-## Contributing
-
-We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details on:
-
-- How to set up your development environment
-- Coding standards and guidelines
-- How to submit pull requests
-- Our code review process
-
-## Code of Conduct
-
-This project adheres to a [Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code.
-
-## Security
-
-If you discover a security vulnerability, please follow our [Security Policy](SECURITY.md). Do not open a public issue.
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Support
-
-- **Issues**: [GitHub Issues](https://github.com/ayaz-ac/micro-entrepreneur/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/ayaz-ac/micro-entrepreneur/discussions)
-
-## Acknowledgments
-
-Built with Ruby on Rails and modern web technologies. Special thanks to the open-source community for the amazing tools and libraries that make this project possible.
-
----
-
-Made with ❤️ for French freelancers
