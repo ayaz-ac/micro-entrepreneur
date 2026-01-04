@@ -1,5 +1,5 @@
-<div class="w-full flex justify-center py-6">
-<%= form_with model: resource, url: registration_path(resource_name), builder: TailwindBuilder, class: 'w-2/3', method: :put do |f| %>
+<div class="w-full flex justify-center px-4 lg:px-0 py-6">
+<%= form_with model: resource, url: registration_path(resource_name), builder: TailwindBuilder, class: 'w-full lg:w-2/3', method: :put do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="bg-white rounded-lg shadow-sm border border-gray-200">
