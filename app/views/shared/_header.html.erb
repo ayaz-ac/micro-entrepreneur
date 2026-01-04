@@ -1,8 +1,8 @@
 <nav class="w-full flex items-center justify-between px-4 py-4 lg:px-8 lg:py-4 bg-brand-50">
-  <div class="font-semibold text-xl flex space-x-1.5 items-center">
+  <%= link_to root_path, class:'font-semibold text-xl flex space-x-1.5 items-center' do %>
     <%= image_tag 'logo.svg', class: 'size-7' %>
     <span>MicroEntrepreneur</span>
-  </div>
+  <% end %>
   <div class="flex items-center space-x-2 md:space-x-3 lg:space-x-4">
     <ol class="flex space-x-3 md:space-x-4">
       <li class="rounded-full bg-white p-2 cursor-pointer hover:shadow-md">
