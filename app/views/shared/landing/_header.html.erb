@@ -1,37 +1,36 @@
-<nav class="bg-gray w-full">
-  <div class="flex flex-col max-w-7xl mx-auto lg:flex-row justify-between lg:items-center lg:py-6" data-controller="switch-class">
-    <%= link_to root_url, class: 'hidden lg:inline-flex justify-center space-x-2 items-center' do %>
+<nav class="w-full bg-white border-b border-gray-200">
+  <div class="flex flex-col max-w-7xl mx-auto lg:flex-row justify-between lg:items-center lg:py-4" data-controller="switch-class">
+    <%= link_to root_url, class: 'hidden lg:inline-flex space-x-2 items-center' do %>
       <%= image_tag 'logo.svg', class: 'w-7' %>
-      <span class="font-logo text-lg font-semibold">MicroEntrepreneur</span>
+      <span class="font-logo text-lg font-semibold text-brand-900">MicroEntrepreneur</span>
     <% end %>
     <%# Mobile Menu %>
-    <div class="w-full select-none flex py-6 px-8 justify-between items-center lg:hidden">
+    <div class="w-full select-none flex py-4 px-4 md:px-6 justify-between items-center lg:hidden">
       <%= link_to root_url, class: 'inline-flex space-x-2 items-center' do %>
         <%= image_tag 'logo.svg', class: 'w-6' %>
-        <span class="font-logo font-semibold text-black">MicroEntrepreneur</span>
+        <span class="font-logo font-semibold text-brand-900">MicroEntrepreneur</span>
       <% end %>
-      <svg class="w-5 h-5" data-action="click->switch-class#trigger" data-switch-class-target="element" data-active-class="block" data-inactive-class="hidden" 
-        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-      </svg>
-      <svg class="hidden w-6 h-6" data-action="click->switch-class#trigger" data-switch-class-target="element" data-active-class="block" data-inactive-class="hidden"
-        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-      </svg>
+      <button type="button" class="p-2 text-gray-600 hover:text-gray-900" data-action="click->switch-class#trigger">
+        <svg class="w-6 h-6" data-switch-class-target="element" data-active-class="block" data-inactive-class="hidden"
+          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+        <svg class="hidden w-6 h-6" data-switch-class-target="element" data-active-class="block" data-inactive-class="hidden"
+          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      </button>
     </div>
-    <div data-switch-class-target="element" data-active-class="block" data-inactive-class="hidden" class="hidden w-full bg-gray lg:block lg:w-auto">
-      <div class="font-medium text-brand-950 flex flex-col lg:flex-row items-center space-y-4 lg:space-y-0 lg:space-x-8 py-6 lg:p-0 rounded-lg lg:bg-transparent lg:text-sm">
-        <%= link_to "#{root_url}#features", class: 'lg:decoration-brand-200 lg:decoration-2 lg:underline-offset-4 lg:hover:underline  lg:transition-all lg:duration-500' do %>
-          <span><%= t('shared.header.how_it_works') %></span>
+    <div data-switch-class-target="element" data-active-class="block" data-inactive-class="hidden" class="hidden w-full lg:block lg:w-auto">
+      <div class="font-medium text-brand-900 flex flex-col lg:flex-row items-stretch lg:items-center space-y-2 lg:space-y-0 lg:space-x-6 px-4 pb-4 lg:p-0">
+        <%= link_to "#{root_url}#features", class: 'px-3 py-2 lg:p-0 rounded-lg lg:rounded-none hover:bg-gray-50 lg:hover:bg-transparent lg:hover:text-brand-600 transition-colors' do %>
+          <span>Fonctionnalités</span>
         <% end %>
-        <%= link_to "#{root_url}#pricings", class: 'lg:decoration-brand-200 lg:decoration-2 lg:underline-offset-4 lg:hover:underline  lg:transition-all lg:duration-500' do %>
-          <span><%= t('shared.header.pricing') %></span>
+        <%= link_to new_user_session_path, class: 'px-3 py-2 lg:p-0 rounded-lg lg:rounded-none hover:bg-gray-50 lg:hover:bg-transparent lg:hover:text-brand-600 transition-colors' do %>
+          <span>Se connecter</span>
         <% end %>
-        <%= link_to new_user_session_path, class: 'lg:decoration-brand-200 lg:decoration-2 lg:underline-offset-4 lg:hover:underline  lg:transition-all lg:duration-500' do %>
-          <span><%= t('shared.header.sign_in') %></span>
-        <% end %>
-        <%= link_to new_user_registration_path, class: 'text-center text-white rounded-full bg-brand-500 px-4 py-2.5 lg:text-base lg:transition lg:ease-in-out lg:hover:-translate-y-1 lg:hover:scale-105 lg:duration-300' do %>
-          <span><%= t('global.cta') %></span>
+        <%= link_to new_user_registration_path, class: 'btn-cta' do %>
+          <span>S'inscrire</span>
         <% end %>
       </div>
     </div>

@@ -1,1 +1,101 @@
-<p>Hello World</p>
+<div class="min-h-screen">
+  <!-- Hero Section -->
+  <section class="px-4 py-12 md:py-20 lg:py-28">
+    <div class="max-w-4xl mx-auto text-center">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 font-display">
+        Maximisez vos revenus de <span class="text-brand-600">micro-entrepreneur</span>
+      </h1>
+      <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+        L'outil de gestion budgétaire conçu pour les freelances IT
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <%= link_to "S'inscrire", new_user_registration_path, class: 'btn-cta-lg' %>
+        <%= link_to "Se connecter", new_user_session_path, class: "inline-block px-6 py-3 bg-white text-brand-600 font-semibold rounded-lg hover:bg-gray-50 transition-colors border-2 border-brand-600 w-fit text-center" %>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="px-4 py-12 md:py-16 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12 font-display">
+        Tout ce dont vous avez besoin
+      </h2>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Feature 1 -->
+        <div class="text-center p-6">
+          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <%= lucide_icon 'euro', class: 'size-8 text-blue-600' %>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-3">Gérez votre TJM</h3>
+          <p class="text-gray-600">
+            Ajustez votre taux journalier moyen pour optimiser vos revenus tout en respectant vos plafonds.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="text-center p-6">
+          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <%= lucide_icon 'calendar-days', class: 'size-8 text-green-600' %>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-3">Planifiez vos jours off</h3>
+          <p class="text-gray-600">
+            Configurez vos congés et vacances pour maintenir un équilibre vie pro/perso optimal.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="text-center p-6">
+          <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <%= lucide_icon 'chart-line', class: 'size-8 text-purple-600' %>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-3">Suivez vos objectifs</h3>
+          <p class="text-gray-600">
+            Visualisez vos revenus en temps réel et ajustez votre stratégie pour atteindre vos objectifs.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Open Source Section -->
+  <section class="px-4 py-12 md:py-16 bg-gradient-to-b from-brand-50 to-white">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="w-16 h-16 bg-brand-600 rounded-full flex items-center justify-center mx-auto mb-6">
+        <%= lucide_icon 'code', class: 'size-8 text-white' %>
+      </div>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 font-display">
+        100% Open Source
+      </h2>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <%= link_to "https://github.com/ayaz-ac/micro-entrepreneur", target: "_blank", rel: "noopener noreferrer", class: "inline-flex items-center gap-2 px-6 py-3 bg-gray-900 text-white font-semibold rounded-lg hover:bg-gray-800 transition-colors" do %>
+          <%= lucide_icon 'github', class: 'size-5' %>
+          <span>Voir sur GitHub</span>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="px-4 py-12 md:py-16">
+    <div class="max-w-3xl mx-auto text-center bg-gradient-to-r from-brand-600 to-brand-700 rounded-2xl p-8 md:p-12 shadow-xl">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-display">
+        Prêt à optimiser vos revenus ?
+      </h2>
+      <p class="text-brand-100 text-lg mb-8">
+        Rejoignez les freelances IT qui maximisent leurs revenus avec MicroEntrepreneur.
+      </p>
+      <%= link_to "Créer mon compte gratuit", new_user_registration_path, class: "inline-block px-8 py-4 bg-white text-brand-600 font-semibold rounded-lg hover:bg-gray-50 transition-colors shadow-lg hover:shadow-xl" %>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="px-4 py-8 border-t border-gray-200">
+    <div class="max-w-6xl mx-auto text-center text-gray-600">
+      <p class="mb-2">
+        <strong>MicroEntrepreneur</strong> | Made with ❤️
+      </p>
+    </div>
+  </footer>
+</div>
